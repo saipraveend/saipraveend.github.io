@@ -1,9 +1,9 @@
 # main text of home
 name: Saipraveen Durairaman
-bio: How lucky am I ? Look who's here..
+bio: Thats cool ! So anything I type comes here..
 
 # summary info
-description: A site about technology and me.
+description: A site about my interests and me.
 
 # if it's an external image, update below for true
 # better with square images
@@ -12,7 +12,7 @@ picture: assets/images/profile.jpg
 
 # If you want to include your resume, set to true
 # and specify source (external or local).
-resume: true
+resume: false
 resume-external: true
 resume-url: https://google.com/?q=my+resume
 
