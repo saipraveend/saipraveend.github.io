@@ -1,6 +1,6 @@
 # main text of home
-name: Saipraveen Durairaman
-bio: Thats cool ! So anything I type comes here..
+name: Hi, This is Sai.
+bio: Maker. Hardware Hacker. Robotics & EV Enthusiast.
 
 # summary info
 description: A site about my interests and me.
@@ -34,23 +34,23 @@ disqus:
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
-facebook: myfacebook
-twitter: mytwitter
+facebook: saipraveendurairaman
+twitter: dsaipraveen
 # google: mygoogle
 # instagram: myinstagram
 # pinterest: mypinterest
-# linkedin: mylinkedin
+linkedin: saipraveend
 # youtube: myyoutube
 # spotify: myspotify
-github: mygithub
+github: saipraveend
 # lastfm: mylastfm
 # stackoverflow: 7044681/mystackoverflow
 # quora: userquora
 # reddit: username
-medium: medium
+# medium: medium
 # vimeo: myvimeo
 # lanyrd: mylanyrd
-email: myemail@gmail.com
+email: saipraveendurairaman+website@gmail.com
 
 authors:
     johndoe:
