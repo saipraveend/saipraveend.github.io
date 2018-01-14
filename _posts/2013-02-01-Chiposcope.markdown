@@ -23,7 +23,7 @@ author: sai.
 
     <div class="toright">
         <p>An oscilloscope implemented on Chipkit Uno 32 with an OLED display.  Project implemented as a poor man's option for visualizing waveforms in house without needing a DSO.</p>
-        <p>(I am sorry for the poor quality photos and videos, this was done during my college times back in 2013 when Nokia N91 was a smartphone. In case you need HD photos/videos let me know in the comments, I still have my old buddy - Chipkit resting in my cupboard)</p>
+        <p>I am sorry for the poor quality photos and videos, this was done during my college times back in 2013 when Nokia N91 was a smartphone. In case you need HD photos/videos let me know in the comments, I still have my old buddy - Chipkit resting in my cupboard</p>
     </div>
 </div>
 
