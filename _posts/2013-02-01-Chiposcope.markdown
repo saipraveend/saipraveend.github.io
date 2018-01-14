@@ -2,16 +2,16 @@
 title: Chiposcope
 layout: post
 date: 2013-02-01 22:48
-image: "/assets/images/markdown.jpg"
-tag:
+tag: 
 - arduino
 - chipkit
 - oscilloscope
-category: blog
-author: sai
+projects: true
+hidden: true
 description: A simple oscilloscope that i built with chipkit 32
+category: project
+author: sai.
 ---
-
 
 ## Brief
 
@@ -23,7 +23,7 @@ description: A simple oscilloscope that i built with chipkit 32
 
     <div class="toright">
         <p>An oscilloscope implemented on Chipkit Uno 32 with an OLED display.  Project implemented as a poor man's option for visualizing waveforms in house without needing a DSO.</p>
-        <p>(I am sorry for the poor quality photos and videos, this was done during my college times back in 2013 when Nokia N91 was a smartphone. In case you need HD photos/videos let me know in the comments, I still have my old buddy - Chipkit in my cupboard)</p>
+        <p>(I am sorry for the poor quality photos and videos, this was done during my college times back in 2013 when Nokia N91 was a smartphone. In case you need HD photos/videos let me know in the comments, I still have my old buddy - Chipkit resting in my cupboard)</p>
     </div>
 </div>
 
@@ -32,15 +32,15 @@ description: A simple oscilloscope that i built with chipkit 32
 
 ## Featured in
 
-<span class="evidence">Digilent blog post<hhttps://blog.digilentinc.com/the-grand-and-cheap-chip-oscope/>.</span>
+<span class="evidence">Digilent Blog Post <https://blog.digilentinc.com/the-grand-and-cheap-chip-oscope/>.</span>
 
 ---
 
 ## Source code and implementation steps
 
-Instructables link <http://www.instructables.com/id/Chiposcope/>.
+Instructables Link <http://www.instructables.com/id/Chiposcope/>.
 
-Hackster link <https://www.hackster.io/Saipraveen/chiposcope-2be02b>.
+Hackster Link <https://www.hackster.io/Saipraveen/chiposcope-2be02b>.
 
 ---
 
