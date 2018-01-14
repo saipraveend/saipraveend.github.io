@@ -1,6 +1,6 @@
 # main text of home
 name: Hi, This is Sai.
-bio: Maker. Robotics & EV Enthusiast.
+bio: Maker. Hardware Hacker. Robotics & EV Enthusiast.
 
 # summary info
 description: A site about my interests and me.
@@ -30,7 +30,7 @@ permalink: /:title/
 
 # if you don't want comments in your posts, leave categories empty
 disqus:
-  shortname: mydisqus # enter this from your disqus account
+  shortname: saip # enter this from your disqus account
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
