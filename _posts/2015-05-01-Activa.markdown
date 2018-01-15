@@ -1,11 +1,61 @@
 ---
-title:  "Automated vehicle speed management assisted with GPS"
-subtitle: "A project done for my freind at SRM"
-author: "Sai."
-avatar: "img/authors/sai.png"
-image: "img/b.jpg"
-date:   2013-05-01 12:12:12
+title: Automated vehicle speed management assisted with GPS
+layout: post
+date: 2013-05-01 22:12
+tag: 
+- arduino
+- android
+- Honda Activa
+- Vehicle tracking
+- DIY
+projects: true
+hidden: true
+description: A project done with my best friend Satish
+category: project
+author: sai.
 ---
 
-### Brief
+## Brief
+
 A system that is capable of over riding the driver’s control over the vehicle to maintain the speed in speed restricted zones. It uses a micro-controller to receive the GPS coordinates via bluetooth from an android phone running a custom application. A working prototype was tested on a Honda Activa.
+<br>
+<br>
+<img class="image" src="{{ site.url }}/assets/images/Autospeed/block.png" alt="Block Diagram - Autospeed">
+<br>
+<br>
+This project was done along with my friend satish kumar who was then studying at SRM college of engineering, Chennai.
+<br>
+<br>
+The mechanical accelerator in the activa was retro fitted with an electric bike throttle which is essentially a potentiometer.
+<br>
+<br>
+This analog input was fed to arduino which in turn controlled a metal geared servo motor. This servo motor pulled the carburreter cable, thus controlling the acceleration.
+<br>
+<br>
+When the user enters a speed restricted zone, the controller decides to limit the speed to the limit by gradually reducing the acceleration till the limit is reached.The speed data is fetched from the front wheel by reading the hall sensor that detects the number of times the magnet stuck onto the tire passes by. 
+
+---
+
+## Source code and further documentation
+
+Github Link <https://github.com/saipraveend/Autospeed>.
+
+---
+
+## Gallery
+
+Unfortunately owing to lack of any good camera at that time, these were the only photos that I was able to capture :(
+
+<div class="side-by-side">
+    <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Autospeed/1.jpg" alt="Autospeed">
+        <figcaption class="caption">Set Up</figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Autospeed/2.jpg" alt="Autospeed">
+        <figcaption class="caption">Initialized</figcaption>
+    </div>
+</div>
+
+---
