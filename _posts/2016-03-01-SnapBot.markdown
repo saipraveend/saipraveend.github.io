@@ -25,6 +25,8 @@ author: sai.
     </div>
 
     <div class="toright">
+    	<br>
+    	<br>
         SnapBot is a modular robotic platform built to help educators and students from all fields learn about IoT and virtual reality. We wanted to make an open source, easy to operate, simple to assemble system that is powerful in terms of processing capabilities and IoT application development. For this we created a simple snap - fit assembly using magnets for the robot. This makes it easy for any user to assemble a robot in minutes.
     </div>
 </div>
@@ -44,9 +46,8 @@ Github Link <https://github.com/saipraveend/Snapbot_V2>.
 ## Videos
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/TtIzp1k-g44?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+---
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6k6UTaQzTbw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+---
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8sAbYBPh2T0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
 ---
