@@ -1,5 +1,5 @@
 ---
-title: Ultravision
+title: Ultravision for the Blind
 layout: post
 date: 2014-01-01 22:48
 tag: 

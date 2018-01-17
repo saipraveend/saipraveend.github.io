@@ -1,5 +1,5 @@
 ---
-title: Chiposcope
+title: Chiposcope - oscilloscope based on chipkit
 layout: post
 date: 2013-02-01 22:48
 tag: 

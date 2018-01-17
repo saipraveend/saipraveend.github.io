@@ -1,0 +1,246 @@
+---
+title: IIT Madras - Shaastra 2011 - Winners
+layout: post
+date: 2011-09-01 10:48
+tag: 
+- PIC Microcontroller
+- Robot
+- Robotics
+- Autonomous
+projects: true
+hidden: true
+description: 3rd place in the national competition
+category: project
+author: sai.
+---
+
+## Brief
+
+<img class="image" src="{{ site.url }}/assets/images/Shaastra/45.jpg" alt="3rd place">
+<figcaption class="caption">Winning pose :)</figcaption>
+<br>
+Shaastra is the annual national level tech fest of IIT Madras. The problem statement involved creating two robots, one manual and the other one autonomous.
+<br>
+The problem statement is as shown in the animation. A requirement for the autonomous robot was to have no onboard power supply, The power for the robot shall be tapped from a wire frame placed above the hexagonal tracing lines the ground was from the tracing lines plate.
+<br>
+We managed to bag the third prize in this national level competition with more than 40 teams from around India.
+<br>
+
+---
+
+## Design files
+
+Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/faa58fa6d11a8eb79842afd94bd8e289/MITVEINZ-bot-for-coldfusion-IIT-Mshaastra-2011>.
+
+Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/5e91228f527092c12920716ef940afbb/Autonomous-Line-Following-Robot>.
+
+Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/3635d46aeb69caac9842afd94bd8e289/MITVEINZ-manual-BOT>.
+
+
+---
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pOrwxOSU9l8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+---
+
+## Gallery
+
+<div class="side-by-side">
+    <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/1.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/2.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/3.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/4.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/5.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/6.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/7.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/8.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/9.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/30.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/31.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/12.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/13.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/14.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/15.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/16.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/17.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/18.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/19.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/20.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/21.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/22.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/23.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/24.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/25.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/26.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/27.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/28.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/29.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/30.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/31.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/32.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/33.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/34.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/35.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/36.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/37.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/38.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/39.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/40.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+		        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/41.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/42.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+		        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/43.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/44.jpg" alt="Shaastra by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+</div>

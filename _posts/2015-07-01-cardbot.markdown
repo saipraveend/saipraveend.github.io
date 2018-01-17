@@ -1,0 +1,22 @@
+---
+title: CardBot - VR Robot - Hack India 2015
+layout: post
+date: 2015-07-01 09:48
+tag: 
+- Intel Galileo
+- VR
+- Robot
+- Android
+- Robotics
+projects: true
+hidden: true
+description: Winning idea at Hack India 2015
+category: project
+author: sai.
+---
+
+## Brief
+
+A 4 wheeled robot mounted with a camera, which moves in accordance with the movement of the virtual reality headset (google cardboard), aiding the user to virtually visualize any inaccessible area from anywhere.
+<br>
+This project was implemented as a team project for the Hack India hackathon. We won as a runner up in this hackathon.
