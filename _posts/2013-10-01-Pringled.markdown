@@ -1,0 +1,255 @@
+---
+title: PringLed - DIY LED light from recycled materials
+layout: post
+date: 2013-10-01 10:48
+tag: 
+- DIY
+- LED
+- Experiments
+projects: true
+hidden: true
+description: A DIY light that can be made from recyled items
+category: project
+author: sai.
+---
+
+## Brief
+
+<img class="image" src="{{ site.url }}/assets/images/Pringled/50.jpg" alt="Pringled">
+<figcaption class="caption">Works like a charm for 5 years now :D</figcaption>
+<br>
+Part of a time pass experiment to make an LED light for my home with recycled materials.
+<br>
+All the illumination showed in the gallery is through white LED strips
+
+---
+
+## Featured in
+
+<span class="evidence">Upcycling projects<https://www.hackster.io/upcycling/projects>.</span>
+
+---
+
+## Implentation steps
+
+Hackster Link <https://www.hackster.io/Saipraveen/pringled-9c3330>.
+
+---
+
+## Gallery
+
+<div class="side-by-side">
+    <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/1.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/2.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/3.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/4.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/5.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/6.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/7.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/8.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/9.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/30.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/31.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/12.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/13.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/14.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/15.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/16.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/17.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/18.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/19.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/20.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/21.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/22.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/23.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/24.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/25.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/26.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/27.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/28.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/29.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/30.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/31.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/32.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/33.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/34.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/35.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/36.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/37.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/38.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+	        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/39.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/40.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+		        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/41.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/42.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+		        <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/43.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/44.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+	</div>
+                    <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/45.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/46.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+                    <div class="toleft">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/47.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+   <div class="toright">
+        <img class="image" src="{{ site.url }}/assets/images/Pringled/48.jpg" alt="Pringled by sai.">
+        <figcaption class="caption"></figcaption>
+    </div>
+</div>
