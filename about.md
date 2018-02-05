@@ -27,8 +27,6 @@ layout: page
 
 <p>My personal belief is this divide is contributed from the very basic concept of money and the invasion of corporates into our every day lives - who have imposed new technologies as a basic requirement which inturn affects those who are on the other side of the technological divide.</p>
 
-<p>My personal belief is this divide is contributed from the very basic concept of money and the invasion of corporates into our every day lives - who have imposed new technologies as a basic requirement which inturn affects those who are on the other side of the technological divide.</p>
-
 <p>So shortcut.life is to create shortcuts to ease the life of people on the other side of this technological divide and enhancing the lives of people around me.</p>
 
 
