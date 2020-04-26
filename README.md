@@ -1,4 +1,4 @@
-### My Blog and Portfolio 
+### My Blog and Portfolio [![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)
 
 It should go live here - https://saipraveend.github.io/
  
