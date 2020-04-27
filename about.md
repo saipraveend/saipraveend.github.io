@@ -36,9 +36,7 @@ layout: page
     border: 1px solid white;
   }
   </style>
-	
 </head>
-
 <body>
 <canvas width="400" height="400" id="game"></canvas>
   <pre><code data-trim>
@@ -160,10 +158,6 @@ document.addEventListener('keydown', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
-
 </code></pre>
-
 </body>
-
-
 There you go.
