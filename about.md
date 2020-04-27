@@ -39,7 +39,7 @@ layout: page
 </head>
 <body>
 <pre><code data-trim>
-<canvas width="600" height="400" id="game" align="center"></canvas>
+<canvas width="400" height="400" id="game" align="center"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
