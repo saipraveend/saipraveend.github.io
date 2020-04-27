@@ -19,7 +19,7 @@ layout: page
 
 ---
 
-## Since you are here, I figured you might have some free time..
+## Since you are here..
 
 <head>
   <style>
@@ -39,7 +39,9 @@ layout: page
 </head>
 <body>
 <pre><code data-trim>
-<canvas width="400" height="400" id="game" align="center"></canvas>
+<p align="center">
+<canvas width="400" height="400" id="game" align="right"></canvas>
+</p>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
