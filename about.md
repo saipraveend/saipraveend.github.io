@@ -29,7 +29,6 @@ layout: page
     margin: 0;
   }
   body {
-    background: black;
     display: flex;
     align-items: center;
     justify-content: center;
