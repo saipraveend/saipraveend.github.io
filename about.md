@@ -22,7 +22,6 @@ layout: page
 ## Since you are here, I figured you might have some free time..
 
 <head>
-  <title></title>
   <style>
   html, body {
     height: 100%;
@@ -37,9 +36,12 @@ layout: page
     border: 1px solid white;
   }
   </style>
+	
 </head>
+
 <body>
 <canvas width="400" height="400" id="game"></canvas>
+  <pre><code data-trim>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -51,7 +53,6 @@ var snake = {
   // snake velocity. moves one grid length every frame in either the x or y direction
   dx: grid,
   dy: 0,
-  
   // keep track of all grids the snake body occupies
   cells: [],
   // length of the snake. grows when eating an apple
@@ -159,6 +160,10 @@ document.addEventListener('keydown', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
+
+</code></pre>
+
 </body>
+
 
 There you go.
