@@ -38,8 +38,8 @@ layout: page
   </style>
 </head>
 <body>
+<pre><code data-trim>
 <canvas width="400" height="400" id="game"></canvas>
-  <pre><code data-trim>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -160,4 +160,3 @@ requestAnimationFrame(loop);
 </script>
 </code></pre>
 </body>
-There you go.
