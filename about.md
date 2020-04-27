@@ -39,7 +39,7 @@ layout: page
 </head>
 <body>
 <pre><code data-trim>
-<canvas width="500" height="400" id="game" align="center"></canvas>
+<canvas width="600" height="400" id="game" align="center"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -130,6 +130,7 @@ function loop() {
 }
 // listen to keyboard events to move the snake
 document.addEventListener('keydown', function(e) {
+	  event.preventDefault()
   // prevent snake from backtracking on itself by checking that it's 
   // not already moving on the same axis (pressing left while moving
   // left won't do anything, and pressing right while moving left
