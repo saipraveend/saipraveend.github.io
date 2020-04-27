@@ -33,13 +33,13 @@ layout: page
     justify-content: center;
   }
   canvas {
-    border: 1px solid white;
+    border: 1px solid black;
   }
   </style>
 </head>
 <body>
 <pre><code data-trim>
-<canvas width="400" height="400" id="game"></canvas>
+<canvas width="500" height="400" id="game" align="center"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
