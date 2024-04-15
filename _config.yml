@@ -1,6 +1,6 @@
 # main text of home
 name: Hi, This is Sai.
-bio: Maker. Hardware Hacker. Robotics & Electric Vehicles Enthusiast.
+bio: Make. Code. Embed.
 
 # summary info
 description: A site about my interests and me.
@@ -34,8 +34,8 @@ disqus:
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
-facebook: saipraveendurairaman
-twitter: dsaipraveen
+#facebook: saipraveendurairaman
+#twitter: dsaipraveen
 # google: mygoogle
 # instagram: myinstagram
 # pinterest: mypinterest
