@@ -17,7 +17,7 @@ image: /assets/images/Shaastra/1.jpg
 
 ## Brief
 
-<img class="image" src="{{ site.url }}/assets/images/Shaastra/45.jpg" alt="3rd place">
+<img class="image" src="{{ site.url }} /assets/images/Shaastra/45.jpg" alt="3rd place">
 <figcaption class="caption">Winning pose :)</figcaption>
 <br>
 Shaastra is the annual national level tech fest of IIT Madras. The problem statement involved creating two robots, one manual and the other one autonomous.
@@ -51,43 +51,43 @@ Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/3635d46aeb69caac
 
 <div class="side-by-side">
     <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/1.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/1.jpg">
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/2.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/2.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
         <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/3.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/3.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/4.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/4.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
         <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/5.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/5.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/6.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/6.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
         <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/7.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/7.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/8.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/8.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
         <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/9.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/9.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
@@ -164,87 +164,87 @@ Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/3635d46aeb69caac
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/26.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/26.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/27.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/27.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/28.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/28.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/29.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/29.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/30.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/30.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/31.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/31.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/32.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/32.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/33.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/33.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/34.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/34.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/35.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/35.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/36.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/36.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/37.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/37.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/38.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/38.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/39.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/39.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/40.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/40.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 		        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/41.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/41.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
 
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/42.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/42.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 		        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/43.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/43.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
    <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/44.jpg" alt="Shaastra by sai.">
+        <img class="image" src="{{ site.url }}/assets/images/Shaastra/44.jpg" >
         <figcaption class="caption"></figcaption>
 	</div>
 </div>
