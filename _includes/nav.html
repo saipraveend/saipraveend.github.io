@@ -1,13 +1,59 @@
-<nav class="{% if page.title == "Home" %}nav-home{% else %}nav{% endif %}">
+<style>
+  /* Basic reset for list */
+  .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    background-color: #333; /* Dark background for the navbar */
+  }
+
+  .item {
+    margin: 0 15px; /* Spacing between menu items */
+  }
+
+  .link {
+    text-decoration: none;
+    color: white; /* Light text color for contrast */
+    font-size: 18px; /* Larger font size for better readability */
+    padding: 10px 15px; /* Padding for clickable area */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  }
+
+  .link:hover, .link:focus {
+    background-color: #555; /* Slightly lighter background on hover/focus */
+    color: #ddd; /* Darker text color on hover/focus for contrast */
+  }
+
+  .nav-home .link {
+    color: #4CAF50; /* Different color for Home link or based on the page */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .list {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: center;
+    }
+
+    .item {
+      margin: 10px 0; /* Adjust spacing for vertical layout */
+    }
+  }
+</style>
+
+<nav class="{% if page.title == 'Home' %}nav-home{% else %}nav{% endif %}">
     <ul class="list">
-        {% if page.title != "Home" %}
+        {% if page.title != 'Home' %}
             <li class="item">
                 <a class="link" href="{{ site.url }}/">Home</a>
             </li>
         {% endif %}
 
         {% if site.blog == true %}
-            {% if page.title != "Blog" %}
+            {% if page.title != 'Blog' %}
                 <li class="item">
                     <a class="link" href="{{ site.url }}/blog">Blog</a>
                 </li>
@@ -15,7 +61,7 @@
         {% endif %}
 
         {% if site.projects == true %}
-            {% if page.title != "Projects" %}
+            {% if page.title != 'Projects' %}
                 <li class="item">
                     <a class="link" href="{{ site.url }}/projects">Projects</a>
                 </li>
@@ -23,7 +69,7 @@
         {% endif %}
 
         {% if site.about == true %}
-            {% if page.title != "About" %}
+            {% if page.title != 'About' %}
                 <li class="item">
                     <a class="link" href="{{ site.url }}/about">About</a>
                 </li>
