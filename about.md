@@ -37,14 +37,14 @@ layout: page
   }
   score {
       font-size: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 1px;
     }
   </style>
 </head>
 <body>
 <pre><code data-trim>
 <p align="center">
-<div id="score">Score: 0</div> <!-- Score display -->
+<div id="score">Game on! Score: 0</div> <!-- Score display -->
 <canvas width="400" height="400" id="game" align="right"></canvas>
 </p>
 <script>
