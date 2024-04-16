@@ -118,6 +118,7 @@ function loop() {
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
       // canvas is 400x400 which is 25x25 grids 
+		score++;
 		scoreDisplay.textContent = 'Score: ' + score; // Update score display
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
