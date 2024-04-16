@@ -37,7 +37,7 @@ layout: page
   }
   score {
       font-size: 20px;
-      margin-bottom: 1px;
+      margin: 5px 0;
     }
   </style>
 </head>
