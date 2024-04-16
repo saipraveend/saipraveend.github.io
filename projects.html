@@ -2,13 +2,71 @@
 layout: page
 title: Projects
 ---
-<section class="list">
+<head>
+    <style>
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .project-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .project-url {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project-image {
+            background-size: cover;
+            background-position: center;
+            height: 200px; /* Adjust based on your preference */
+        }
+
+        .project-content {
+            padding: 15px;
+        }
+
+        .project-title {
+            margin-top: 10px;
+            font-size: 1.25rem;
+            color: #212121;
+        }
+
+        aside {
+            font-size: 0.875rem;
+            color: #757575;
+        }
+    </style>
+</head>
+<section class="projects-list">
     {% for post in site.posts %}
         {% if post.projects %}
-            <div class="item {% if post.star %}star{% endif %}">
-                <a class="url" href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
-                    <aside><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{{ post.date | date: "%b %d %Y" }}</time></aside>
-                    <h3 class="title">{{ post.title }}</h3>
+            <div class="project-item {% if post.star %}star{% endif %}">
+                <a class="project-url" href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
+                    {% if post.image %}
+                        <div class="project-image" style="background-image: url('{{ post.image }}');"></div>
+                    {% endif %}
+                    <div class="project-content">
+                        <aside><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{{ post.date | date: "%b %d %Y" }}</time></aside>
+                        <h3 class="project-title">{{ post.title }}</h3>
+                    </div>
                 </a>
             </div>
         {% endif %}
