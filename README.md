@@ -1,4 +1,4 @@
-### My Blog and Portfolio ![Build](https://github.com/saipraveend/saipraveend.github.io/workflows/Jekyll%20site%20CI/badge.svg)
+### My Blog and Portfolio [![pages-build-deployment](https://github.com/saipraveend/saipraveend.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/saipraveend/saipraveend.github.io/actions/workflows/pages/pages-build-deployment)
 
 It should go live here - https://saipraveend.github.io/
  
