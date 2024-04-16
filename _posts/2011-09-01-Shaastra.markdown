@@ -12,6 +12,7 @@ hidden: true
 description: 3rd place in the national competition
 category: project
 author: sai.
+image: /assets/images/Shaastra/1.jpg
 ---
 
 ## Brief
