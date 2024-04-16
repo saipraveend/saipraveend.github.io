@@ -11,6 +11,7 @@ hidden: true
 description: A project done for my little sister
 category: project
 author: sai.
+image: /assets/images/Pringled/50.jpg
 ---
 
 ## Brief
