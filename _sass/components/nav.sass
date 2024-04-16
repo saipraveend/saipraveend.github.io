@@ -1,3 +1,7 @@
+$alpha: #333 // Define or replace with the desired text color for hover state
+$hoverBackground: #fff // White background on hover
+$hoverShadow: rgba(0, 0, 0, 0.15) // A slightly more pronounced shadow for depth
+
 .nav,
 .nav-home
     > .list
@@ -12,8 +16,10 @@
             display: inline-block
             font-weight: 300
             font-size: 1.4rem
-            padding: 20px 10px
+            padding: 10px 15px // Adjusted padding for a more rounded look
             text-decoration: none
+            transition: all .4s ease-in-out
+            border-radius: 20px // Increased border-radius for rounded edges
 
 .nav
     position: absolute
@@ -25,7 +31,7 @@
 
         > .item > .link
             font-size: 1.4rem
-            padding: 20px 10px
+            padding: 10px 15px
 
 .nav-home
     margin-top: 40px
@@ -36,11 +42,11 @@
 
         > .item > .link
             font-size: 2rem
-            padding: 7px 15px
+            padding: 10px 15px // Uniform padding for a neat, rounded appearance
             margin: 0
-            border-radius: 4%
-            transition: all .4s ease-in-out
-            width: 70px
-
+            border-radius: 20px // Consistent rounded edges
+            width: auto // Auto width for content adjustment
             &:hover
                 color: $alpha
+                background-color: $hoverBackground
+                box-shadow: 0 4px 8px $hoverShadow // Slightly larger shadow for a subtle depth effect
