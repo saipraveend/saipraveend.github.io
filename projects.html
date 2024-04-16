@@ -5,41 +5,44 @@ title: Projects
 <style>
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax() for tile size */
-    gap: 20px; /* Space between tiles */
-    padding: 20px; /* Padding around the grid */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust for responsiveness */
+    gap: 15px; /* Reduced gap for a tighter layout */
+    padding: 20px;
   }
   .project-tile {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background: #f9f9f9; /* Lighter background for a softer look */
+    border: 1px solid #eaeaea; /* Softer border color */
+    border-radius: 10px; /* Slightly larger radius for a softer edge */
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1); /* Softer shadow */
+    transition: all 0.3s ease;
   }
   .project-tile:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
   .project-image {
     width: 100%;
-    height: 200px; /* Fixed height, or use 'auto' for variable heights */
-    object-fit: cover; /* Ensures the image covers the area nicely */
+    height: 150px; /* Adjusted height */
+    object-fit: cover;
   }
   .project-info {
-    padding: 15px;
-  }
-  .project-title, .project-date {
-    margin: 0;
-    padding-bottom: 10px; /* Space between title and date */
+    padding: 10px;
   }
   .project-title {
-    font-size: 20px; /* Larger font size for titles */
+    font-size: 16px; /* Reduced font size */
     color: #333;
+    margin: 0 0 5px; /* Adjusted spacing */
   }
   .project-date {
-    font-size: 14px;
+    font-size: 12px; /* Reduced font size */
     color: #666;
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(4, 1fr); /* 4 tiles per line on larger screens */
+    }
   }
 </style>
 
