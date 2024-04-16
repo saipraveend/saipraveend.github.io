@@ -1,45 +1,45 @@
 <style>
-  /* Basic reset for list */
+  /* General reset and styles for the navbar */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
   .list {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
+    background-color: #f8f8f8; /* Light background for a clean look */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
     display: flex;
-    justify-content: center; /* Centers items horizontally */
-    background-color: #e0e0e0; /* Dark background for the navbar */
+    justify-content: center;
+    padding: 10px 0;
   }
 
   .item {
-    margin: 0 15px; /* Spacing between menu items */
+    margin: 0 20px; /* Adequate spacing for a clean look */
   }
 
   .link {
     text-decoration: none;
-    color: white; /* Light text color for contrast */
-    font-size: 18px; /* Larger font size for better readability */
-    padding: 10px 15px; /* Padding for clickable area */
-    border-radius: 5px; /* Rounded corners for a modern look */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    color: #333; /* Dark gray for contrast and readability */
+    font-size: 16px; /* Optimal font size for readability */
+    transition: color 0.3s ease; /* Smooth transition for color change */
   }
 
   .link:hover, .link:focus {
-    background-color: #e0e0e0; /* Slightly lighter background on hover/focus */
-    color: #333; /* Darker text color on hover/focus for contrast */
-  }
-
-  .nav-home .link {
-    color: #4CAF50; /* Different color for Home link or based on the page */
+    color: #007BFF; /* Subtle highlight color */
   }
 
   /* Responsive adjustments */
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .list {
       flex-direction: column; /* Stack items vertically on smaller screens */
       align-items: center;
     }
 
     .item {
-      margin: 10px 0; /* Adjust spacing for vertical layout */
+      margin: 5px 0; /* Adjust spacing for vertical layout */
     }
   }
 </style>
