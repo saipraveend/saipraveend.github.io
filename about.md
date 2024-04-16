@@ -13,7 +13,7 @@ layout: page
     	<br>
 		<br>My journey has been enriched with diverse projects that not only challenged but also expanded my horizons. This site serves as a digital chronicle of my professional and personal adventures.
 		<br>
-		<br>Explore my <a href="/projects">Projects</a> page for a deeper dive into my work.</p>
+		<br>Explore my <a href="/projects">Projects</a> page and connect with me on <a href="https://www.linkedin.com/in/saipraveend">LinkedIn</a> for a deeper dive into my work.</p>
     </div>
 </div>
 
