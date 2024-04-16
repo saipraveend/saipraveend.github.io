@@ -164,4 +164,5 @@ document.addEventListener('keydown', function(e) {
 
 requestAnimationFrame(loop);
 </script>
+</code></pre>
 </body>
