@@ -44,7 +44,7 @@ layout: page
 <body>
 <pre><code data-trim>
 <p align="center">
-<div id="score">Game on! Score: 0</div> <!-- Score display -->
+<h2 id="score">Game on! Score: 0</h2> <!-- Score display -->
 <canvas width="400" height="400" id="game" align="right"></canvas>
 </p>
 <script>
