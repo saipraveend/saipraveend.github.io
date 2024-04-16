@@ -5,16 +5,16 @@ title: Projects
 <style>
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust for responsiveness */
-    gap: 15px; /* Reduced gap for a tighter layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 tiles in each row */
+    gap: 30px; /* Increased gap for better spacing */
     padding: 20px;
   }
   .project-tile {
-    background: #f9f9f9; /* Lighter background for a softer look */
-    border: 1px solid #eaeaea; /* Softer border color */
-    border-radius: 10px; /* Slightly larger radius for a softer edge */
+    background: #f9f9f9;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1); /* Softer shadow */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
   }
   .project-tile:hover {
@@ -30,18 +30,18 @@ title: Projects
     padding: 10px;
   }
   .project-title {
-    font-size: 16px; /* Reduced font size */
+    font-size: 16px;
     color: #333;
-    margin: 0 0 5px; /* Adjusted spacing */
+    margin: 0 0 5px;
   }
   .project-date {
-    font-size: 12px; /* Reduced font size */
+    font-size: 12px;
     color: #666;
     margin: 0;
   }
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .projects-grid {
-      grid-template-columns: repeat(4, 1fr); /* 4 tiles per line on larger screens */
+      grid-template-columns: repeat(2, 1fr); /* Adjust for smaller screens */
     }
   }
 </style>
@@ -56,7 +56,8 @@ title: Projects
           {% endif %}
           <div class="project-info">
             <h3 class="project-title">{{ post.title }}</h3>
-            <time class="project-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%b %d, %Y' }}</time>
+            <!-- Display only the year from the date -->
+            <time class="project-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y' }}</time>
           </div>
         </a>
       </div>
