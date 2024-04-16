@@ -1,53 +1,97 @@
-$primary-color: #007bff; // Define primary color as a variable
-$transition-speed: 0.3s; // Transition speed variable
+// Assuming $gama, $epsilon, and $alpha are defined elsewhere in your Sass files
+$primary-color: #007bff  // Bright blue for a modern, crisp look
+$light-gray: #f5f5f5     // Light gray for backgrounds, adding subtlety
+$dark-gray: #333         // Dark gray for text, ensuring good contrast
+$font-family: 'Roboto', sans-serif  // Google's Roboto font for a clean, modern look
 
-.projects {
-  padding: 2rem;
+// Base styles for better typography and crisp edges
+*,
+*::before,
+*::after
+    box-sizing: border-box
+    -webkit-font-smoothing: antialiased
+    text-rendering: optimizeLegibility
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-  }
+body
+    font-family: $font-family
+    line-height: 1.6
+    color: $dark-gray
 
-  .project-card {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform $transition-speed ease;
+.post
+    margin-top: 125px
+    background: $light-gray
+    padding: 2rem
+    border-radius: 8px
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1)
 
-    &:hover {
-      transform: translateY(-5px);
-    }
+    > .title
+        text-align: center
+        margin-bottom: 3rem
+        font-size: 2rem
+        color: $dark-gray
 
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    > .date,
+    > .post-tags
+        color: $gama
+        font-weight: 300
+        font-size: 1.2rem
+        text-transform: uppercase
+        text-align: center
+        display: block
+        margin-bottom: 6rem
+        letter-spacing: 1px
 
-    h2 {
-      font-size: 1.5rem;
-      margin: 0.5rem;
-    }
+    > .date
+        margin-bottom: 2rem
 
-    p {
-      padding: 0 0.5rem 0.5rem;
-    }
+    > .post-tags > .item
+        padding: 2px 8px
+        border-radius: 3px
+        font-size: 1.1rem
+        background: $epsilon
+        color: $alpha
+        letter-spacing: 1px
+        margin: 3px 1px
+        text-decoration: none
+        display: inline-block
 
-    a {
-      display: inline-block;
-      margin: 0.5rem;
-      text-decoration: none;
-      background: $primary-color;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+    // Enhanced general style for readability and modern look
+    > h2,
+    > h3,
+    > h4
+        margin-top: 40px
+        color: $dark-gray
 
-      &:hover {
-        background: darken($primary-color, 5%);
-      }
-    }
-  }
-}
+        a
+            color: $primary-color
+            text-decoration: none
+
+    > .title-image
+        max-height: 200px
+        display: block
+        margin: 0 auto 2rem
+
+    > .blog-navigation
+        font-size: 1.4rem
+        display: flex
+        justify-content: space-between
+        margin-top: 2rem
+
+        a
+            background: $primary-color
+            color: white
+            padding: 0.5rem 1rem
+            border-radius: 4px
+            text-decoration: none
+
+            &:hover
+                background: darken($primary-color, 10%)
+
+        .next
+            text-align: right
+
+// Responsive adjustments for better mobile experience
+@media (max-width: 768px)
+    .post
+        margin-top: 60px
+        padding: 1rem
