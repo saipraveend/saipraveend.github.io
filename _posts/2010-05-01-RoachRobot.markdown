@@ -23,7 +23,7 @@ A very simple obstacle avoidance robot, this was my first venture into electroni
 
 ## Videos
 
-<iframe width="560" height="315" src="https://youtu.be/OcNgiywZt1I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OcNgiywZt1I?si=YkARxBS4s9FxMhre" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 

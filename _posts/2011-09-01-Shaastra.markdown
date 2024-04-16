@@ -17,8 +17,6 @@ image: /assets/images/Shaastra/1.jpg
 
 ## Brief
 
-<img class="image" src="{{ site.url }} /assets/images/Shaastra/45.jpg" alt="3rd place">
-<figcaption class="caption">Winning pose :)</figcaption>
 <br>
 Shaastra is the annual national level tech fest of IIT Madras. The problem statement involved creating two robots, one manual and the other one autonomous.
 <br>
@@ -198,53 +196,4 @@ Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/3635d46aeb69caac
         <img class="image" src="{{ site.url }}/assets/images/Shaastra/33.jpg" >
         <figcaption class="caption"></figcaption>
     </div>
-
-   <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/34.jpg" >
-        <figcaption class="caption"></figcaption>
-	</div>
-	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/35.jpg" >
-        <figcaption class="caption"></figcaption>
-    </div>
-
-   <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/36.jpg" >
-        <figcaption class="caption"></figcaption>
-	</div>
-	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/37.jpg" >
-        <figcaption class="caption"></figcaption>
-    </div>
-
-   <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/38.jpg" >
-        <figcaption class="caption"></figcaption>
-	</div>
-	        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/39.jpg" >
-        <figcaption class="caption"></figcaption>
-    </div>
-
-   <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/40.jpg" >
-        <figcaption class="caption"></figcaption>
-	</div>
-		        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/41.jpg" >
-        <figcaption class="caption"></figcaption>
-    </div>
-
-   <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/42.jpg" >
-        <figcaption class="caption"></figcaption>
-	</div>
-		        <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/43.jpg" >
-        <figcaption class="caption"></figcaption>
-    </div>
-   <div class="toright">
-        <img class="image" src="{{ site.url }}/assets/images/Shaastra/44.jpg" >
-        <figcaption class="caption"></figcaption>
-	</div>
 </div>
