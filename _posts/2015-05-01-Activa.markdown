@@ -13,6 +13,7 @@ hidden: true
 description: A project done with my best friend Satish
 category: project
 author: sai.
+image: /assets/images/Autospeed/block.png
 ---
 
 ## Brief

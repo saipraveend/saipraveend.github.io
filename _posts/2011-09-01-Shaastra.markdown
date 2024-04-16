@@ -1,5 +1,5 @@
 ---
-title: IIT Madras - Shaastra 2011 - Winners
+title: My first robotics competition and win!
 layout: post
 date: 2011-09-01 10:48
 tag: 
