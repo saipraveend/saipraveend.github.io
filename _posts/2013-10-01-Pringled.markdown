@@ -11,6 +11,7 @@ hidden: true
 description: A DIY light that can be made from recyled items
 category: project
 author: sai.
+image: /assets/images/Pringled/50.jpg
 ---
 
 ## Brief
