@@ -11,6 +11,7 @@ hidden: true
 description: Journal Publication
 category: project
 author: sai.
+image: /assets/images/Journal/1.jpg
 ---
 
 
