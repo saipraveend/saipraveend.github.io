@@ -11,6 +11,7 @@ hidden: true
 description: A simple oscilloscope that i built with chipkit 32
 category: project
 author: sai.
+image: /assets/images/Chiposcope/9.jpg
 ---
 
 ## Brief
