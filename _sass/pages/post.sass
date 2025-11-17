@@ -1,36 +1,53 @@
 .post
     margin-top: 125px
+    background: white
+    padding: 40px
+    border-radius: 12px
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05)
+
+    @media #{$mobile}
+        padding: 20px
 
     > .title
         text-align: center
-        margin-bottom: 3rem
+        margin-bottom: 2rem
+        color: $beta
+        font-weight: 700
 
     > .date,
     > .post-tags
         color: $gama
-        font-weight: 300
-        font-size: 1.4rem
+        font-weight: 400
+        font-size: 1.2rem
         text-transform: uppercase
         text-align: center
         display: block
-        margin-bottom: 6rem
+        margin-bottom: 4rem
         letter-spacing: 1px
         -webkit-font-smoothing: antialiased
         text-rendering: optimizeLegibility
 
     > .date
-        margin-bottom: 2rem
+        margin-bottom: 1.5rem
+        color: $delta
 
     > .post-tags > .item
-        padding: 2px 8px
-        border-radius: 3px
-        font-size: 1.1rem
-        background: $epsilon
-        color: $alpha
-        letter-spacing: 1px
-        margin: 3px 1px
+        padding: 6px 14px
+        border-radius: 20px
+        font-size: 0.9rem
+        background: #f0f9ff
+        color: $delta
+        letter-spacing: 0.5px
+        margin: 5px 3px
         text-decoration: none
         display: inline-block
+        font-weight: 500
+        transition: all 0.3s ease
+
+        &:hover
+            background: $delta
+            color: white
+            transform: translateY(-2px)
 
     // general style
     > h2,

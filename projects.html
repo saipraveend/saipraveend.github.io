@@ -3,64 +3,227 @@ layout: page
 title: Projects
 ---
 <style>
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 tiles in each row */
-    gap: 30px; /* Increased gap for better spacing */
-    padding: 20px;
+  .projects-header {
+    text-align: center;
+    margin-bottom: 50px;
   }
-  .project-tile {
-    background: #f9f9f9;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+
+  .projects-header h1 {
+    font-size: 2.5rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+  }
+
+  .projects-header p {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+
+  .filter-section {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #64748b;
     transition: all 0.3s ease;
   }
-  .project-tile:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: #0ea5e9;
+    color: white;
+    border-color: #0ea5e9;
   }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+  }
+
+  .project-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    border-color: #0ea5e9;
+  }
+
   .project-image {
     width: 100%;
-    height: 150px; /* Adjusted height */
+    height: 200px;
     object-fit: cover;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   }
-  .project-info {
-    padding: 10px;
+
+  .project-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
+
   .project-title {
-    font-size: 16px;
-    color: #333;
-    margin: 0 0 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 10px;
+    line-height: 1.4;
   }
+
+  .project-description {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
   .project-date {
-    font-size: 12px;
-    color: #666;
-    margin: 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
   }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f0f9ff;
+    color: #0ea5e9;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+
   @media (max-width: 768px) {
+    .projects-header h1 {
+      font-size: 2rem;
+    }
+
     .projects-grid {
-      grid-template-columns: repeat(2, 1fr); /* Adjust for smaller screens */
+      grid-template-columns: 1fr;
     }
   }
 </style>
 
+<div class="projects-header">
+  <p>A collection of hardware, robotics, and embedded systems projects</p>
+</div>
+
+<section class="filter-section">
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="robotics">Robotics</button>
+    <button class="filter-btn" data-filter="embedded">Embedded</button>
+    <button class="filter-btn" data-filter="iot">IoT</button>
+    <button class="filter-btn" data-filter="power">Power Electronics</button>
+  </div>
+</section>
+
 <section class="projects-grid">
-  {% for post in site.posts %}
+  {% for post in site.posts reversed %}
     {% if post.projects %}
-      <div class="project-tile">
-        <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" style="text-decoration: none; color: inherit;">
+      <div class="project-card" data-tags="{% for tag in post.tag %}{{ tag | downcase }} {% endfor %}">
+        <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" class="project-link">
           {% if post.image %}
             <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image">
+          {% else %}
+            <div class="project-image"></div>
           {% endif %}
-          <div class="project-info">
+          <div class="project-content">
             <h3 class="project-title">{{ post.title }}</h3>
-            <!-- Display only the year from the date -->
-            <time class="project-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y' }}</time>
+            {% if post.description %}
+              <p class="project-description">{{ post.description }}</p>
+            {% endif %}
+            <div class="project-meta">
+              <time class="project-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y' }}</time>
+            </div>
+            {% if post.tag %}
+              <div class="project-tags">
+                {% for tag in post.tag limit:3 %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
           </div>
         </a>
       </div>
     {% endif %}
   {% endfor %}
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Update active state
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      const filter = this.dataset.filter;
+
+      projectCards.forEach(card => {
+        const tags = card.dataset.tags.toLowerCase();
+
+        if (filter === 'all') {
+          card.style.display = 'block';
+        } else {
+          if (tags.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+});
+</script>

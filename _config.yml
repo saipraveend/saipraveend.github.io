@@ -1,6 +1,6 @@
 # main text of home
-name: Hi, This is Sai.
-bio: Make. Code. Embed.
+name: Saipraveen Durairaman
+bio: Embedded Systems • AI + Hardware • Robotics
 
 # summary info
 description: A site about my interests and me.
@@ -73,6 +73,7 @@ projects: true
 
 # if you don't need "about" or "blog", comment them out below
 about: true
+lab: true  # New section for experiments and quick shares
 # blog: true
 
 # do you want to show the "read time" of the posts?
