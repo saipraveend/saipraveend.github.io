@@ -29,7 +29,7 @@ In the gallery you will be able to see the differences in the initial prototype 
 
 ## Source code and implementation steps
 
-Github Link <https://github.com/saipraveend/Ultravision/>.
+<a href="https://github.com/saipraveend/Ultravision/">View on GitHub</a>
 
 ---
 

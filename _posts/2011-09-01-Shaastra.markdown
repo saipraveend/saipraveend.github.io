@@ -29,11 +29,11 @@ We managed to bag the third prize in this national level competition with more t
 
 ## Design files
 
-Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/faa58fa6d11a8eb79842afd94bd8e289/MITVEINZ-bot-for-coldfusion-IIT-Mshaastra-2011>.
+<a href="https://3dwarehouse.sketchup.com/model/faa58fa6d11a8eb79842afd94bd8e289/MITVEINZ-bot-for-coldfusion-IIT-Mshaastra-2011">Coldfusion Bot (Sketchup)</a>
 
-Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/5e91228f527092c12920716ef940afbb/Autonomous-Line-Following-Robot>.
+<a href="https://3dwarehouse.sketchup.com/model/5e91228f527092c12920716ef940afbb/Autonomous-Line-Following-Robot">Autonomous Line Following Robot (Sketchup)</a>
 
-Sketchup Warehouse Link <https://3dwarehouse.sketchup.com/model/3635d46aeb69caac9842afd94bd8e289/MITVEINZ-manual-BOT>.
+<a href="https://3dwarehouse.sketchup.com/model/3635d46aeb69caac9842afd94bd8e289/MITVEINZ-manual-BOT">Manual Bot (Sketchup)</a>
 
 ---
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DdGw9IEdg50?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

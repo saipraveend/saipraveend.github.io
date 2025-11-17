@@ -33,15 +33,15 @@ image: /assets/images/Chiposcope/9.jpg
 
 ## Featured in
 
-<span class="evidence">Digilent Blog Post <https://blog.digilentinc.com/the-grand-and-cheap-chip-oscope/>.</span>
+<span class="evidence"><a href="https://blog.digilentinc.com/the-grand-and-cheap-chip-oscope/">Digilent Blog Post</a></span>
 
 ---
 
 ## Source code and implementation steps
 
-Instructables Link <http://www.instructables.com/id/Chiposcope/>.
+<a href="http://www.instructables.com/id/Chiposcope/">View on Instructables</a>
 
-Hackster Link <https://www.hackster.io/Saipraveen/chiposcope-2be02b>.
+<a href="https://www.hackster.io/Saipraveen/chiposcope-2be02b">View on Hackster</a>
 
 ---
 

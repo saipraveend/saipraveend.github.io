@@ -27,13 +27,13 @@ All the illumination showed in the gallery is through white LED strips
 
 ## Featured in
 
-<span class="evidence">Upcycling projects<https://www.hackster.io/upcycling/projects>.</span>
+<span class="evidence"><a href="https://www.hackster.io/upcycling/projects">Upcycling projects</a></span>
 
 ---
 
 ## Implentation steps
 
-Hackster Link <https://www.hackster.io/Saipraveen/pringled-9c3330>.
+<a href="https://www.hackster.io/Saipraveen/pringled-9c3330">View on Hackster</a>
 
 ---
 
@@ -253,5 +253,4 @@ Hackster Link <https://www.hackster.io/Saipraveen/pringled-9c3330>.
         <img class="image" src="{{ site.url }}/assets/images/Pringled/48.jpg" alt="Pringled by sai.">
         <figcaption class="caption"></figcaption>
     </div>
-</div>
 </div>

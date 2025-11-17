@@ -39,7 +39,7 @@ When the user enters a speed restricted zone, the controller decides to limit th
 
 ## Source code and further documentation
 
-Github Link <https://github.com/saipraveend/Autospeed>.
+<a href="https://github.com/saipraveend/Autospeed">View on GitHub</a>
 
 ---
 
