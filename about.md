@@ -33,7 +33,7 @@ layout: page
 
 .about-role {
   font-size: 1.6rem;
-  color: #1a73e8;
+  color: #0076A8;
   font-weight: 500;
   margin-bottom: 24px;
 }
@@ -61,7 +61,7 @@ layout: page
 }
 
 .highlight-card:hover {
-  border-color: #1a73e8;
+  border-color: #0076A8;
   box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
 }
 
@@ -132,7 +132,7 @@ layout: page
 .connect-btn {
   padding: 12px 24px;
   background: white;
-  color: #1a73e8;
+  color: #0076A8;
   border: 1px solid #dadce0;
   border-radius: 4px;
   text-decoration: none;
@@ -143,7 +143,7 @@ layout: page
 
 .connect-btn:hover {
   background: #f8f9fa;
-  border-color: #1a73e8;
+  border-color: #0076A8;
   text-decoration: none;
 }
 
@@ -188,26 +188,6 @@ layout: page
     </div>
   </div>
 
-  <div class="highlights">
-    <div class="highlight-card">
-      <div class="highlight-icon">🏆</div>
-      <h3 class="highlight-title">Competitions</h3>
-      <p class="highlight-desc">3rd place at IIT Madras Robotics, Top 20 at IndiaHacks 2016</p>
-    </div>
-
-    <div class="highlight-card">
-      <div class="highlight-icon">📝</div>
-      <h3 class="highlight-title">Published</h3>
-      <p class="highlight-desc">ARPN Journal, featured on Digilent Blog and Hackster.io</p>
-    </div>
-
-    <div class="highlight-card">
-      <div class="highlight-icon">🔧</div>
-      <h3 class="highlight-title">Maker</h3>
-      <p class="highlight-desc">DIY electronics, upcycling projects, assistive tech innovations</p>
-    </div>
-  </div>
-
   <div class="snake-section">
     <h2>Why not?</h2>
     <p class="snake-intro">Classic Snake game in vanilla JavaScript 🎮</p>
@@ -218,8 +198,6 @@ layout: page
   </div>
 
   <div class="connect-section">
-    <a href="{{ site.url }}/projects" class="connect-btn">View Projects</a>
-    <a href="{{ site.url }}/lab" class="connect-btn">Explore Lab</a>
     <a href="https://www.linkedin.com/in/saipraveend" target="_blank" class="connect-btn">LinkedIn</a>
     <a href="https://github.com/saipraveend" target="_blank" class="connect-btn">GitHub</a>
   </div>
@@ -287,7 +265,7 @@ function loop() {
   context.fillStyle = '#EA4335';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
-  context.fillStyle = '#1a73e8';
+  context.fillStyle = '#0076A8';
   snake.cells.forEach(function(cell, index) {
     context.fillRect(cell.x, cell.y, grid-1, grid-1);
 

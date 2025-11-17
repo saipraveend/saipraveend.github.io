@@ -1,37 +1,47 @@
-$alpha: #333 // Define or replace with the desired text color for hover state
-$hoverBackground: #fff // White background on hover
-$hoverShadow: rgba(0, 0, 0, 0.15) // A slightly more pronounced shadow for depth
+$matlabBlue: #0076A8 // MATLAB blue - primary color
+$textPrimary: #202124 // Primary text color
+$textSecondary: #5f6368 // Secondary text color
+$hoverBackground: #e6f4f9 // Light MATLAB blue for hover
+$hoverShadow: rgba(0, 118, 168, 0.15) // MATLAB blue shadow
 
 .nav,
 .nav-home
     > .list
         list-style: none
         margin: 0
-        padding: 0 13px 0
+        padding: 20px 20px 0
 
         > .item
             display: inline-block
 
         > .item > .link
             display: inline-block
-            font-weight: 300
-            font-size: 1.4rem
-            padding: 10px 15px // Adjusted padding for a more rounded look
+            font-weight: 500
+            font-size: 1.6rem
+            padding: 12px 20px
             text-decoration: none
-            transition: all .4s ease-in-out
-            border-radius: 20px // Increased border-radius for rounded edges
+            transition: all .3s ease
+            border-radius: 8px
+            color: $textPrimary
 
 .nav
     position: absolute
     right: 0
     top: 0
+    z-index: 100
 
     > .list
-        padding: 0 13px 0
+        padding: 20px 20px 0
 
         > .item > .link
-            font-size: 1.4rem
-            padding: 10px 15px
+            font-size: 1.6rem
+            padding: 12px 20px
+            color: $textPrimary
+            font-weight: 500
+            &:hover
+                color: $matlabBlue
+                background-color: $hoverBackground
+                box-shadow: 0 2px 8px $hoverShadow
 
 .nav-home
     margin-top: 40px
@@ -42,11 +52,13 @@ $hoverShadow: rgba(0, 0, 0, 0.15) // A slightly more pronounced shadow for depth
 
         > .item > .link
             font-size: 2rem
-            padding: 10px 15px // Uniform padding for a neat, rounded appearance
-            margin: 0
-            border-radius: 20px // Consistent rounded edges
-            width: auto // Auto width for content adjustment
+            padding: 12px 24px
+            margin: 0 4px
+            border-radius: 8px
+            width: auto
+            color: $textPrimary
+            font-weight: 500
             &:hover
-                color: $alpha
+                color: $matlabBlue
                 background-color: $hoverBackground
-                box-shadow: 0 4px 8px $hoverShadow // Slightly larger shadow for a subtle depth effect
+                box-shadow: 0 4px 12px $hoverShadow
