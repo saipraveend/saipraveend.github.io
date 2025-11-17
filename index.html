@@ -4,124 +4,184 @@ title: Home
 ---
 
 <style>
-/* Hero Section with Typing Animation */
-.hero-container {
+/* World-class hero section with rotating images */
+.hero {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px 60px;
+  padding: 100px 20px 80px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 80px;
+  align-items: center;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 60px;
-  align-items: center;
-  margin-bottom: 80px;
+.hero-visual {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
 .hero-image {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.hero-image img {
-  width: 100%;
-  border-radius: 50%;
-  border: 4px solid #f8f9fa;
-  box-shadow: 0 4px 12px rgba(60,64,67,0.2);
+.hero-image.active {
+  opacity: 1;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5) 80%, transparent);
+  color: white;
+  padding: 40px 20px 20px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .hero-content h1 {
-  font-size: 2.4rem;
-  font-weight: 400;
+  font-size: 2rem;
   color: #5f6368;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.name {
+  font-size: 6.4rem;
+  font-weight: 400;
+  color: #202124;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+
+.tagline {
+  font-size: 2.4rem;
+  color: #5f6368;
+  font-weight: 400;
   margin-bottom: 16px;
 }
 
-.hero-name {
-  font-size: 5.6rem;
-  font-weight: 400;
-  color: #202124;
-  margin-bottom: 24px;
-  line-height: 1;
-}
-
-.hero-tagline {
-  font-size: 2rem;
-  color: #5f6368;
-  margin-bottom: 12px;
-  font-weight: 400;
-}
-
-.typing-container {
-  font-size: 2.4rem;
+.typing-line {
+  font-size: 2.8rem;
   color: #1a73e8;
   font-weight: 500;
-  min-height: 80px;
+  min-height: 60px;
   display: flex;
   align-items: center;
 }
 
-.typed-text {
+#typed {
   border-right: 3px solid #1a73e8;
   padding-right: 8px;
-  animation: blink 0.7s infinite;
+  white-space: nowrap;
+  animation: blink 0.7s step-end infinite;
+  display: inline-block;
+  min-width: 2px;
 }
 
 @keyframes blink {
-  0%, 50% { border-color: #1a73e8; }
-  51%, 100% { border-color: transparent; }
+  50% { border-color: transparent; }
 }
 
-.hero-stats {
+.quick-stats {
   display: flex;
-  gap: 40px;
-  margin-top: 32px;
+  gap: 48px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid #dadce0;
 }
 
-.stat {
+.stat-item {
   text-align: left;
 }
 
 .stat-number {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
   font-weight: 400;
   color: #1a73e8;
-  display: block;
   line-height: 1;
-  font-variant-numeric: tabular-nums;
+  display: block;
 }
 
 .stat-label {
   font-size: 1.4rem;
   color: #5f6368;
-  margin-top: 4px;
-  font-weight: 400;
+  margin-top: 8px;
 }
 
-/* Projects Section */
-.section-header {
-  text-align: center;
-  margin: 80px 0 48px;
+/* Projects section - inline, no extra page */
+.projects-section {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
 }
 
-.section-header h2 {
-  font-size: 2.8rem;
+.section-title {
+  font-size: 3.2rem;
   font-weight: 400;
   color: #202124;
-  margin-bottom: 12px;
+  text-align: center;
+  margin-bottom: 16px;
 }
 
 .section-subtitle {
   font-size: 1.6rem;
   color: #5f6368;
-  font-weight: 400;
+  text-align: center;
+  margin-bottom: 48px;
 }
 
-/* Masonry Grid Layout */
-.projects-masonry {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 12px 24px;
+  background: white;
+  border: 1px solid #dadce0;
+  border-radius: 24px;
+  color: #5f6368;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tab:hover {
+  border-color: #1a73e8;
+  color: #1a73e8;
+}
+
+.filter-tab:focus {
+  outline: 2px solid #1a73e8;
+  outline-offset: 2px;
+}
+
+.filter-tab.active {
+  background: #1a73e8;
+  border-color: #1a73e8;
+  color: white;
+}
+
+/* Masonry grid */
+.projects-grid {
   column-count: 3;
   column-gap: 24px;
 }
@@ -133,14 +193,20 @@ title: Home
   border: 1px solid #dadce0;
   border-radius: 8px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
   display: inline-block;
   width: 100%;
+  opacity: 1;
+}
+
+.project-card.hiding {
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(60,64,67,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(26, 115, 232, 0.15);
   border-color: #1a73e8;
 }
 
@@ -148,22 +214,37 @@ title: Home
   width: 100%;
   height: auto;
   display: block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 200px;
+  min-height: 180px;
   object-fit: cover;
+  background: linear-gradient(135deg, #1a73e8 0%, #1967d2 100%);
 }
 
-.project-content {
+.project-body {
   padding: 20px;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .project-year {
   font-size: 1.2rem;
   color: #1a73e8;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 8px;
+}
+
+.project-type {
+  padding: 4px 10px;
+  background: #e8f0fe;
+  color: #1967d2;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .project-title {
@@ -175,7 +256,7 @@ title: Home
 }
 
 .project-title a {
-  color: #202124;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -183,11 +264,11 @@ title: Home
   color: #1a73e8;
 }
 
-.project-desc {
+.project-description {
   font-size: 1.4rem;
   color: #5f6368;
   line-height: 1.6;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .project-tags {
@@ -198,229 +279,294 @@ title: Home
 
 .tag {
   padding: 4px 10px;
-  background: #e8f0fe;
-  color: #1967d2;
+  background: #f8f9fa;
+  color: #5f6368;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 500;
 }
 
-.cta-section {
-  text-align: center;
-  margin: 80px 0 60px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 14px 32px;
-  background: #1a73e8;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 1.5rem;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(60,64,67,0.3);
-  margin: 0 8px;
-}
-
-.btn:hover {
-  background: #1967d2;
-  box-shadow: 0 4px 12px rgba(60,64,67,0.3);
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-
-.btn-secondary {
-  background: white;
-  color: #1a73e8;
-  border: 1px solid #dadce0;
-}
-
-.btn-secondary:hover {
-  background: #f8f9fa;
-  border-color: #1a73e8;
-}
-
 @media (max-width: 1024px) {
-  .projects-masonry {
+  .projects-grid {
     column-count: 2;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-visual {
+    height: 300px;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .hero-image {
-    max-width: 200px;
-    margin: 0 auto;
-  }
-
-  .hero-name {
-    font-size: 4rem;
-  }
-
-  .hero-tagline {
-    font-size: 1.6rem;
-  }
-
-  .typing-container {
-    font-size: 1.8rem;
-    justify-content: center;
-  }
-
-  .hero-stats {
-    justify-content: center;
-  }
-
-  .projects-masonry {
+  .projects-grid {
     column-count: 1;
   }
 
-  .cta-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
+  .hero {
+    text-align: center;
+    padding: 60px 20px;
   }
 
-  .btn {
-    width: 100%;
-    max-width: 300px;
+  .name {
+    font-size: 4.8rem;
+  }
+
+  .tagline {
+    font-size: 2rem;
+  }
+
+  .typing-line {
+    font-size: 2.2rem;
+    justify-content: center;
+  }
+
+  .quick-stats {
+    justify-content: center;
   }
 }
 </style>
 
-<div class="hero-container">
-  <div class="hero-grid">
-    <div class="hero-image">
-      <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman">
+<div class="hero">
+  <div class="hero-visual">
+    {% assign project_posts = site.posts | where: "projects", true %}
+    {% for post in project_posts limit:10 %}
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="hero-image" data-title="{{ post.title }}" loading="lazy">
+      {% endif %}
+    {% endfor %}
+    <div class="image-caption" id="imageCaption" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1>Hi, I'm</h1>
+    <div class="name">Sai</div>
+    <div class="tagline">Embedded systems engineer who</div>
+    <div class="typing-line">
+      <span id="typed"></span>
     </div>
 
-    <div class="hero-content">
-      <h1>Hi, I'm</h1>
-      <div class="hero-name">Sai</div>
-      <p class="hero-tagline">Embedded systems engineer who</p>
-      <div class="typing-container">
-        <span class="typed-text" id="typed"></span>
+    <div class="quick-stats">
+      <div class="stat-item">
+        <span class="stat-number">{{ site.posts | where: "projects", true | size }}</span>
+        <span class="stat-label">Projects</span>
       </div>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">{{ site.posts | where: "projects", true | size }}+</span>
-          <span class="stat-label">Projects</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">10+</span>
-          <span class="stat-label">Years</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">∞</span>
-          <span class="stat-label">Ideas</span>
-        </div>
+      <div class="stat-item">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Years</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Ideas</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section-header">
-  <h2>What I've built</h2>
-  <p class="section-subtitle">Latest projects first • 2010 to present</p>
-</div>
+<div class="projects-section">
+  <h2 class="section-title">What I've built</h2>
+  <p class="section-subtitle">Hardware projects, experiments, and prototypes • 2010–present</p>
 
-<div class="projects-masonry">
-  {% for post in site.posts %}
-    {% if post.projects %}
-      <div class="project-card">
-        <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" style="text-decoration: none;">
+  <div class="filter-tabs" role="tablist" aria-label="Project filters">
+    <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+    <button class="filter-tab" data-filter="robot" role="tab" aria-selected="false">Robotics</button>
+    <button class="filter-tab" data-filter="embedded" role="tab" aria-selected="false">Embedded</button>
+    <button class="filter-tab" data-filter="iot" role="tab" aria-selected="false">IoT</button>
+    <button class="filter-tab" data-filter="power" role="tab" aria-selected="false">Power</button>
+    <button class="filter-tab" data-filter="ai" role="tab" aria-selected="false">AI/ML</button>
+    <button class="filter-tab" data-filter="lab" role="tab" aria-selected="false">Experiments</button>
+  </div>
+
+  <div class="projects-grid">
+    {% assign all_posts = site.posts %}
+    {% for post in all_posts %}
+      {% if post.projects or post.lab %}
+        <div class="project-card" data-tags="{% for tag in post.tag %}{{ tag | downcase }} {% endfor %}{% if post.lab %}lab experiment{% endif %}">
           {% if post.image %}
-            <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image">
-          {% else %}
-            <div class="project-image"></div>
-          {% endif %}
-        </a>
-
-        <div class="project-content">
-          <div class="project-year">{{ post.date | date: '%Y' }}</div>
-          <h3 class="project-title">
-            <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
-              {{ post.title }}
+            <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" aria-label="{{ post.title }}">
+              <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy">
             </a>
-          </h3>
-
-          {% if post.description %}
-            <p class="project-desc">{{ post.description }}</p>
           {% endif %}
 
-          {% if post.tag %}
-            <div class="project-tags">
-              {% for tag in post.tag limit:3 %}
-                <span class="tag">{{ tag }}</span>
-              {% endfor %}
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-year">{{ post.date | date: '%Y' }}</span>
+              {% if post.lab %}
+                <span class="project-type">Experiment</span>
+              {% else %}
+                <span class="project-type">Project</span>
+              {% endif %}
             </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endif %}
-  {% endfor %}
-</div>
 
-<div class="cta-section">
-  <a href="{{ site.url }}/projects" class="btn">View all projects</a>
-  <a href="{{ site.url }}/lab" class="btn btn-secondary">Explore lab →</a>
+            <h3 class="project-title">
+              <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
+                {{ post.title }}
+              </a>
+            </h3>
+
+            {% if post.description %}
+              <p class="project-description">{{ post.description }}</p>
+            {% endif %}
+
+            {% if post.tag %}
+              <div class="project-tags">
+                {% for tag in post.tag limit:4 %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
 <script>
-// Typing animation
-const phrases = [
-  'builds robots',
-  'designs PCBs',
-  'writes embedded code',
-  'prototypes with ESP32',
-  'tests TinyML models',
-  'debugs with oscilloscopes',
-  'solders components',
-  'integrates sensors',
-  'optimizes power systems',
-  'ships hardware products'
-];
+(function() {
+  'use strict';
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typedElement = document.getElementById('typed');
+  // Typing animation
+  const phrases = [
+    'builds robots',
+    'designs PCBs',
+    'writes embedded code',
+    'prototypes with ESP32',
+    'tests TinyML models',
+    'debugs with oscilloscopes',
+    'solders components',
+    'integrates sensors',
+    'optimizes power systems',
+    'ships hardware'
+  ];
 
-function type() {
-  const currentPhrase = phrases[phraseIndex];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typedEl = document.getElementById('typed');
 
-  if (isDeleting) {
-    typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
+  function type() {
+    if (!typedEl) return;
+
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      typedEl.textContent = currentPhrase.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let speed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      speed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      speed = 500;
+    }
+
+    setTimeout(type, speed);
   }
 
-  let typeSpeed = isDeleting ? 50 : 100;
+  // Image rotation
+  const images = document.querySelectorAll('.hero-image');
+  const caption = document.getElementById('imageCaption');
+  let currentImageIndex = 0;
 
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    typeSpeed = 2000; // Pause at end
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    typeSpeed = 500; // Pause before next phrase
+  function rotateImages() {
+    if (images.length === 0) return;
+
+    images.forEach(img => img.classList.remove('active'));
+    images[currentImageIndex].classList.add('active');
+
+    if (caption) {
+      caption.textContent = images[currentImageIndex].dataset.title;
+    }
+
+    currentImageIndex = (currentImageIndex + 1) % images.length;
   }
 
-  setTimeout(type, typeSpeed);
-}
+  // Filter functionality
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const projectCards = document.querySelectorAll('.project-card');
 
-// Start typing animation
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(type, 1000);
-});
+  function applyFilter(filter) {
+    projectCards.forEach(card => {
+      const tags = card.dataset.tags.toLowerCase();
+      const shouldShow = filter === 'all' || tags.includes(filter);
+
+      if (!shouldShow) {
+        card.classList.add('hiding');
+        setTimeout(() => {
+          card.style.display = 'none';
+          card.classList.remove('hiding');
+        }, 300);
+      } else {
+        card.style.display = 'inline-block';
+        // Trigger reflow to enable animation
+        card.offsetHeight;
+        card.classList.remove('hiding');
+      }
+    });
+  }
+
+  function setActiveTab(tab) {
+    filterTabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+  }
+
+  filterTabs.forEach((tab, index) => {
+    tab.addEventListener('click', function() {
+      setActiveTab(this);
+      applyFilter(this.dataset.filter);
+    });
+
+    // Keyboard navigation
+    tab.addEventListener('keydown', function(e) {
+      let targetTab;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        targetTab = filterTabs[(index + 1) % filterTabs.length];
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        targetTab = filterTabs[(index - 1 + filterTabs.length) % filterTabs.length];
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        targetTab = filterTabs[0];
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        targetTab = filterTabs[filterTabs.length - 1];
+      }
+
+      if (targetTab) {
+        targetTab.focus();
+        setActiveTab(targetTab);
+        applyFilter(targetTab.dataset.filter);
+      }
+    });
+  });
+
+  // Initialize
+  if (images.length > 0) {
+    images[0].classList.add('active');
+    if (caption) caption.textContent = images[0].dataset.title;
+    setInterval(rotateImages, 4000);
+  }
+
+  // Start typing animation immediately
+  if (typedEl) {
+    setTimeout(type, 500);
+  }
+})();
 </script>
