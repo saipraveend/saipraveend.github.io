@@ -29,6 +29,6 @@ image: /assets/images/Journal/1.jpg
 
 ## Featured in
 
-<span class="evidence">ARPN Journal <http://www.arpnjournals.com/jeas/research_papers/rp_2012/jeas_0912_767.pdf>.</span>
+<span class="evidence"><a href="http://www.arpnjournals.com/jeas/research_papers/rp_2012/jeas_0912_767.pdf">ARPN Journal</a></span>
 
 ---
