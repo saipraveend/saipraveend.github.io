@@ -1,5 +1,6 @@
 # main text of home
 name: Saipraveen Durairaman
+title: Saipraveen Durairaman - Embedded Systems Engineer & Hardware Designer
 bio: Embedded Systems • AI + Hardware • Robotics
 
 # summary info
@@ -97,6 +98,7 @@ animation: true
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-feed
   # Removed jekyll-admin (doesn't work on GitHub Pages)
   # Removed jekyll-gist (not used)

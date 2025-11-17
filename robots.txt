@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /assets/images/Dump/
+
+Sitemap: https://saipraveend.github.io/sitemap.xml

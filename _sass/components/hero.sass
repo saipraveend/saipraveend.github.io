@@ -15,17 +15,69 @@
     margin-bottom: 12px
 
 .hero-name
-  font-size: 7.2rem
-  font-weight: 400
+  font-size: 5.6rem
+  font-weight: 700
   color: #202124
-  line-height: 1
+  line-height: 0.9
+  letter-spacing: -0.02em
   margin-bottom: 24px
 
 .hero-tagline
-  font-size: 2.4rem
+  font-size: 2rem
   color: #0076A8
-  font-weight: 500
+  font-weight: 400
+  line-height: 1.4
+  max-width: 600px
+  margin: 0 auto 16px
+
+.hero-subtitle
+  font-size: 1.6rem
+  color: #6b7784
+  font-weight: 400
+  line-height: 1.5
+  max-width: 600px
+  margin: 0 auto 32px
+
+.hero-cta
+  display: flex
+  gap: 16px
+  justify-content: center
   margin-bottom: 48px
+
+  .btn
+    padding: 14px 36px
+    border-radius: 8px
+    text-decoration: none
+    font-weight: 600
+    font-size: 1.6rem
+    transition: all 0.2s ease
+    display: inline-flex
+    align-items: center
+    gap: 8px
+
+    &:hover
+      transform: translateY(-2px)
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+      text-decoration: none
+
+  .btn-primary
+    background: #0076A8
+    color: white
+    border: 2px solid #0076A8
+
+    &:hover
+      background: #005980
+      border-color: #005980
+
+  .btn-secondary
+    background: white
+    color: #0076A8
+    border: 2px solid #0076A8
+
+    &:hover
+      background: #e6f4f9
+      color: #005980
+      border-color: #005980
 
 .hero-stats
   display: flex
