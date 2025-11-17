@@ -13,10 +13,16 @@ html {
 </style>
 
 <!-- Hero Section -->
-<section id="hero" class="hero">
+<section id="hero" class="hero" id="main-content">
   <h1>Hi, I'm</h1>
-  <div class="hero-name">Sai</div>
-  <div class="hero-tagline">Building robots and embedded systems since 2010</div>
+  <div class="hero-name">Saipraveen Durairaman</div>
+  <div class="hero-tagline">15 years building robots, embedded systems, and AI-powered hardware</div>
+  <p class="hero-subtitle">From robotics competitions to TinyML on ESP32 — making hardware think</p>
+
+  <div class="hero-cta">
+    <a href="#contact" class="btn btn-primary">Let's work together</a>
+    <a href="#projects" class="btn btn-secondary">See my work</a>
+  </div>
 
   <div class="hero-stats">
     {% assign project_posts = site.posts | where: "projects", true %}
@@ -103,11 +109,15 @@ html {
     <p class="about-role">Embedded Systems Engineer at MathWorks</p>
 
     <p class="about-text">
-      I build hardware with microcontrollers, sensors, and code. Started with obstacle-avoiding robots in 2010. Competed at national robotics competitions (placed 3rd at IIT Madras Shaastra). Built power electronics systems that got published in ARPN Journal. Now exploring how AI and ML fit into embedded systems.
+      I build hardware with microcontrollers, sensors, and code. Started with obstacle-avoiding robots in 2010 — broke down enough household gadgets to understand how things actually work, then started building my own.
     </p>
 
     <p class="about-text">
-      I manage embedded hardware product marketing at MathWorks India during the week. Weekends? ESP32s, TinyML models, and whatever hardware project has my attention.
+      Since then: Competed at national robotics competitions (3rd place at IIT Madras Shaastra). Published power electronics research in ARPN Journal. Built everything from VR-controlled robots to assistive devices for visually impaired students. These days I'm exploring how AI and ML fit into embedded systems — turns out cramming neural networks into 2MB of flash memory is more interesting than I expected.
+    </p>
+
+    <p class="about-text">
+      By day, I manage embedded hardware product marketing at MathWorks India. Weekends? ESP32s, TinyML models, and whatever hardware project has my attention. Fifteen years in, still figuring things out.
     </p>
   </div>
 </section>
@@ -119,8 +129,40 @@ html {
     <p class="snake-intro">Classic Snake game in vanilla JavaScript</p>
 
     <div id="score">Score: 0</div>
-    <canvas width="400" height="400" id="game"></canvas>
-    <p class="game-controls">Use arrow keys to move</p>
+    <canvas width="400" height="400" id="game"
+            role="application"
+            aria-label="Snake game - Use arrow keys or swipe to control the snake and eat red apples"
+            tabindex="0">
+      Your browser does not support HTML5 Canvas. Please upgrade to a modern browser to play this game.
+    </canvas>
+    <p class="game-controls">Use arrow keys or swipe to move</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <h2 class="section-title">Let's Build Something Together</h2>
+    <p class="section-subtitle">Interested in collaboration, consulting, or just want to chat about embedded systems and TinyML?</p>
+  </div>
+
+  <div class="contact-content">
+    <p class="contact-text">I'm always open to discussing:</p>
+    <ul class="contact-list">
+      <li>Embedded systems and IoT projects</li>
+      <li>TinyML and edge AI implementations</li>
+      <li>Robotics and hardware design</li>
+      <li>Technical consulting and collaboration</li>
+    </ul>
+
+    <div class="contact-cta">
+      <a href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank" class="btn btn-primary" rel="noopener">
+        Connect on LinkedIn
+      </a>
+      <a href="https://github.com/{{ site.github }}" target="_blank" class="btn btn-secondary" rel="noopener">
+        View on GitHub
+      </a>
+    </div>
   </div>
 </section>
 
@@ -144,12 +186,28 @@ html {
 (function() {
   'use strict';
 
+  // Error handling - check if elements exist
   var canvas = document.getElementById('game');
+  if (!canvas) {
+    console.error('Snake Game: Canvas element not found');
+    return;
+  }
+
   var context = canvas.getContext('2d');
+  if (!context) {
+    console.error('Snake Game: Could not get 2D context');
+    return;
+  }
+
+  var scoreDisplay = document.getElementById('score');
+  if (!scoreDisplay) {
+    console.error('Snake Game: Score element not found');
+    return;
+  }
+
   var grid = 16;
   var count = 0;
   var score = 0;
-  var scoreDisplay = document.getElementById('score');
 
   var snake = {
     x: 160,
@@ -232,28 +290,77 @@ html {
     });
   }
 
+  // Modern keyboard handling with e.key (not deprecated e.which)
   document.addEventListener('keydown', function(e) {
-    // Only handle and prevent default for arrow keys (37-40)
-    if (e.which >= 37 && e.which <= 40) {
-      if (e.which === 37 && snake.dx === 0) {
+    var key = e.key || e.keyCode;
+
+    // Handle arrow keys with modern API
+    if (key === 'ArrowLeft' || key === 37) {
+      if (snake.dx === 0) {
         e.preventDefault();
         snake.dx = -grid;
         snake.dy = 0;
-      } else if (e.which === 38 && snake.dy === 0) {
+      }
+    } else if (key === 'ArrowUp' || key === 38) {
+      if (snake.dy === 0) {
         e.preventDefault();
         snake.dy = -grid;
         snake.dx = 0;
-      } else if (e.which === 39 && snake.dx === 0) {
+      }
+    } else if (key === 'ArrowRight' || key === 39) {
+      if (snake.dx === 0) {
         e.preventDefault();
         snake.dx = grid;
         snake.dy = 0;
-      } else if (e.which === 40 && snake.dy === 0) {
+      }
+    } else if (key === 'ArrowDown' || key === 40) {
+      if (snake.dy === 0) {
         e.preventDefault();
         snake.dy = grid;
         snake.dx = 0;
       }
     }
   });
+
+  // Mobile touch support - swipe gestures
+  var touchStartX = 0;
+  var touchStartY = 0;
+
+  canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    var touchEndX = e.changedTouches[0].clientX;
+    var touchEndY = e.changedTouches[0].clientY;
+
+    var deltaX = touchEndX - touchStartX;
+    var deltaY = touchEndY - touchStartY;
+
+    // Determine swipe direction (minimum 30px swipe)
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (deltaX > 30 && snake.dx === 0) {
+        snake.dx = grid;
+        snake.dy = 0;
+      } else if (deltaX < -30 && snake.dx === 0) {
+        snake.dx = -grid;
+        snake.dy = 0;
+      }
+    } else {
+      // Vertical swipe
+      if (deltaY > 30 && snake.dy === 0) {
+        snake.dy = grid;
+        snake.dx = 0;
+      } else if (deltaY < -30 && snake.dy === 0) {
+        snake.dy = -grid;
+        snake.dx = 0;
+      }
+    }
+  }, { passive: false });
 
   requestAnimationFrame(loop);
 })();

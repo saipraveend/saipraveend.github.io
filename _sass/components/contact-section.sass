@@ -1,0 +1,88 @@
+// Contact Section Component
+
+.contact-section
+  background: #f9f7f4
+  border-top: 1px solid #dadce0
+
+.contact-content
+  max-width: 700px
+  margin: 0 auto
+  text-align: center
+
+.contact-text
+  font-size: 1.8rem
+  color: #2f3842
+  margin-bottom: 24px
+  font-weight: 500
+
+.contact-list
+  list-style: none
+  padding: 0
+  margin: 0 0 40px 0
+  text-align: left
+  display: inline-block
+
+  li
+    font-size: 1.6rem
+    color: #5f6368
+    margin-bottom: 12px
+    padding-left: 28px
+    position: relative
+
+    &:before
+      content: "✓"
+      position: absolute
+      left: 0
+      color: #0076A8
+      font-weight: bold
+
+.contact-cta
+  display: flex
+  gap: 16px
+  justify-content: center
+  flex-wrap: wrap
+
+  .btn
+    padding: 14px 36px
+    border-radius: 8px
+    text-decoration: none
+    font-weight: 600
+    font-size: 1.6rem
+    transition: all 0.2s ease
+    display: inline-flex
+    align-items: center
+    gap: 8px
+
+    &:hover
+      transform: translateY(-2px)
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+      text-decoration: none
+
+  .btn-primary
+    background: #0076A8
+    color: white
+    border: 2px solid #0076A8
+
+    &:hover
+      background: #005980
+      border-color: #005980
+
+  .btn-secondary
+    background: white
+    color: #0076A8
+    border: 2px solid #0076A8
+
+    &:hover
+      background: #e6f4f9
+      color: #005980
+      border-color: #005980
+
+// Responsive
+@media (max-width: 768px)
+  .contact-cta
+    flex-direction: column
+    align-items: center
+
+    .btn
+      width: 100%
+      max-width: 300px

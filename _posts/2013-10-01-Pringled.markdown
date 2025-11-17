@@ -8,7 +8,7 @@ tag:
 - Experiments
 projects: true
 hidden: true
-description: A DIY light that can be made from recyled items
+description: A DIY light that can be made from recycled items
 category: project
 author: sai.
 image: /assets/images/pringled/50.jpg
@@ -21,7 +21,7 @@ image: /assets/images/pringled/50.jpg
 <br>
 Part of a time pass experiment to make an LED light for my home with recycled materials.
 <br>
-All the illumination showed in the gallery is through white LED strips
+All the illumination shown in the gallery is through white LED strips
 
 ---
 
@@ -31,7 +31,7 @@ All the illumination showed in the gallery is through white LED strips
 
 ---
 
-## Implentation steps
+## Implementation steps
 
 <a href="https://www.hackster.io/Saipraveen/pringled-9c3330">View on Hackster</a>
 
