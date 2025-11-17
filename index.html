@@ -4,334 +4,299 @@ title: Home
 ---
 
 <style>
-.hero-section {
-  text-align: center;
-  padding: 40px 20px 60px;
-  max-width: 900px;
+/* Google-inspired minimalist design */
+.hero {
+  padding: 80px 0 60px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .hero-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 1rem;
+  font-size: 4.8rem;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 24px;
   line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
-  color: #64748b;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.highlight {
-  color: #0ea5e9;
-  font-weight: 600;
-}
-
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-  padding: 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #0ea5e9;
-  display: block;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: #64748b;
-  margin-top: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.section-header {
-  text-align: center;
-  margin: 80px 0 40px;
-}
-
-.section-header h2 {
   font-size: 2rem;
-  color: #0f172a;
-  margin-bottom: 10px;
+  color: #5f6368;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 40px;
 }
 
-.section-header p {
-  color: #64748b;
-  font-size: 1.1rem;
+.accent {
+  color: #1a73e8;
+  font-weight: 500;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: #1a73e8;
+  color: white;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+.btn-primary:hover {
+  background: #1967d2;
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: white;
+  color: #1a73e8;
+  border: 1px solid #dadce0;
+}
+
+.btn-secondary:hover {
+  background: #f8f9fa;
+  border-color: #dadce0;
+  text-decoration: none;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.6rem;
+  color: #5f6368;
+  text-align: center;
+  margin-bottom: 48px;
 }
 
 .timeline {
-  position: relative;
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 0;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(to bottom, #0ea5e9, #e2e8f0);
+  padding: 40px 0;
 }
 
 .timeline-item {
-  margin-bottom: 50px;
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
   position: relative;
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-  margin-left: auto;
-}
-
-.timeline-content {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 45%;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-}
-
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  top: 25px;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  background: #0ea5e9;
-  border: 4px solid white;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #e0f2fe;
-  z-index: 1;
+.timeline-date {
+  flex-shrink: 0;
+  width: 80px;
+  text-align: right;
+  padding-top: 4px;
 }
 
 .timeline-year {
-  position: absolute;
-  left: 50%;
-  top: 20px;
-  transform: translateX(-50%);
-  background: #0f172a;
-  color: white;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  z-index: 2;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #1a73e8;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-content {
+  flex: 1;
+  background: white;
+  padding: 24px 28px;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.timeline-content:hover {
+  border-color: #1a73e8;
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
 }
 
 .project-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #0f172a;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #202124;
   margin-bottom: 8px;
 }
 
 .project-title a {
-  color: inherit;
+  color: #202124;
   text-decoration: none;
 }
 
 .project-title a:hover {
-  color: #0ea5e9;
+  color: #1a73e8;
 }
 
 .project-desc {
-  color: #64748b;
-  font-size: 0.95rem;
+  color: #5f6368;
+  font-size: 1.4rem;
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
-.project-tag {
-  padding: 4px 10px;
-  background: #f0f9ff;
-  color: #0ea5e9;
-  border-radius: 12px;
-  font-size: 0.75rem;
+.tag {
+  padding: 4px 12px;
+  background: #e8f0fe;
+  color: #1967d2;
+  border-radius: 16px;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
-.cta-section {
-  margin-top: 80px;
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin: 60px 0;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat {
   text-align: center;
 }
 
-.cta-button {
-  display: inline-block;
-  padding: 16px 40px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.05rem;
-  margin: 0 10px;
+.stat-number {
+  font-size: 3.6rem;
+  font-weight: 400;
+  color: #1a73e8;
+  display: block;
+  font-variant-numeric: tabular-nums;
 }
 
-.cta-primary {
-  background: #0ea5e9;
-  color: white;
-  border: 2px solid #0ea5e9;
-}
-
-.cta-primary:hover {
-  background: #0284c7;
-  border-color: #0284c7;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
-  text-decoration: none;
-}
-
-.cta-secondary {
-  background: transparent;
-  color: #0ea5e9;
-  border: 2px solid #0ea5e9;
-}
-
-.cta-secondary:hover {
-  background: #f0f9ff;
-  transform: translateY(-2px);
-  text-decoration: none;
+.stat-label {
+  font-size: 1.4rem;
+  color: #5f6368;
+  margin-top: 4px;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 3.2rem;
   }
 
   .hero-subtitle {
-    font-size: 1.05rem;
+    font-size: 1.6rem;
   }
 
-  .stats-bar {
+  .cta-buttons {
     flex-direction: column;
-    gap: 20px;
   }
 
-  .timeline::before {
-    left: 20px;
+  .btn {
+    justify-content: center;
   }
 
-  .timeline-content {
-    width: calc(100% - 60px);
-    margin-left: 60px !important;
-  }
-
-  .timeline-dot {
-    left: 20px;
-  }
-
-  .timeline-year {
-    left: 20px;
-    transform: translateX(-50%);
-  }
-
-  .cta-section {
-    display: flex;
+  .timeline-item {
     flex-direction: column;
-    gap: 15px;
-    align-items: center;
+    gap: 12px;
   }
 
-  .cta-button {
+  .timeline-date {
     width: 100%;
-    max-width: 300px;
-    margin: 0;
+    text-align: left;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 32px;
   }
 }
 </style>
 
-<div class="hero-section">
-  <h1 class="hero-title">Building <span class="highlight">Intelligent Systems</span> from Silicon to Software</h1>
+<div class="hero">
+  <h1 class="hero-title">Building intelligent systems from <span class="accent">silicon to software</span></h1>
 
   <p class="hero-subtitle">
-    Embedded systems engineer exploring robotics, power electronics, and AI-powered hardware.
-    This is where I share what I build and what I learn along the way.
+    Embedded systems engineer exploring robotics, power electronics, and AI-powered hardware
   </p>
 
-  <div class="stats-bar">
-    <div class="stat-item">
+  <div class="cta-buttons">
+    <a href="{{ site.url }}/projects" class="btn btn-primary">View all projects</a>
+    <a href="{{ site.url }}/lab" class="btn btn-secondary">Explore lab →</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
       <span class="stat-number">12+</span>
       <span class="stat-label">Projects</span>
     </div>
-    <div class="stat-item">
+    <div class="stat">
       <span class="stat-number">10+</span>
       <span class="stat-label">Years</span>
     </div>
-    <div class="stat-item">
+    <div class="stat">
       <span class="stat-number">∞</span>
       <span class="stat-label">Ideas</span>
     </div>
   </div>
 </div>
 
-<div class="section-header">
-  <h2>Project Timeline</h2>
-  <p>A journey through embedded systems and robotics</p>
-</div>
+<h2 class="section-title">Project timeline</h2>
+<p class="section-subtitle">From obstacle-avoiding robots to AI on embedded hardware</p>
 
 <div class="timeline">
-  {% assign years_shown = '' %}
+  {% assign current_year = "" %}
   {% for post in site.posts reversed %}
     {% if post.projects %}
       {% assign post_year = post.date | date: '%Y' %}
-      {% unless years_shown contains post_year %}
-        {% assign years_shown = years_shown | append: post_year | append: ',' %}
-        <div class="timeline-year">{{ post_year }}</div>
-      {% endunless %}
 
       <div class="timeline-item">
-        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+          {% if current_year != post_year %}
+            <span class="timeline-year">{{ post_year }}</span>
+            {% assign current_year = post_year %}
+          {% endif %}
+        </div>
+
         <div class="timeline-content">
           <h3 class="project-title">
             <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
               {{ post.title }}
             </a>
           </h3>
+
           {% if post.description %}
             <p class="project-desc">{{ post.description }}</p>
           {% endif %}
+
           {% if post.tag %}
             <div class="project-tags">
               {% for tag in post.tag limit:4 %}
-                <span class="project-tag">{{ tag }}</span>
+                <span class="tag">{{ tag }}</span>
               {% endfor %}
             </div>
           {% endif %}
@@ -339,9 +304,4 @@ title: Home
       </div>
     {% endif %}
   {% endfor %}
-</div>
-
-<div class="cta-section">
-  <a href="{{ site.url }}/projects" class="cta-button cta-primary">View All Projects</a>
-  <a href="{{ site.url }}/lab" class="cta-button cta-secondary">Check Out Lab</a>
 </div>

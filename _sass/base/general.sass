@@ -4,59 +4,69 @@ body, html
 body
 	line-height: 1.6
 	font: 16px $fontSans
-	color: $alpha
+	color: $text-primary
 	background: $epsilon
+	-webkit-font-smoothing: antialiased
+	text-rendering: optimizeLegibility
 
 h1, h2, h3, h4
 	font-family: $fontSans
 	color: $beta
+	font-weight: 500
 	-webkit-font-smoothing: antialiased
 	text-rendering: optimizeLegibility
 
 h1
-	font-size: 3rem
-	letter-spacing: -1px
+	font-size: 3.6rem
+	letter-spacing: -0.5px
 	color: $beta
-	font-weight: 700
+	font-weight: 500
+	line-height: 1.2
 
 h2
-	font-size: 2.2rem
+	font-size: 2.4rem
+	font-weight: 500
 
 h3
 	font-size: 2rem
+	font-weight: 500
 
 h4
 	font-size: 1.6rem
+	font-weight: 500
 
 a
 	color: $delta
 	text-decoration: none
-	transition: all 0.3s ease
+	transition: all 0.2s ease
 
 	&:hover
-		color: darken($delta, 10%)
+		color: $accent-blue
 		text-decoration: underline
 
 p
-	line-height: 1.7
-	color: $alpha
-	font-weight: 300
+	line-height: 1.8
+	color: $text-secondary
+	font-weight: 400
 	margin-bottom: 20px
-	letter-spacing: 0.4px
+	letter-spacing: 0.2px
+	font-size: 1.6rem
 
 	@media #{$mobile}
-		letter-spacing: 0.2px
+		font-size: 1.4rem
+		letter-spacing: 0.1px
 
 strong
-	font-weight: 400
-	color: #000
+	font-weight: 500
+	color: $beta
 
 ul,
 ol
 	li
 		line-height: 2.4rem
-		font-weight: 300
-		color: $alpha
+		font-weight: 400
+		color: $text-secondary
+		font-size: 1.6rem
 
 img,
 pre,
@@ -65,7 +75,7 @@ iframe
 
 img,
 pre
-	border-radius: 4px
+	border-radius: 8px
 
 figcaption
 	position: relative
@@ -77,20 +87,23 @@ figcaption
 	text-align: center
 	font-size: 1.3rem
 	color: $gama
-	font-weight: 300
+	font-weight: 400
 
 	@media #{$mobile}
 		font-size: 1.2rem
 
 blockquote
-	padding-left: 15px
-	border-left: 3px solid #eee
+	padding-left: 20px
+	border-left: 4px solid $delta
+	color: $text-secondary
+	font-style: italic
+	margin: 30px 0
 
 hr
 	border: none
 	height: 1px
 	margin: 40px auto
-	background: #eee
+	background: $border
 	width: 100%
 
 figure.highlight
@@ -99,49 +112,55 @@ figure.highlight
 
 code,
 tt
-	padding: 3px 6px
+	padding: 4px 8px
 	font-family: $fontMonospace
-	font-size: 0.9em
-	line-height: 20px
-	background: #f1f5f9
+	font-size: 0.85em
+	line-height: 1.4
+	background: $surface
 	border-radius: 4px
-	color: #e11d48
+	color: #c7254e
+	border: 1px solid $border
 
 pre
 	box-sizing: border-box
 	margin: 0 0 1.75em 0
 	width: 100%
-	padding: 20px
+	padding: 24px
 	font-family: $fontMonospace
-	font-size: 0.95rem
+	font-size: 0.9rem
 	line-height: 1.6
-	overflow: auto
-	background: #0f172a
-	border: 1px solid #1e293b
+	overflow-x: auto
+	background: #f8f9fa
+	border: 1px solid $border
 	border-radius: 8px
-	color: #f8fafc
-	box-shadow: 0 2px 8px rgba(0,0,0,0.1)
+	color: $beta
+	box-shadow: 0 1px 3px $card-shadow
 
 	code
 		background: transparent
 		color: inherit
 		padding: 0
 		border-radius: 0
+		border: none
 
 .wrapper-normal,
 .wrapper-large
 	height: 100%
-	width: 96%
+	width: 90%
+	max-width: 1200px
 	margin: 0 auto
+	padding: 0 20px
 
 	@media #{$mobile}
-		width: 88%
+		width: 100%
+		padding: 0 16px
 
 	@media #{$tablet}
-		width: 88%
+		width: 95%
+		padding: 0 20px
 
 .wrapper-normal
-	max-width: 560px
+	max-width: 900px
 
 .wrapper-large
-	max-width: 810px
+	max-width: 1200px
