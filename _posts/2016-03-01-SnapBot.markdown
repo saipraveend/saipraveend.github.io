@@ -35,11 +35,11 @@ author: sai.
 
 ## Source code and implementation steps
 
-Hackaday Link <https://hackaday.io/project/26000-snapbot>.
+<a href="https://hackaday.io/project/26000-snapbot">View on Hackaday</a>
 
-Github Link <https://github.com/saipraveend/Snapbot>.
+<a href="https://github.com/saipraveend/Snapbot">SnapBot V1 on GitHub</a>
 
-Github Link <https://github.com/saipraveend/Snapbot_V2>.
+<a href="https://github.com/saipraveend/Snapbot_V2">SnapBot V2 on GitHub</a>
 
 ---
 
