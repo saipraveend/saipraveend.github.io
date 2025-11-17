@@ -75,9 +75,17 @@ html {
 /* Scroll Indicator */
 .scroll-indicator {
   margin-top: 60px;
-  color: #5f6368;
-  font-size: 1.2rem;
+  color: #0076A8;
+  font-size: 1.6rem;
+  font-weight: 500;
   animation: bounce 2s infinite;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.scroll-indicator:hover {
+  color: #005980;
+  transform: scale(1.1);
 }
 
 @keyframes bounce {
@@ -388,22 +396,23 @@ section {
   <div class="hero-tagline">Building robots and embedded systems since 2010</div>
 
   <div class="hero-stats">
+    {% assign project_posts = site.posts | where: "projects", true %}
     <div class="stat-item">
-      <span class="stat-number">{{ site.posts | where: "projects", true | size }}</span>
+      <span class="stat-number">{{ project_posts | size }}</span>
       <span class="stat-label">Projects</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">10+</span>
+      <span class="stat-number">15</span>
       <span class="stat-label">Years</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">∞</span>
-      <span class="stat-label">Ideas</span>
+      <span class="stat-number">3+</span>
+      <span class="stat-label">Publications</span>
     </div>
   </div>
 
-  <div class="scroll-indicator">
-    ↓ Scroll to explore
+  <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+    ↓ Scroll to explore projects
   </div>
 </section>
 
@@ -471,11 +480,11 @@ section {
     <p class="about-role">Embedded Systems Engineer at MathWorks</p>
 
     <p class="about-text">
-      I build stuff with microcontrollers, sensors, and code. Started with simple obstacle-avoiding robots back in 2010, competed at national level, built power electronics systems that got published, and now exploring how AI fits into embedded hardware.
+      I build hardware with microcontrollers, sensors, and code. Started with obstacle-avoiding robots in 2010. Competed at national robotics competitions (placed 3rd at IIT Madras Shaastra). Built power electronics systems that got published in ARPN Journal. Now exploring how AI and ML fit into embedded systems.
     </p>
 
     <p class="about-text">
-      Currently managing embedded hardware product marketing at MathWorks India, but I still spend my weekends prototyping with ESP32s and testing TinyML models.
+      I manage embedded hardware product marketing at MathWorks India during the week. Weekends? ESP32s, TinyML models, and whatever hardware project has my attention.
     </p>
   </div>
 </section>
