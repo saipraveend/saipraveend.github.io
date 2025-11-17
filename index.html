@@ -1,116 +1,67 @@
 ---
-layout: page
+layout: default
 title: Home
 ---
 
+{% include nav.html %}
+
 <style>
-/* World-class hero section with rotating images */
+/* ============================================================================
+ * SINGLE-PAGE SCROLL PORTFOLIO - PRODUCTION READY
+ * ============================================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero Section - Simplified, Clean */
 .hero {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 20px 80px;
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 80px;
-  align-items: center;
+  padding: 120px 20px 100px;
+  text-align: center;
 }
 
-.hero-visual {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-.hero-image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.hero-image.active {
-  opacity: 1;
-}
-
-.image-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5) 80%, transparent);
-  color: white;
-  padding: 40px 20px 20px;
-  font-size: 1.4rem;
-  font-weight: 500;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
-
-.hero-content h1 {
+.hero h1 {
   font-size: 2rem;
   color: #5f6368;
   font-weight: 400;
   margin-bottom: 12px;
 }
 
-.name {
-  font-size: 6.4rem;
+.hero-name {
+  font-size: 7.2rem;
   font-weight: 400;
   color: #202124;
   line-height: 1;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-.tagline {
+.hero-tagline {
   font-size: 2.4rem;
-  color: #5f6368;
-  font-weight: 400;
-  margin-bottom: 16px;
-}
-
-.typing-line {
-  font-size: 2.8rem;
-  color: #1a73e8;
+  color: #0076A8;
   font-weight: 500;
-  min-height: 60px;
+  margin-bottom: 48px;
+}
+
+.hero-stats {
   display: flex;
-  align-items: center;
-}
-
-#typed {
-  border-right: 3px solid #1a73e8;
-  padding-right: 8px;
-  white-space: nowrap;
-  animation: blink 0.7s step-end infinite;
-  display: inline-block;
-  min-width: 2px;
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-.quick-stats {
-  display: flex;
-  gap: 48px;
-  margin-top: 40px;
-  padding-top: 32px;
+  gap: 64px;
+  justify-content: center;
+  margin-top: 48px;
+  padding-top: 40px;
   border-top: 1px solid #dadce0;
 }
 
 .stat-item {
-  text-align: left;
+  text-align: center;
 }
 
 .stat-number {
-  font-size: 3.6rem;
+  font-size: 4.8rem;
   font-weight: 400;
-  color: #1a73e8;
+  color: #0076A8;
   line-height: 1;
   display: block;
 }
@@ -121,66 +72,46 @@ title: Home
   margin-top: 8px;
 }
 
-/* Projects section - inline, no extra page */
-.projects-section {
+/* Scroll Indicator */
+.scroll-indicator {
+  margin-top: 60px;
+  color: #5f6368;
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Section Styling */
+section {
   max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  scroll-margin-top: 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .section-title {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
   font-weight: 400;
   color: #202124;
-  text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .section-subtitle {
   font-size: 1.6rem;
   color: #5f6368;
-  text-align: center;
-  margin-bottom: 48px;
 }
 
-/* Filter tabs */
-.filter-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
-}
-
-.filter-tab {
-  padding: 12px 24px;
-  background: white;
-  border: 1px solid #dadce0;
-  border-radius: 24px;
-  color: #5f6368;
-  font-size: 1.4rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.filter-tab:hover {
-  border-color: #1a73e8;
-  color: #1a73e8;
-}
-
-.filter-tab:focus {
-  outline: 2px solid #1a73e8;
-  outline-offset: 2px;
-}
-
-.filter-tab.active {
-  background: #1a73e8;
-  border-color: #1a73e8;
-  color: white;
-}
-
-/* Masonry grid */
+/* Projects Grid - Masonry */
 .projects-grid {
   column-count: 3;
   column-gap: 24px;
@@ -193,21 +124,15 @@ title: Home
   border: 1px solid #dadce0;
   border-radius: 8px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+  transition: all 0.3s ease;
   display: inline-block;
   width: 100%;
-  opacity: 1;
-}
-
-.project-card.hiding {
-  opacity: 0;
-  transform: scale(0.95);
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(26, 115, 232, 0.15);
-  border-color: #1a73e8;
+  box-shadow: 0 12px 40px rgba(0, 118, 168, 0.15);
+  border-color: #0076A8;
 }
 
 .project-image {
@@ -216,7 +141,7 @@ title: Home
   display: block;
   min-height: 180px;
   object-fit: cover;
-  background: linear-gradient(135deg, #1a73e8 0%, #1967d2 100%);
+  background: linear-gradient(135deg, #0076A8 0%, #005980 100%);
 }
 
 .project-body {
@@ -232,7 +157,7 @@ title: Home
 
 .project-year {
   font-size: 1.2rem;
-  color: #1a73e8;
+  color: #0076A8;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -240,8 +165,8 @@ title: Home
 
 .project-type {
   padding: 4px 10px;
-  background: #e8f0fe;
-  color: #1967d2;
+  background: #e6f4f9;
+  color: #005980;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 500;
@@ -261,7 +186,7 @@ title: Home
 }
 
 .project-title a:hover {
-  color: #1a73e8;
+  color: #0076A8;
 }
 
 .project-description {
@@ -286,18 +211,128 @@ title: Home
   font-weight: 500;
 }
 
+/* About Section */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto 32px;
+  border: 4px solid #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-role {
+  font-size: 1.8rem;
+  color: #0076A8;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.about-text {
+  font-size: 1.6rem;
+  color: #5f6368;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Snake Game Section */
+.snake-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.snake-section h2 {
+  font-size: 3.6rem;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 12px;
+}
+
+.snake-intro {
+  font-size: 1.4rem;
+  color: #5f6368;
+  margin-bottom: 32px;
+}
+
+#game {
+  border: 2px solid #dadce0;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#score {
+  font-size: 2.4rem;
+  color: #0076A8;
+  margin: 24px 0;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.game-controls {
+  font-size: 1.2rem;
+  color: #5f6368;
+  margin-top: 16px;
+}
+
+/* Footer */
+.portfolio-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid #dadce0;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.social-btn {
+  padding: 12px 32px;
+  background: white;
+  color: #0076A8;
+  border: 2px solid #0076A8;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-btn:hover {
+  background: #0076A8;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 118, 168, 0.3);
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: #5f6368;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
   .projects-grid {
     column-count: 2;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .hero-visual {
-    height: 300px;
   }
 }
 
@@ -307,84 +342,83 @@ title: Home
   }
 
   .hero {
-    text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px 60px;
   }
 
-  .name {
+  .hero-name {
     font-size: 4.8rem;
   }
 
-  .tagline {
+  .hero-tagline {
     font-size: 2rem;
   }
 
-  .typing-line {
-    font-size: 2.2rem;
-    justify-content: center;
+  .hero-stats {
+    gap: 32px;
   }
 
-  .quick-stats {
-    justify-content: center;
+  .stat-number {
+    font-size: 3.6rem;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .snake-section {
+    padding: 40px 20px;
+  }
+
+  #game {
+    max-width: 100%;
+    height: auto;
   }
 }
 </style>
 
-<div class="hero">
-  <div class="hero-visual">
-    {% assign project_posts = site.posts | where: "projects", true %}
-    {% for post in project_posts limit:10 %}
-      {% if post.image %}
-        <img src="{{ post.image }}" alt="{{ post.title }}" class="hero-image" data-title="{{ post.title }}" loading="lazy">
-      {% endif %}
-    {% endfor %}
-    <div class="image-caption" id="imageCaption" role="status" aria-live="polite"></div>
-  </div>
+<!-- Hero Section -->
+<section id="hero" class="hero">
+  <h1>Hi, I'm</h1>
+  <div class="hero-name">Sai</div>
+  <div class="hero-tagline">Building robots and embedded systems since 2010</div>
 
-  <div class="hero-content">
-    <h1>Hi, I'm</h1>
-    <div class="name">Sai</div>
-    <div class="tagline">Embedded systems engineer who</div>
-    <div class="typing-line">
-      <span id="typed"></span>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-number">{{ site.posts | where: "projects", true | size }}</span>
+      <span class="stat-label">Projects</span>
     </div>
-
-    <div class="quick-stats">
-      <div class="stat-item">
-        <span class="stat-number">{{ site.posts | where: "projects", true | size }}</span>
-        <span class="stat-label">Projects</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Years</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">∞</span>
-        <span class="stat-label">Ideas</span>
-      </div>
+    <div class="stat-item">
+      <span class="stat-number">10+</span>
+      <span class="stat-label">Years</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Ideas</span>
     </div>
   </div>
-</div>
 
-<div class="projects-section">
-  <h2 class="section-title">What I've built</h2>
-  <p class="section-subtitle">Hardware projects, experiments, and prototypes • 2010–present</p>
+  <div class="scroll-indicator">
+    ↓ Scroll to explore
+  </div>
+</section>
 
-  <div class="filter-tabs" role="tablist" aria-label="Project filters">
-    <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-    <button class="filter-tab" data-filter="robot" role="tab" aria-selected="false">Robotics</button>
-    <button class="filter-tab" data-filter="embedded" role="tab" aria-selected="false">Embedded</button>
-    <button class="filter-tab" data-filter="iot" role="tab" aria-selected="false">IoT</button>
-    <button class="filter-tab" data-filter="power" role="tab" aria-selected="false">Power</button>
-    <button class="filter-tab" data-filter="ai" role="tab" aria-selected="false">AI/ML</button>
-    <button class="filter-tab" data-filter="lab" role="tab" aria-selected="false">Experiments</button>
+<!-- Projects Section -->
+<section id="projects">
+  <div class="section-header">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">Hardware, embedded systems, and experiments • 2010–present</p>
   </div>
 
   <div class="projects-grid">
-    {% assign all_posts = site.posts %}
+    {% assign all_posts = site.posts | reverse %}
     {% for post in all_posts %}
       {% if post.projects or post.lab %}
-        <div class="project-card" data-tags="{% for tag in post.tag %}{{ tag | downcase }} {% endfor %}{% if post.lab %}lab experiment{% endif %}">
+        <div class="project-card">
           {% if post.image %}
             <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" aria-label="{{ post.title }}">
               <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy">
@@ -423,150 +457,169 @@ title: Home
       {% endif %}
     {% endfor %}
   </div>
-</div>
+</section>
 
+<!-- About Section -->
+<section id="about">
+  <div class="section-header">
+    <h2 class="section-title">About</h2>
+  </div>
+
+  <div class="about-content">
+    <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" class="about-image">
+
+    <p class="about-role">Embedded Systems Engineer at MathWorks</p>
+
+    <p class="about-text">
+      I build stuff with microcontrollers, sensors, and code. Started with simple obstacle-avoiding robots back in 2010, competed at national level, built power electronics systems that got published, and now exploring how AI fits into embedded hardware.
+    </p>
+
+    <p class="about-text">
+      Currently managing embedded hardware product marketing at MathWorks India, but I still spend my weekends prototyping with ESP32s and testing TinyML models.
+    </p>
+  </div>
+</section>
+
+<!-- Snake Game Section -->
+<section id="game-section">
+  <div class="snake-section">
+    <h2>Why not?</h2>
+    <p class="snake-intro">Classic Snake game in vanilla JavaScript</p>
+
+    <div id="score">Score: 0</div>
+    <canvas width="400" height="400" id="game"></canvas>
+    <p class="game-controls">Use arrow keys to move</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="portfolio-footer">
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank" class="social-btn" rel="noopener">
+      LinkedIn →
+    </a>
+    <a href="https://github.com/{{ site.github }}" target="_blank" class="social-btn" rel="noopener">
+      GitHub →
+    </a>
+  </div>
+  <div class="copyright">
+    {{ site.name }} © {{ site.time | date: '%Y' }}
+  </div>
+</footer>
+
+<!-- Snake Game JavaScript -->
 <script>
 (function() {
   'use strict';
 
-  // Typing animation
-  const phrases = [
-    'builds robots',
-    'designs PCBs',
-    'writes embedded code',
-    'prototypes with ESP32',
-    'tests TinyML models',
-    'debugs with oscilloscopes',
-    'solders components',
-    'integrates sensors',
-    'optimizes power systems',
-    'ships hardware'
-  ];
+  var canvas = document.getElementById('game');
+  var context = canvas.getContext('2d');
+  var grid = 16;
+  var count = 0;
+  var score = 0;
+  var scoreDisplay = document.getElementById('score');
 
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typedEl = document.getElementById('typed');
+  var snake = {
+    x: 160,
+    y: 160,
+    dx: grid,
+    dy: 0,
+    cells: [],
+    maxCells: 4
+  };
 
-  function type() {
-    if (!typedEl) return;
+  var apple = {
+    x: 320,
+    y: 320
+  };
 
-    const currentPhrase = phrases[phraseIndex];
-
-    if (isDeleting) {
-      typedEl.textContent = currentPhrase.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
-      charIndex++;
-    }
-
-    let speed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentPhrase.length) {
-      speed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      speed = 500;
-    }
-
-    setTimeout(type, speed);
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  // Image rotation
-  const images = document.querySelectorAll('.hero-image');
-  const caption = document.getElementById('imageCaption');
-  let currentImageIndex = 0;
+  function loop() {
+    requestAnimationFrame(loop);
 
-  function rotateImages() {
-    if (images.length === 0) return;
-
-    images.forEach(img => img.classList.remove('active'));
-    images[currentImageIndex].classList.add('active');
-
-    if (caption) {
-      caption.textContent = images[currentImageIndex].dataset.title;
+    if (++count < 4) {
+      return;
     }
 
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-  }
+    count = 0;
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Filter functionality
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  const projectCards = document.querySelectorAll('.project-card');
+    snake.x += snake.dx;
+    snake.y += snake.dy;
 
-  function applyFilter(filter) {
-    projectCards.forEach(card => {
-      const tags = card.dataset.tags.toLowerCase();
-      const shouldShow = filter === 'all' || tags.includes(filter);
+    if (snake.x < 0) {
+      snake.x = canvas.width - grid;
+    } else if (snake.x >= canvas.width) {
+      snake.x = 0;
+    }
 
-      if (!shouldShow) {
-        card.classList.add('hiding');
-        setTimeout(() => {
-          card.style.display = 'none';
-          card.classList.remove('hiding');
-        }, 300);
-      } else {
-        card.style.display = 'inline-block';
-        // Trigger reflow to enable animation
-        card.offsetHeight;
-        card.classList.remove('hiding');
+    if (snake.y < 0) {
+      snake.y = canvas.height - grid;
+    } else if (snake.y >= canvas.height) {
+      snake.y = 0;
+    }
+
+    snake.cells.unshift({x: snake.x, y: snake.y});
+
+    if (snake.cells.length > snake.maxCells) {
+      snake.cells.pop();
+    }
+
+    context.fillStyle = '#EA4335';
+    context.fillRect(apple.x, apple.y, grid-1, grid-1);
+
+    context.fillStyle = '#0076A8';
+    snake.cells.forEach(function(cell, index) {
+      context.fillRect(cell.x, cell.y, grid-1, grid-1);
+
+      if (cell.x === apple.x && cell.y === apple.y) {
+        snake.maxCells++;
+        score++;
+        scoreDisplay.textContent = 'Score: ' + score;
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+      }
+
+      for (var i = index + 1; i < snake.cells.length; i++) {
+        if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+          snake.x = 160;
+          snake.y = 160;
+          snake.cells = [];
+          snake.maxCells = 4;
+          snake.dx = grid;
+          snake.dy = 0;
+          apple.x = getRandomInt(0, 25) * grid;
+          apple.y = getRandomInt(0, 25) * grid;
+          score = 0;
+          scoreDisplay.textContent = 'Score: ' + score;
+        }
       }
     });
   }
 
-  function setActiveTab(tab) {
-    filterTabs.forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected', 'true');
-  }
-
-  filterTabs.forEach((tab, index) => {
-    tab.addEventListener('click', function() {
-      setActiveTab(this);
-      applyFilter(this.dataset.filter);
-    });
-
-    // Keyboard navigation
-    tab.addEventListener('keydown', function(e) {
-      let targetTab;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        targetTab = filterTabs[(index + 1) % filterTabs.length];
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        targetTab = filterTabs[(index - 1 + filterTabs.length) % filterTabs.length];
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        targetTab = filterTabs[0];
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        targetTab = filterTabs[filterTabs.length - 1];
-      }
-
-      if (targetTab) {
-        targetTab.focus();
-        setActiveTab(targetTab);
-        applyFilter(targetTab.dataset.filter);
-      }
-    });
+  document.addEventListener('keydown', function(e) {
+    if (e.which === 37 && snake.dx === 0) {
+      e.preventDefault();
+      snake.dx = -grid;
+      snake.dy = 0;
+    } else if (e.which === 38 && snake.dy === 0) {
+      e.preventDefault();
+      snake.dy = -grid;
+      snake.dx = 0;
+    } else if (e.which === 39 && snake.dx === 0) {
+      e.preventDefault();
+      snake.dx = grid;
+      snake.dy = 0;
+    } else if (e.which === 40 && snake.dy === 0) {
+      e.preventDefault();
+      snake.dy = grid;
+      snake.dx = 0;
+    }
   });
 
-  // Initialize
-  if (images.length > 0) {
-    images[0].classList.add('active');
-    if (caption) caption.textContent = images[0].dataset.title;
-    setInterval(rotateImages, 4000);
-  }
-
-  // Start typing animation immediately
-  if (typedEl) {
-    setTimeout(type, 500);
-  }
+  requestAnimationFrame(loop);
 })();
 </script>
