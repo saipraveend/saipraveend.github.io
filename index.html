@@ -5,7 +5,63 @@ title: Home
 
 {% include nav.html %}
 
+<!-- Top Navigation -->
+<nav class="top-nav">
+  <a href="#projects" class="nav-btn">Projects</a>
+  <a href="#about" class="nav-btn">About</a>
+  <a href="#contact" class="nav-btn">Connect</a>
+  <a href="#game-section" class="nav-btn">Why not?</a>
+</nav>
+
 <style>
+/* Top Navigation */
+.top-nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 100px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  background: transparent;
+  color: #0076A8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.4rem;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #0076A8;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+
+  .nav-btn {
+    font-size: 1.2rem;
+    padding: 6px 12px;
+  }
+}
+
 /* Global smooth scrolling for single-page portfolio */
 html {
   scroll-behavior: smooth;
@@ -23,26 +79,6 @@ html {
     <a href="#contact" class="btn btn-primary">Let's work together</a>
     <a href="#projects" class="btn btn-secondary">See my work</a>
   </div>
-
-  <div class="hero-stats">
-    {% assign project_posts = site.posts | where: "projects", true %}
-    <div class="stat-item">
-      <span class="stat-number">{{ project_posts | size }}</span>
-      <span class="stat-label">Projects</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">15</span>
-      <span class="stat-label">Years</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">3+</span>
-      <span class="stat-label">Publications</span>
-    </div>
-  </div>
-
-  <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
-    ↓ Scroll to explore projects
-  </div>
 </section>
 
 <!-- Projects Section -->
@@ -53,7 +89,7 @@ html {
   </div>
 
   <div class="projects-grid">
-    {% assign all_posts = site.posts | reverse %}
+    {% assign all_posts = site.posts %}
     {% for post in all_posts %}
       {% if post.projects or post.lab %}
         <div class="project-card">
@@ -113,7 +149,7 @@ html {
     </p>
 
     <p class="about-text">
-      Since then: Competed at national robotics competitions (3rd place at IIT Madras Shaastra). Published power electronics research in ARPN Journal. Built everything from VR-controlled robots to assistive devices for visually impaired students. These days I'm exploring how AI and ML fit into embedded systems — turns out cramming neural networks into 2MB of flash memory is more interesting than I expected.
+      Since then: Published power electronics research in ARPN Journal. Built everything from VR-controlled robots to assistive devices for visually impaired students. These days I'm exploring how AI and ML fit into embedded systems — turns out cramming neural networks into 2MB of flash memory is more interesting than I expected.
     </p>
 
     <p class="about-text">
