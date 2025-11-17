@@ -53,7 +53,7 @@ html {
         <div class="project-card">
           {% if post.image %}
             <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" aria-label="{{ post.title }}">
-              <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy">
+              <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy" decoding="async">
             </a>
           {% endif %}
 
@@ -98,7 +98,7 @@ html {
   </div>
 
   <div class="about-content">
-    <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" class="about-image" loading="lazy">
+    <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" class="about-image" loading="lazy" decoding="async">
 
     <p class="about-role">Embedded Systems Engineer at MathWorks</p>
 
@@ -233,22 +233,25 @@ html {
   }
 
   document.addEventListener('keydown', function(e) {
-    if (e.which === 37 && snake.dx === 0) {
-      e.preventDefault();
-      snake.dx = -grid;
-      snake.dy = 0;
-    } else if (e.which === 38 && snake.dy === 0) {
-      e.preventDefault();
-      snake.dy = -grid;
-      snake.dx = 0;
-    } else if (e.which === 39 && snake.dx === 0) {
-      e.preventDefault();
-      snake.dx = grid;
-      snake.dy = 0;
-    } else if (e.which === 40 && snake.dy === 0) {
-      e.preventDefault();
-      snake.dy = grid;
-      snake.dx = 0;
+    // Only handle and prevent default for arrow keys (37-40)
+    if (e.which >= 37 && e.which <= 40) {
+      if (e.which === 37 && snake.dx === 0) {
+        e.preventDefault();
+        snake.dx = -grid;
+        snake.dy = 0;
+      } else if (e.which === 38 && snake.dy === 0) {
+        e.preventDefault();
+        snake.dy = -grid;
+        snake.dx = 0;
+      } else if (e.which === 39 && snake.dx === 0) {
+        e.preventDefault();
+        snake.dx = grid;
+        snake.dy = 0;
+      } else if (e.which === 40 && snake.dy === 0) {
+        e.preventDefault();
+        snake.dy = grid;
+        snake.dx = 0;
+      }
     }
   });
 
