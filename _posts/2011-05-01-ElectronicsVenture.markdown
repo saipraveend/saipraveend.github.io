@@ -18,7 +18,7 @@ image: /assets/images/Electronics/1.jpg
 
 ## Brief
 
-I did a lot of side projects when I was in college, by a lot I mean a lot! All the way from wheeled robots (plenty of varieties) & wall climbing robots to magnetic levitation, solar power, wind energy, noval wind energy generation, free energy, generating energy from passing vehicles, piezo electricity and wireless charging !
+I did a lot of side projects when I was in college, by a lot I mean a lot! All the way from wheeled robots (plenty of varieties) & wall climbing robots to magnetic levitation, solar power, wind energy, novel wind energy generation, free energy, generating energy from passing vehicles, piezo electricity and wireless charging!
 <br>
 
 ---
