@@ -8,65 +8,49 @@ tag:
 - AI
 - Hardware
 - Embedded Systems
-description: Launching a new space for AI + hardware experiments and quick prototypes
+description: New space for AI + hardware experiments and quick prototypes
 ---
 
-## 🎯 What is This?
+## What's This About?
 
-Welcome to my digital lab! This is where I'll be sharing:
+This is my experimental space. Unlike the project pages where everything is polished and complete, here I'm sharing stuff while I'm still figuring it out.
 
-- **Quick Experiments**: AI models running on embedded hardware
-- **Prototypes**: Early-stage ideas and proof-of-concepts
-- **Learnings**: Both successes and failures in real-time
-- **Ideas**: Hardware + AI combinations worth exploring
+You'll find:
+- Quick tests with AI on microcontrollers
+- Early prototypes that may or may not work
+- Things that failed (those are valuable too)
+- Ideas I'm testing before committing to full projects
 
-## 🧪 Current Focus Areas
+## What I'm Working On
 
-### TinyML & Edge AI
-Exploring how to run machine learning models on resource-constrained devices like Arduino, ESP32, and Raspberry Pi.
+**TinyML & Edge AI**
+Trying to get ML models running on small boards like ESP32 and Arduino. Turns out fitting neural networks into 2MB of flash is interesting.
 
-### Computer Vision on Hardware
-Building real-world applications with cameras and embedded processors for object detection, tracking, and recognition.
+**Computer Vision on Hardware**
+Cameras + microcontrollers + object detection. Seeing how far I can push cheap hardware before needing a Pi or Jetson.
 
-### IoT + Intelligence
-Combining connectivity with smart algorithms for autonomous systems and intelligent sensors.
-
----
-
-## 🛠️ The Approach
-
-Unlike my polished project pages, the Lab is meant to be:
-
-- **Raw**: Work in progress, rough edges included
-- **Iterative**: Updated as experiments evolve
-- **Honest**: Failed experiments are just as valuable as successful ones
-- **Fast**: Quick to document, minimal friction to share
+**IoT with Some Intelligence**
+Sensors that do more than just send data — adding local processing and smarter decision-making.
 
 ---
 
-## 💡 Why This Matters
+## The Ground Rules
 
-The field of AI + embedded hardware is moving incredibly fast. By documenting experiments in real-time, I can:
+- Posts will be rough. I'm documenting as I build.
+- Failed experiments count. Actually, they're more interesting sometimes.
+- I'll update posts as experiments evolve instead of waiting until everything's perfect.
+- Quick to share means more content, even if it's messier.
 
-1. Track learning and progress over time
-2. Share practical insights beyond theory
-3. Connect with others exploring similar challenges
-4. Build a knowledge base for future projects
+## What's Next
 
----
-
-## 🚀 What's Coming
-
-I'm currently exploring:
-
-- Running TensorFlow Lite models on ESP32-CAM
+Currently testing:
+- TensorFlow Lite on ESP32-CAM
 - Audio keyword spotting with Arduino Nano 33 BLE
-- Custom sensor fusion for robotics applications
-- Power optimization for always-on AI devices
+- Sensor fusion for a small robot
+- Power optimization tricks for always-on devices
 
-Stay tuned for updates, and feel free to reach out if you're working on similar projects!
+If you're working on similar stuff, let's connect.
 
 ---
 
-**Last Updated:** January 15, 2025
-**Status:** Just getting started! 🔬
+**Status:** Just getting started

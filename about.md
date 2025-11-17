@@ -160,10 +160,9 @@ layout: page
       <h1>Hi, I'm Sai 👋</h1>
       <p class="about-role">Managing Embedded Hardware Product Marketing at MathWorks</p>
       <p class="about-bio">
-        I'm passionate about building intelligent embedded systems that bridge the gap between hardware and AI.
-        My journey spans robotics, power electronics, IoT, and now exploring the exciting frontier of AI-powered
-        embedded devices. This site is my digital workshop — showcasing projects, experiments, and learnings
-        from over a decade of making things work in the real world.
+        I build stuff with microcontrollers, sensors, and code. Started with simple obstacle-avoiding robots
+        back in 2010, competed at IIT Madras, built power electronics systems, and now I'm exploring how AI
+        fits into embedded hardware. This site is where I document what I make and share what works (and what doesn't).
       </p>
     </div>
   </div>
@@ -188,7 +187,7 @@ layout: page
 
   <div class="connect-section">
     <h2>Let's Connect</h2>
-    <p>Interested in collaborating or discussing embedded systems and AI? Reach out!</p>
+    <p>Working on something similar? Want to collaborate? Let's talk.</p>
     <div class="connect-links">
       <a href="{{ site.url }}/projects" class="connect-btn">View Projects</a>
       <a href="{{ site.url }}/lab" class="connect-btn">Explore Lab</a>
