@@ -101,3 +101,20 @@ plugins:
   # Removed jekyll-admin (doesn't work on GitHub Pages)
   # Removed jekyll-gist (not used)
   # Removed jemoji (using manual emojis in HTML)
+
+# Encoding
+encoding: utf-8
+
+# Exclude documentation files from processing
+exclude:
+  - DESIGN_SYSTEM.md
+  - DESIGN_SYSTEM_SUMMARY.md
+  - INTEGRATION_GUIDE.md
+  - COLOR_PALETTE.md
+  - FAQ.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - travis.sh
+  - build.sh
