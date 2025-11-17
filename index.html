@@ -6,378 +6,9 @@ title: Home
 {% include nav.html %}
 
 <style>
-/* ============================================================================
- * SINGLE-PAGE SCROLL PORTFOLIO - PRODUCTION READY
- * ============================================================================ */
-
+/* Global smooth scrolling for single-page portfolio */
 html {
   scroll-behavior: smooth;
-}
-
-/* Hero Section - Simplified, Clean */
-.hero {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 20px 100px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 2rem;
-  color: #5f6368;
-  font-weight: 400;
-  margin-bottom: 12px;
-}
-
-.hero-name {
-  font-size: 7.2rem;
-  font-weight: 400;
-  color: #202124;
-  line-height: 1;
-  margin-bottom: 24px;
-}
-
-.hero-tagline {
-  font-size: 2.4rem;
-  color: #0076A8;
-  font-weight: 500;
-  margin-bottom: 48px;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 64px;
-  justify-content: center;
-  margin-top: 48px;
-  padding-top: 40px;
-  border-top: 1px solid #dadce0;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 4.8rem;
-  font-weight: 400;
-  color: #0076A8;
-  line-height: 1;
-  display: block;
-}
-
-.stat-label {
-  font-size: 1.4rem;
-  color: #5f6368;
-  margin-top: 8px;
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-  margin-top: 60px;
-  color: #5f6368;
-  font-size: 1.2rem;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
-}
-
-/* Section Styling */
-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px;
-  scroll-margin-top: 20px;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-title {
-  font-size: 3.6rem;
-  font-weight: 400;
-  color: #202124;
-  margin-bottom: 12px;
-}
-
-.section-subtitle {
-  font-size: 1.6rem;
-  color: #5f6368;
-}
-
-/* Projects Grid - Masonry */
-.projects-grid {
-  column-count: 3;
-  column-gap: 24px;
-}
-
-.project-card {
-  break-inside: avoid;
-  margin-bottom: 24px;
-  background: white;
-  border: 1px solid #dadce0;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  display: inline-block;
-  width: 100%;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 118, 168, 0.15);
-  border-color: #0076A8;
-}
-
-.project-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  min-height: 180px;
-  object-fit: cover;
-  background: linear-gradient(135deg, #0076A8 0%, #005980 100%);
-}
-
-.project-body {
-  padding: 20px;
-}
-
-.project-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.project-year {
-  font-size: 1.2rem;
-  color: #0076A8;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.project-type {
-  padding: 4px 10px;
-  background: #e6f4f9;
-  color: #005980;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.project-title {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #202124;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-
-.project-title a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.project-title a:hover {
-  color: #0076A8;
-}
-
-.project-description {
-  font-size: 1.4rem;
-  color: #5f6368;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  padding: 4px 10px;
-  background: #f8f9fa;
-  color: #5f6368;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-/* About Section */
-.about-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin: 0 auto 32px;
-  border: 4px solid #f8f9fa;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.about-role {
-  font-size: 1.8rem;
-  color: #0076A8;
-  font-weight: 500;
-  margin-bottom: 24px;
-}
-
-.about-text {
-  font-size: 1.6rem;
-  color: #5f6368;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* Snake Game Section */
-.snake-section {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 60px 40px;
-  text-align: center;
-}
-
-.snake-section h2 {
-  font-size: 3.6rem;
-  font-weight: 400;
-  color: #202124;
-  margin-bottom: 12px;
-}
-
-.snake-intro {
-  font-size: 1.4rem;
-  color: #5f6368;
-  margin-bottom: 32px;
-}
-
-#game {
-  border: 2px solid #dadce0;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#score {
-  font-size: 2.4rem;
-  color: #0076A8;
-  margin: 24px 0;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-
-.game-controls {
-  font-size: 1.2rem;
-  color: #5f6368;
-  margin-top: 16px;
-}
-
-/* Footer */
-.portfolio-footer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  text-align: center;
-  border-top: 1px solid #dadce0;
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-
-.social-btn {
-  padding: 12px 32px;
-  background: white;
-  color: #0076A8;
-  border: 2px solid #0076A8;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.6rem;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.social-btn:hover {
-  background: #0076A8;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 118, 168, 0.3);
-  text-decoration: none;
-}
-
-.copyright {
-  font-size: 1.4rem;
-  color: #5f6368;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .projects-grid {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    column-count: 1;
-  }
-
-  .hero {
-    padding: 80px 20px 60px;
-  }
-
-  .hero-name {
-    font-size: 4.8rem;
-  }
-
-  .hero-tagline {
-    font-size: 2rem;
-  }
-
-  .hero-stats {
-    gap: 32px;
-  }
-
-  .stat-number {
-    font-size: 3.6rem;
-  }
-
-  .section-title {
-    font-size: 2.8rem;
-  }
-
-  .social-links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .snake-section {
-    padding: 40px 20px;
-  }
-
-  #game {
-    max-width: 100%;
-    height: auto;
-  }
 }
 </style>
 
@@ -388,22 +19,23 @@ section {
   <div class="hero-tagline">Building robots and embedded systems since 2010</div>
 
   <div class="hero-stats">
+    {% assign project_posts = site.posts | where: "projects", true %}
     <div class="stat-item">
-      <span class="stat-number">{{ site.posts | where: "projects", true | size }}</span>
+      <span class="stat-number">{{ project_posts | size }}</span>
       <span class="stat-label">Projects</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">10+</span>
+      <span class="stat-number">15</span>
       <span class="stat-label">Years</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">∞</span>
-      <span class="stat-label">Ideas</span>
+      <span class="stat-number">3+</span>
+      <span class="stat-label">Publications</span>
     </div>
   </div>
 
-  <div class="scroll-indicator">
-    ↓ Scroll to explore
+  <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+    ↓ Scroll to explore projects
   </div>
 </section>
 
@@ -421,7 +53,7 @@ section {
         <div class="project-card">
           {% if post.image %}
             <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" aria-label="{{ post.title }}">
-              <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy">
+              <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy" decoding="async">
             </a>
           {% endif %}
 
@@ -466,16 +98,16 @@ section {
   </div>
 
   <div class="about-content">
-    <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" class="about-image">
+    <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" class="about-image" loading="lazy" decoding="async">
 
     <p class="about-role">Embedded Systems Engineer at MathWorks</p>
 
     <p class="about-text">
-      I build stuff with microcontrollers, sensors, and code. Started with simple obstacle-avoiding robots back in 2010, competed at national level, built power electronics systems that got published, and now exploring how AI fits into embedded hardware.
+      I build hardware with microcontrollers, sensors, and code. Started with obstacle-avoiding robots in 2010. Competed at national robotics competitions (placed 3rd at IIT Madras Shaastra). Built power electronics systems that got published in ARPN Journal. Now exploring how AI and ML fit into embedded systems.
     </p>
 
     <p class="about-text">
-      Currently managing embedded hardware product marketing at MathWorks India, but I still spend my weekends prototyping with ESP32s and testing TinyML models.
+      I manage embedded hardware product marketing at MathWorks India during the week. Weekends? ESP32s, TinyML models, and whatever hardware project has my attention.
     </p>
   </div>
 </section>
@@ -601,22 +233,25 @@ section {
   }
 
   document.addEventListener('keydown', function(e) {
-    if (e.which === 37 && snake.dx === 0) {
-      e.preventDefault();
-      snake.dx = -grid;
-      snake.dy = 0;
-    } else if (e.which === 38 && snake.dy === 0) {
-      e.preventDefault();
-      snake.dy = -grid;
-      snake.dx = 0;
-    } else if (e.which === 39 && snake.dx === 0) {
-      e.preventDefault();
-      snake.dx = grid;
-      snake.dy = 0;
-    } else if (e.which === 40 && snake.dy === 0) {
-      e.preventDefault();
-      snake.dy = grid;
-      snake.dx = 0;
+    // Only handle and prevent default for arrow keys (37-40)
+    if (e.which >= 37 && e.which <= 40) {
+      if (e.which === 37 && snake.dx === 0) {
+        e.preventDefault();
+        snake.dx = -grid;
+        snake.dy = 0;
+      } else if (e.which === 38 && snake.dy === 0) {
+        e.preventDefault();
+        snake.dy = -grid;
+        snake.dx = 0;
+      } else if (e.which === 39 && snake.dx === 0) {
+        e.preventDefault();
+        snake.dx = grid;
+        snake.dy = 0;
+      } else if (e.which === 40 && snake.dy === 0) {
+        e.preventDefault();
+        snake.dy = grid;
+        snake.dx = 0;
+      }
     }
   });
 

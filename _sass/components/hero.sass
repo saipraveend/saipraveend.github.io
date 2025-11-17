@@ -1,0 +1,90 @@
+// Hero Section - Single Page Portfolio
+// Extracted from index.html embedded styles
+
+.hero
+  position: relative
+  max-width: 1200px
+  margin: 0 auto
+  padding: 120px 20px 100px
+  text-align: center
+
+  h1
+    font-size: 2rem
+    color: #5f6368
+    font-weight: 400
+    margin-bottom: 12px
+
+.hero-name
+  font-size: 7.2rem
+  font-weight: 400
+  color: #202124
+  line-height: 1
+  margin-bottom: 24px
+
+.hero-tagline
+  font-size: 2.4rem
+  color: #0076A8
+  font-weight: 500
+  margin-bottom: 48px
+
+.hero-stats
+  display: flex
+  gap: 64px
+  justify-content: center
+  margin-top: 48px
+  padding-top: 40px
+  border-top: 1px solid #dadce0
+
+.stat-item
+  text-align: center
+
+.stat-number
+  font-size: 4.8rem
+  font-weight: 400
+  color: #0076A8
+  line-height: 1
+  display: block
+
+.stat-label
+  font-size: 1.4rem
+  color: #5f6368
+  margin-top: 8px
+
+// Scroll Indicator
+.scroll-indicator
+  margin-top: 60px
+  color: #0076A8
+  font-size: 1.6rem
+  font-weight: 500
+  animation: bounce 2s infinite
+  cursor: pointer
+  transition: all 0.3s
+
+  &:hover
+    color: #005980
+    transform: scale(1.1)
+
+@keyframes bounce
+  0%, 20%, 50%, 80%, 100%
+    transform: translateY(0)
+  40%
+    transform: translateY(-10px)
+  60%
+    transform: translateY(-5px)
+
+// Responsive
+@media (max-width: 768px)
+  .hero
+    padding: 80px 20px 60px
+
+  .hero-name
+    font-size: 4.8rem
+
+  .hero-tagline
+    font-size: 2rem
+
+  .hero-stats
+    gap: 32px
+
+  .stat-number
+    font-size: 3.6rem
