@@ -8,81 +8,94 @@ tag:
 - IoT
 image: /assets/images/your-project/cover.jpg
 projects: true
-description: "A brief one-sentence description of your project"
+description: "One sentence: what you built and why it matters"
 category: project
 author: sai.
 ---
 
-## Overview
+## What This Is
 
-Brief introduction to what this project is about and what problem it solves.
+Quick intro - what problem were you solving? Why did you build this?
 
-## Key Features
+## What It Does
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Main feature 1
+- Main feature 2
+- Main feature 3
+
+Keep it simple. Details come later.
 
 <div class="side-by-side">
     <div class="toleft">
-        <img class="image" src="{{ site.url }}/assets/images/your-project/image1.jpg" alt="Description">
-        <figcaption class="caption">Image caption</figcaption>
+        <img class="image" src="{{ site.url }}/assets/images/your-project/image1.jpg" alt="Project photo">
+        <figcaption class="caption">What you're showing here</figcaption>
     </div>
     <div class="toright">
-        Detailed description of the image and what it shows about your project.
+        Why this photo matters. What's interesting about what you built here.
+        Technical details that explain the image.
     </div>
 </div>
 
 ---
 
-## Hardware Components
+## Parts List
 
-- Component 1: Description
-- Component 2: Description
-- Component 3: Description
+- Main board: Arduino/ESP32/whatever you used
+- Sensors: What you connected
+- Actuators: Motors, servos, LEDs, etc.
+- Power: How you powered it
+- Other: Anything else important
 
-## Software Stack
+## Software
 
-- Technology 1
-- Technology 2
-- Library/Framework used
+- Language/Framework
+- Key libraries
+- Development tools
+
+If you wrote custom code, mention the tricky parts.
 
 ---
 
-## Implementation
+## How It Works
 
-### Step 1: Setup
+Break this into logical sections based on your project:
 
-Details about initial setup...
+### Setup / Assembly
 
-### Step 2: Core Functionality
+How you put the hardware together. Include photos if you have them.
 
-How the main features work...
+### The Code
 
-### Step 3: Testing
+Main logic, algorithms, anything interesting you figured out.
 
-Testing methodology and results...
+### Testing
+
+What worked first try (probably nothing), what you had to fix.
 
 ---
 
 ## Results
 
-What you achieved, metrics, performance data, etc.
+Did it work? How well? Numbers if you have them.
 
-## Challenges & Learnings
+Photos or videos of it actually running.
 
-What obstacles you faced and how you overcame them. Key takeaways.
+## What I Learned
 
-## Source Code & Links
+This is valuable. What broke? What would you do differently?
 
-- GitHub: [Repository Link](https://github.com/yourusername/repo)
-- Video Demo: [YouTube/Link]
-- Documentation: [Link if applicable]
+Things that surprised you. Mistakes you won't make again.
+
+## Links
+
+- Code: [GitHub](https://github.com/saipraveend/project-name)
+- Video: [YouTube](https://youtube.com/watch?v=xxx) (if you made one)
+- Build log: [Hackaday.io](https://hackaday.io/project/xxx) (if applicable)
 
 ---
 
-## Future Improvements
+## What's Next
 
-- Potential enhancement 1
-- Potential enhancement 2
-- Ideas for next iteration
+Ideas for v2. Things you didn't have time for.
+
+Keep it real - you might never actually do these, but they're worth noting.

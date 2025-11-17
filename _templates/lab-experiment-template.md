@@ -1,84 +1,85 @@
 ---
-title: "Experiment: Your Title Here"
+title: "Testing: Your Experiment Name"
 date: YYYY-MM-DD
 layout: post
 lab: true
-status: "In Progress"  # Options: "In Progress", "Completed", "Failed", "On Hold"
+status: "In Progress"  # In Progress / Completed / Failed / On Hold
 tag:
-- AI
 - TinyML
+- ESP32
 - Arduino
-- Raspberry Pi
-description: Quick one-line description of what you're experimenting with
+description: One line - what you're testing and why
 ---
 
-## 🎯 Objective
+## What I'm Trying
 
-What are you trying to accomplish or learn with this experiment?
+The goal. What question are you answering? What are you trying to make work?
 
-## 🧪 Hypothesis
+## The Setup
 
-What do you expect will happen? What are you testing?
+**Hardware:**
+- Board: ESP32/Arduino/Pi/whatever
+- Sensors/peripherals you're using
+- How it's connected
 
----
-
-## 🛠️ Setup
-
-### Hardware
-- Component 1
-- Component 2
-- Sensors/Actuators used
-
-### Software
-- Framework/Library
-- Model/Algorithm
-- Development environment
+**Software:**
+- Framework or library
+- Model (if ML)
+- Dev environment
 
 ---
 
-## 📝 Process
+## The Experiment
 
-### Day 1 / Week 1 Progress
+### What I Did
 
-What you did, observations, initial results...
+First attempt, what you tried, how you set it up.
 
-### Current Status
+### What Happened
 
-Where things stand now...
+Results. Did it work? Partially work? Fail completely?
 
----
+Include numbers if you measured anything:
+- Latency: X ms
+- Accuracy: Y%
+- Power draw: Z mA
+- etc.
 
-## 📊 Results (So Far)
+### Problems Hit
 
-- Metric 1: Value/Observation
-- Metric 2: Value/Observation
-- Unexpected findings
-
-## 🤔 Challenges
-
-- Problem 1: Description and attempted solutions
-- Problem 2: Description and attempted solutions
-
----
-
-## 💡 Learnings
-
-Key insights and takeaways, even if the experiment didn't go as planned.
-
-## 🔗 Resources
-
-- Code: [GitHub Gist/Repo](link)
-- References: Articles, papers, tutorials used
-- Dataset (if applicable): [Link]
+List what went wrong (there's always something):
+- Problem 1: What broke and what you tried
+- Problem 2: Another issue
+- Problem 3: etc.
 
 ---
 
-## 🚀 Next Steps
+## What I Learned
 
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
+The valuable part. Even if it totally failed, what did you figure out?
+
+Things that surprised you. Assumptions that were wrong.
+
+## Code & References
+
+- Code: [GitHub gist or repo](link) - even if messy
+- Helpful tutorial: [Link]
+- Paper/article that helped: [Link]
+- Dataset: [Link if using one]
 
 ---
 
-**Note:** This is an ongoing experiment. Updates will be added as progress continues.
+## Next
+
+What you're going to try next:
+- [ ] Thing to test
+- [ ] Another thing
+- [ ] One more thing
+
+Or if it failed hard: what you'd do differently if you tried again.
+
+---
+
+**Last updated:** YYYY-MM-DD
+
+Note: This is a work in progress. Will update as I continue testing.

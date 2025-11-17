@@ -1,75 +1,89 @@
-# Content Templates
+# How to Add Content
 
-These templates make it super easy to add new projects and lab experiments to your portfolio.
+I made these templates so I can quickly add new projects and experiments without having to remember the Jekyll frontmatter every time.
 
-## Quick Start
+## Adding a Project
 
-### Adding a New Project
+When you finish something substantial:
 
-1. Copy `project-template.md`
-2. Rename it to `YYYY-MM-DD-YourProjectName.markdown`
-3. Move it to the `_posts` folder
-4. Fill in your project details
-5. Add images to `/assets/images/your-project/`
-6. Commit and push!
-
-**Example:**
 ```bash
-cp _templates/project-template.md _posts/2025-01-15-AI-Powered-Robot.markdown
+# Copy the template
+cp _templates/project-template.md _posts/2025-03-20-My-New-Robot.markdown
+
+# Edit the file - fill in your details
+# Add photos to /assets/images/my-new-robot/
+
+# Push it live
+git add .
+git commit -m "Add robot project"
+git push
 ```
 
-### Adding a Lab Experiment
+The project will show up on the homepage timeline and in the projects grid. Takes about 2 minutes for GitHub Pages to rebuild.
 
-1. Copy `lab-experiment-template.md`
-2. Rename it to `YYYY-MM-DD-ExperimentName.markdown`
-3. Move it to the `_posts` folder
-4. Fill in your experiment details
-5. Commit and push!
+## Adding a Lab Experiment
 
-**Example:**
+For quick tests, prototypes, or experiments you want to document:
+
 ```bash
-cp _templates/lab-experiment-template.md _posts/2025-01-15-TinyML-Object-Detection.markdown
+# Copy the experiment template
+cp _templates/lab-experiment-template.md _posts/2025-03-20-ESP32-ML-Test.markdown
+
+# Document what you're trying, what worked, what didn't
+# Push whenever - update it later as the experiment evolves
+
+git add .
+git commit -m "Lab: testing ML on ESP32"
+git push
 ```
 
-## Important Fields
+Lab posts can be rough. That's the point. Document as you build, not after everything works.
 
-### For Projects (`projects: true`)
-- **title**: Project name
-- **date**: Project completion date (YYYY-MM-DD)
-- **tag**: Technologies used (for filtering)
-- **image**: Cover image path
-- **description**: One-line description (shows on project cards)
-- **projects**: Must be `true`
+## Frontmatter Fields That Matter
 
-### For Lab Experiments (`lab: true`)
-- **title**: Experiment name
-- **date**: Start date (YYYY-MM-DD)
-- **status**: "In Progress", "Completed", "Failed", or "On Hold"
-- **tag**: Technologies/topics
-- **description**: One-line description
-- **lab**: Must be `true`
+**Projects:**
+- `projects: true` - Makes it show up in projects
+- `title` - What you built
+- `date` - When you finished (YYYY-MM-DD)
+- `tag` - Tech you used (Arduino, Robot, IoT, etc.)
+- `image` - Path to cover photo
+- `description` - One sentence summary
 
-## Tags for Filtering
+**Lab Experiments:**
+- `lab: true` - Shows up in Lab section
+- `status` - "In Progress", "Completed", "Failed", "On Hold"
+- `title` - What you're testing
+- `date` - When you started
+- `tag` - What tech you're using
+- `description` - Quick summary
 
-Use consistent tags for the filter buttons to work:
-- `Robotics`, `Robot` → filters to "robotics"
-- `Arduino`, `ESP32`, `Microcontroller` → filters to "embedded"
-- `IoT`, `WiFi`, `Bluetooth` → filters to "iot"
-- `Power Electronics`, `DSTATCOM` → filters to "power"
+## Tags
 
-## Image Guidelines
+Be consistent with tags so the filters work:
+- **Robotics stuff**: `Robot`, `Robotics`, `Autonomous`
+- **Microcontrollers**: `Arduino`, `ESP32`, `PIC`, `STM32`
+- **IoT**: `IoT`, `WiFi`, `Bluetooth`, `LoRa`
+- **Power**: `Power Electronics`, `DSTATCOM`
+- **AI**: `AI`, `TinyML`, `Machine Learning`
 
-- Store images in `/assets/images/project-name/`
-- Cover images work best at 800x600px or similar aspect ratio
-- Compress images to keep the site fast (use TinyPNG or similar)
-- Supported formats: JPG, PNG, GIF
+## Images
 
-## Tips
+- Put them in `/assets/images/project-name/`
+- Cover images: roughly 800x600 works well
+- Compress before uploading (I use TinyPNG)
+- JPG for photos, PNG for diagrams
 
-- Write as you build — capture the journey, not just the result
-- Include failures and learnings (especially in Lab experiments)
-- Link to code repos, videos, and external resources
-- Use the side-by-side layout for image + text combinations
-- Keep descriptions concise for better card previews
+## Writing Tips
 
-Happy building! 🚀
+Things I've learned:
+- Write while building, not 6 months later when you've forgotten half the details
+- Failed experiments are worth documenting - you'll remember what didn't work
+- Link to code repos even if the code is messy
+- The side-by-side layout (see template) works great for hardware photos + explanations
+- Keep card descriptions short - you can explain details in the full post
+
+## The Point
+
+The whole goal of these templates is to remove friction. If documenting a project takes 30 minutes instead of 3 hours, you'll actually do it.
+
+Document what you build. Future you will thank current you.
