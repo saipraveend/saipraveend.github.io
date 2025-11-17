@@ -1,9 +1,9 @@
 # main text of home
-name: Hi, This is Sai.
-bio: Make. Code. Embed.
+name: Saipraveen Durairaman
+bio: Embedded Systems • AI + Hardware • Robotics
 
 # summary info
-description: A site about my interests and me.
+description: Building robots, power electronics, and now AI-powered hardware. Over a decade of embedded systems projects documented here.
 
 # if it's an external image, update below for true
 # better with square images
@@ -54,7 +54,7 @@ github: saipraveend
 
 authors:
         name: Saipraveen Durairaman
-        bio: Look who's here.. A visitor.
+        bio: Embedded systems engineer. Building stuff with microcontrollers since 2010.
         external-image: false
         picture: assets/images/profile.jpg
         twitter: saipraveend
@@ -73,6 +73,7 @@ projects: true
 
 # if you don't need "about" or "blog", comment them out below
 about: true
+lab: true  # New section for experiments and quick shares
 # blog: true
 
 # do you want to show the "read time" of the posts?
