@@ -4,132 +4,166 @@ title: Home
 ---
 
 <style>
-/* Google-inspired minimalist design */
-.hero {
-  padding: 80px 0 60px;
-  max-width: 800px;
+/* Hero Section with Typing Animation */
+.hero-container {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 80px 20px 60px;
 }
 
-.hero-title {
-  font-size: 4.8rem;
-  font-weight: 400;
-  color: #202124;
-  margin-bottom: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-}
-
-.hero-subtitle {
-  font-size: 2rem;
-  color: #5f6368;
-  font-weight: 400;
-  line-height: 1.6;
-  margin-bottom: 40px;
-}
-
-.accent {
-  color: #1a73e8;
-  font-weight: 500;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 16px;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+  align-items: center;
   margin-bottom: 80px;
 }
 
-.btn {
-  padding: 12px 24px;
-  font-size: 1.4rem;
-  font-weight: 500;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.hero-image {
+  position: relative;
 }
 
-.btn-primary {
-  background: #1a73e8;
-  color: white;
-  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+.hero-image img {
+  width: 100%;
+  border-radius: 50%;
+  border: 4px solid #f8f9fa;
+  box-shadow: 0 4px 12px rgba(60,64,67,0.2);
 }
 
-.btn-primary:hover {
-  background: #1967d2;
-  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
-  text-decoration: none;
-}
-
-.btn-secondary {
-  background: white;
-  color: #1a73e8;
-  border: 1px solid #dadce0;
-}
-
-.btn-secondary:hover {
-  background: #f8f9fa;
-  border-color: #dadce0;
-  text-decoration: none;
-}
-
-.section-title {
+.hero-content h1 {
   font-size: 2.4rem;
+  font-weight: 400;
+  color: #5f6368;
+  margin-bottom: 16px;
+}
+
+.hero-name {
+  font-size: 5.6rem;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.hero-tagline {
+  font-size: 2rem;
+  color: #5f6368;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.typing-container {
+  font-size: 2.4rem;
+  color: #1a73e8;
+  font-weight: 500;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.typed-text {
+  border-right: 3px solid #1a73e8;
+  padding-right: 8px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { border-color: #1a73e8; }
+  51%, 100% { border-color: transparent; }
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+.stat {
+  text-align: left;
+}
+
+.stat-number {
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #1a73e8;
+  display: block;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 1.4rem;
+  color: #5f6368;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* Projects Section */
+.section-header {
+  text-align: center;
+  margin: 80px 0 48px;
+}
+
+.section-header h2 {
+  font-size: 2.8rem;
   font-weight: 400;
   color: #202124;
   margin-bottom: 12px;
-  text-align: center;
 }
 
 .section-subtitle {
   font-size: 1.6rem;
   color: #5f6368;
-  text-align: center;
-  margin-bottom: 48px;
+  font-weight: 400;
 }
 
-.timeline {
-  max-width: 900px;
+/* Masonry Grid Layout */
+.projects-masonry {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 0 20px;
+  column-count: 3;
+  column-gap: 24px;
 }
 
-.timeline-item {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 48px;
-  position: relative;
-}
-
-.timeline-date {
-  flex-shrink: 0;
-  width: 80px;
-  text-align: right;
-  padding-top: 4px;
-}
-
-.timeline-year {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #1a73e8;
-  font-variant-numeric: tabular-nums;
-}
-
-.timeline-content {
-  flex: 1;
+.project-card {
+  break-inside: avoid;
+  margin-bottom: 24px;
   background: white;
-  padding: 24px 28px;
-  border-radius: 8px;
   border: 1px solid #dadce0;
-  transition: all 0.2s;
-  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  width: 100%;
 }
 
-.timeline-content:hover {
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(60,64,67,0.2);
   border-color: #1a73e8;
-  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 200px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 20px;
+}
+
+.project-year {
+  font-size: 1.2rem;
+  color: #1a73e8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
 .project-title {
@@ -137,6 +171,7 @@ title: Home
   font-weight: 500;
   color: #202124;
   margin-bottom: 8px;
+  line-height: 1.3;
 }
 
 .project-title a {
@@ -149,8 +184,8 @@ title: Home
 }
 
 .project-desc {
-  color: #5f6368;
   font-size: 1.4rem;
+  color: #5f6368;
   line-height: 1.6;
   margin-bottom: 12px;
 }
@@ -158,131 +193,159 @@ title: Home
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .tag {
-  padding: 4px 12px;
+  padding: 4px 10px;
   background: #e8f0fe;
   color: #1967d2;
-  border-radius: 16px;
-  font-size: 1.2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 64px;
-  margin: 60px 0;
-  padding: 40px;
-  background: white;
-  border-radius: 8px;
-  border: 1px solid #dadce0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.stat {
+.cta-section {
   text-align: center;
+  margin: 80px 0 60px;
 }
 
-.stat-number {
-  font-size: 3.6rem;
-  font-weight: 400;
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #1a73e8;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(60,64,67,0.3);
+  margin: 0 8px;
+}
+
+.btn:hover {
+  background: #1967d2;
+  box-shadow: 0 4px 12px rgba(60,64,67,0.3);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: white;
   color: #1a73e8;
-  display: block;
-  font-variant-numeric: tabular-nums;
+  border: 1px solid #dadce0;
 }
 
-.stat-label {
-  font-size: 1.4rem;
-  color: #5f6368;
-  margin-top: 4px;
-  font-weight: 400;
+.btn-secondary:hover {
+  background: #f8f9fa;
+  border-color: #1a73e8;
+}
+
+@media (max-width: 1024px) {
+  .projects-masonry {
+    column-count: 2;
+  }
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 3.2rem;
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
   }
 
-  .hero-subtitle {
+  .hero-image {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .hero-name {
+    font-size: 4rem;
+  }
+
+  .hero-tagline {
     font-size: 1.6rem;
   }
 
-  .cta-buttons {
-    flex-direction: column;
-  }
-
-  .btn {
+  .typing-container {
+    font-size: 1.8rem;
     justify-content: center;
   }
 
-  .timeline-item {
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .projects-masonry {
+    column-count: 1;
+  }
+
+  .cta-section {
+    display: flex;
     flex-direction: column;
     gap: 12px;
+    align-items: center;
   }
 
-  .timeline-date {
+  .btn {
     width: 100%;
-    text-align: left;
-  }
-
-  .stats {
-    flex-direction: column;
-    gap: 32px;
+    max-width: 300px;
   }
 }
 </style>
 
-<div class="hero">
-  <h1 class="hero-title">Building intelligent systems from <span class="accent">silicon to software</span></h1>
-
-  <p class="hero-subtitle">
-    Embedded systems engineer exploring robotics, power electronics, and AI-powered hardware
-  </p>
-
-  <div class="cta-buttons">
-    <a href="{{ site.url }}/projects" class="btn btn-primary">View all projects</a>
-    <a href="{{ site.url }}/lab" class="btn btn-secondary">Explore lab →</a>
-  </div>
-
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-number">12+</span>
-      <span class="stat-label">Projects</span>
+<div class="hero-container">
+  <div class="hero-grid">
+    <div class="hero-image">
+      <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman">
     </div>
-    <div class="stat">
-      <span class="stat-number">10+</span>
-      <span class="stat-label">Years</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">∞</span>
-      <span class="stat-label">Ideas</span>
+
+    <div class="hero-content">
+      <h1>Hi, I'm</h1>
+      <div class="hero-name">Sai</div>
+      <p class="hero-tagline">Embedded systems engineer who</p>
+      <div class="typing-container">
+        <span class="typed-text" id="typed"></span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">{{ site.posts | where: "projects", true | size }}+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Years</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Ideas</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<h2 class="section-title">Project timeline</h2>
-<p class="section-subtitle">From obstacle-avoiding robots to AI on embedded hardware</p>
+<div class="section-header">
+  <h2>What I've built</h2>
+  <p class="section-subtitle">Latest projects first • 2010 to present</p>
+</div>
 
-<div class="timeline">
-  {% assign current_year = "" %}
-  {% for post in site.posts reversed %}
+<div class="projects-masonry">
+  {% for post in site.posts %}
     {% if post.projects %}
-      {% assign post_year = post.date | date: '%Y' %}
-
-      <div class="timeline-item">
-        <div class="timeline-date">
-          {% if current_year != post_year %}
-            <span class="timeline-year">{{ post_year }}</span>
-            {% assign current_year = post_year %}
+      <div class="project-card">
+        <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" style="text-decoration: none;">
+          {% if post.image %}
+            <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image">
+          {% else %}
+            <div class="project-image"></div>
           {% endif %}
-        </div>
+        </a>
 
-        <div class="timeline-content">
+        <div class="project-content">
+          <div class="project-year">{{ post.date | date: '%Y' }}</div>
           <h3 class="project-title">
             <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
               {{ post.title }}
@@ -295,7 +358,7 @@ title: Home
 
           {% if post.tag %}
             <div class="project-tags">
-              {% for tag in post.tag limit:4 %}
+              {% for tag in post.tag limit:3 %}
                 <span class="tag">{{ tag }}</span>
               {% endfor %}
             </div>
@@ -305,3 +368,59 @@ title: Home
     {% endif %}
   {% endfor %}
 </div>
+
+<div class="cta-section">
+  <a href="{{ site.url }}/projects" class="btn">View all projects</a>
+  <a href="{{ site.url }}/lab" class="btn btn-secondary">Explore lab →</a>
+</div>
+
+<script>
+// Typing animation
+const phrases = [
+  'builds robots',
+  'designs PCBs',
+  'writes embedded code',
+  'prototypes with ESP32',
+  'tests TinyML models',
+  'debugs with oscilloscopes',
+  'solders components',
+  'integrates sensors',
+  'optimizes power systems',
+  'ships hardware products'
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typedElement = document.getElementById('typed');
+
+function type() {
+  const currentPhrase = phrases[phraseIndex];
+
+  if (isDeleting) {
+    typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typeSpeed = isDeleting ? 50 : 100;
+
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    typeSpeed = 2000; // Pause at end
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    typeSpeed = 500; // Pause before next phrase
+  }
+
+  setTimeout(type, typeSpeed);
+}
+
+// Start typing animation
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(type, 1000);
+});
+</script>

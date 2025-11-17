@@ -209,8 +209,8 @@ layout: page
   </div>
 
   <div class="snake-section">
-    <h2>The Geek Corner</h2>
-    <p class="snake-intro">Classic Snake game, implemented in vanilla JavaScript. Because why not? 🎮</p>
+    <h2>Why not?</h2>
+    <p class="snake-intro">Classic Snake game in vanilla JavaScript 🎮</p>
 
     <div id="score">Score: 0</div>
     <canvas width="400" height="400" id="game"></canvas>
