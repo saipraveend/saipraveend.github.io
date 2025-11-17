@@ -1,0 +1,121 @@
+// Project Card Component
+// Extracted from index.html embedded styles
+
+// Section Styling
+section
+  max-width: 1200px
+  margin: 0 auto
+  padding: 80px 20px
+  scroll-margin-top: 20px
+
+.section-header
+  text-align: center
+  margin-bottom: 60px
+
+.section-title
+  font-size: 3.6rem
+  font-weight: 400
+  color: #202124
+  margin-bottom: 12px
+
+.section-subtitle
+  font-size: 1.6rem
+  color: #5f6368
+
+// Projects Grid - Masonry
+.projects-grid
+  column-count: 3
+  column-gap: 24px
+
+.project-card
+  break-inside: avoid
+  margin-bottom: 24px
+  background: white
+  border: 1px solid #dadce0
+  border-radius: 8px
+  overflow: hidden
+  transition: all 0.3s ease
+  display: inline-block
+  width: 100%
+
+  &:hover
+    transform: translateY(-8px)
+    box-shadow: 0 12px 40px rgba(0, 118, 168, 0.15)
+    border-color: #0076A8
+
+.project-image
+  width: 100%
+  height: auto
+  display: block
+  min-height: 180px
+  object-fit: cover
+  background: linear-gradient(135deg, #0076A8 0%, #005980 100%)
+
+.project-body
+  padding: 20px
+
+.project-meta
+  display: flex
+  align-items: center
+  gap: 12px
+  margin-bottom: 12px
+
+.project-year
+  font-size: 1.2rem
+  color: #0076A8
+  font-weight: 600
+  text-transform: uppercase
+  letter-spacing: 0.5px
+
+.project-type
+  padding: 4px 10px
+  background: #e6f4f9
+  color: #005980
+  border-radius: 12px
+  font-size: 1.1rem
+  font-weight: 500
+
+.project-title
+  font-size: 1.8rem
+  font-weight: 500
+  color: #202124
+  margin-bottom: 8px
+  line-height: 1.3
+
+  a
+    color: inherit
+    text-decoration: none
+
+    &:hover
+      color: #0076A8
+
+.project-description
+  font-size: 1.4rem
+  color: #5f6368
+  line-height: 1.6
+  margin-bottom: 16px
+
+.project-tags
+  display: flex
+  flex-wrap: wrap
+  gap: 6px
+
+.tag
+  padding: 4px 10px
+  background: #f8f9fa
+  color: #5f6368
+  border-radius: 12px
+  font-size: 1.1rem
+  font-weight: 500
+
+// Responsive Design
+@media (max-width: 1024px)
+  .projects-grid
+    column-count: 2
+
+@media (max-width: 768px)
+  .projects-grid
+    column-count: 1
+
+  .section-title
+    font-size: 2.8rem

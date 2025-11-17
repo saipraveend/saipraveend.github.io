@@ -97,10 +97,10 @@ animation: true
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-gist
   - jekyll-feed
-  - jemoji
-  - jekyll-admin
+  # Removed jekyll-admin (doesn't work on GitHub Pages)
+  # Removed jekyll-gist (not used)
+  # Removed jemoji (using manual emojis in HTML)
 
 jekyll-mentions:
     base_url: https://github.com

@@ -69,7 +69,7 @@ layout: page
 <div class="about-container">
   <div class="about-grid">
     <div class="about-image">
-      <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman">
+      <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" loading="lazy">
     </div>
 
     <div class="about-content">

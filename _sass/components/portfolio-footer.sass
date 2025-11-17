@@ -1,0 +1,46 @@
+// Portfolio Footer Component
+// Extracted from index.html embedded styles
+
+.portfolio-footer
+  max-width: 1200px
+  margin: 0 auto
+  padding: 60px 20px
+  text-align: center
+  border-top: 1px solid #dadce0
+
+.social-links
+  display: flex
+  gap: 16px
+  justify-content: center
+  margin-bottom: 32px
+
+.social-btn
+  padding: 12px 32px
+  background: white
+  color: #0076A8
+  border: 2px solid #0076A8
+  border-radius: 8px
+  text-decoration: none
+  font-weight: 500
+  font-size: 1.6rem
+  transition: all 0.2s
+  display: inline-flex
+  align-items: center
+  gap: 8px
+
+  &:hover
+    background: #0076A8
+    color: white
+    transform: translateY(-2px)
+    box-shadow: 0 4px 12px rgba(0, 118, 168, 0.3)
+    text-decoration: none
+
+.copyright
+  font-size: 1.4rem
+  color: #5f6368
+
+// Responsive
+@media (max-width: 768px)
+  .social-links
+    flex-direction: column
+    align-items: center
