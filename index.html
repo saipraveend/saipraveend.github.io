@@ -1,403 +1,187 @@
----
-layout: default
-title: Home
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saipraveen Durairaman — Product Leader · Embedded Systems · AI</title>
+  <meta name="description" content="Product leader with 12+ years bridging hardware and AI. From building robots to directing embedded AI strategy at MathWorks.">
+  <meta property="og:title" content="Saipraveen Durairaman — Product Leader">
+  <meta property="og:description" content="Product leader with 12+ years bridging hardware and AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saipraveend.github.io">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
 
-{% include nav.html %}
-
-<!-- Top Navigation -->
-<nav class="top-nav">
-  <a href="#projects" class="nav-btn">Projects</a>
-  <a href="#about" class="nav-btn">About</a>
-  <a href="#contact" class="nav-btn">Connect</a>
-  <a href="#game-section" class="nav-btn">Why not?</a>
-</nav>
-
-<style>
-/* Top Navigation */
-.top-nav {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 12px;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 8px 12px;
-  border-radius: 100px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-}
-
-.nav-btn {
-  padding: 8px 16px;
-  background: transparent;
-  color: #0076A8;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.4rem;
-  border-radius: 100px;
-  transition: all 0.2s ease;
-}
-
-.nav-btn:hover {
-  background: #0076A8;
-  color: white;
-  text-decoration: none;
-  transform: translateY(-1px);
-}
-
-@media (max-width: 768px) {
-  .top-nav {
-    top: auto;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-  }
-
-  .nav-btn {
-    font-size: 1.2rem;
-    padding: 6px 12px;
-  }
-}
-
-/* Global smooth scrolling for single-page portfolio */
-html {
-  scroll-behavior: smooth;
-}
-</style>
-
-<!-- Hero Section -->
-<section id="hero" class="hero" id="main-content">
-  <h1>Hi, I'm</h1>
-  <div class="hero-name">Saipraveen Durairaman</div>
-  <div class="hero-tagline">15 years building robots, embedded systems, and AI-powered hardware</div>
-  <p class="hero-subtitle">From robotics competitions to TinyML on ESP32 — making hardware think</p>
-
-  <div class="hero-cta">
-    <a href="#contact" class="btn btn-primary">Let's work together</a>
-    <a href="#projects" class="btn btn-secondary">See my work</a>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <div class="section-header">
-    <h2 class="section-title">Projects</h2>
-    <p class="section-subtitle">Hardware, embedded systems, and experiments • 2010–present</p>
-  </div>
-
-  <div class="projects-grid">
-    {% assign all_posts = site.posts %}
-    {% for post in all_posts %}
-      {% if post.projects or post.lab %}
-        <div class="project-card">
-          {% if post.image %}
-            <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}" aria-label="{{ post.title }}">
-              <img src="{{ post.image }}" alt="{{ post.title }}" class="project-image" loading="lazy" decoding="async">
-            </a>
-          {% endif %}
-
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-year">{{ post.date | date: '%Y' }}</span>
-              {% if post.lab %}
-                <span class="project-type">Experiment</span>
-              {% else %}
-                <span class="project-type">Project</span>
-              {% endif %}
-            </div>
-
-            <h3 class="project-title">
-              <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
-                {{ post.title }}
-              </a>
-            </h3>
-
-            {% if post.description %}
-              <p class="project-description">{{ post.description }}</p>
-            {% endif %}
-
-            {% if post.tag %}
-              <div class="project-tags">
-                {% for tag in post.tag limit:4 %}
-                  <span class="tag">{{ tag }}</span>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-</section>
-
-<!-- About Section -->
-<section id="about">
-  <div class="section-header">
-    <h2 class="section-title">About</h2>
-  </div>
-
-  <div class="about-content">
-    <img src="{{ site.url }}/{{ site.picture }}" alt="Saipraveen Durairaman" class="about-image" loading="lazy" decoding="async">
-
-    <p class="about-role">Embedded Systems Engineer at MathWorks</p>
-
-    <p class="about-text">
-      I build hardware with microcontrollers, sensors, and code. Started with obstacle-avoiding robots in 2010 — broke down enough household gadgets to understand how things actually work, then started building my own.
-    </p>
-
-    <p class="about-text">
-      Since then: Published power electronics research in ARPN Journal. Built everything from VR-controlled robots to assistive devices for visually impaired students. These days I'm exploring how AI and ML fit into embedded systems — turns out cramming neural networks into 2MB of flash memory is more interesting than I expected.
-    </p>
-
-    <p class="about-text">
-      By day, I manage embedded hardware product marketing at MathWorks India. Weekends? ESP32s, TinyML models, and whatever hardware project has my attention. Fifteen years in, still figuring things out.
-    </p>
-  </div>
-</section>
-
-<!-- Snake Game Section -->
-<section id="game-section">
-  <div class="snake-section">
-    <h2>Why not?</h2>
-    <p class="snake-intro">Classic Snake game in vanilla JavaScript</p>
-
-    <div id="score">Score: 0</div>
-    <canvas width="400" height="400" id="game"
-            role="application"
-            aria-label="Snake game - Use arrow keys or swipe to control the snake and eat red apples"
-            tabindex="0">
-      Your browser does not support HTML5 Canvas. Please upgrade to a modern browser to play this game.
-    </canvas>
-    <p class="game-controls">Use arrow keys or swipe to move</p>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="contact-section">
-  <div class="section-header">
-    <h2 class="section-title">Let's Build Something Together</h2>
-    <p class="section-subtitle">Interested in collaboration, consulting, or just want to chat about embedded systems and TinyML?</p>
-  </div>
-
-  <div class="contact-content">
-    <p class="contact-text">I'm always open to discussing:</p>
-    <ul class="contact-list">
-      <li>Embedded systems and IoT projects</li>
-      <li>TinyML and edge AI implementations</li>
-      <li>Robotics and hardware design</li>
-      <li>Technical consulting and collaboration</li>
-    </ul>
-
-    <div class="contact-cta">
-      <a href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank" class="btn btn-primary" rel="noopener">
-        Connect on LinkedIn
-      </a>
-      <a href="https://github.com/{{ site.github }}" target="_blank" class="btn btn-secondary" rel="noopener">
-        View on GitHub
-      </a>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Saipraveen</a>
+      <div class="nav-links" id="nav-links">
+        <a href="/journey.html" class="nav-link">Journey</a>
+        <a href="/projects.html" class="nav-link">Projects</a>
+        <a href="/lab.html" class="nav-link">Lab</a>
+        <a href="/connect.html" class="nav-link">Connect</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- Footer -->
-<footer class="portfolio-footer">
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank" class="social-btn" rel="noopener">
-      LinkedIn →
-    </a>
-    <a href="https://github.com/{{ site.github }}" target="_blank" class="social-btn" rel="noopener">
-      GitHub →
-    </a>
-  </div>
-  <div class="copyright">
-    {{ site.name }} © {{ site.time | date: '%Y' }}
-  </div>
-</footer>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Product Leader · Embedded Systems · AI Strategy</p>
+      <h1 class="hero-name">Saipraveen<br><span class="accent">Durairaman</span></h1>
+      <p class="hero-tagline">12+ years bridging hardware and software. From building robots in college to directing AI strategy for embedded systems — I make complex technical products that people actually use.</p>
+      <div class="hero-cta">
+        <a href="/journey.html" class="btn btn-primary">View my journey</a>
+        <a href="/projects.html" class="btn btn-secondary">See my work</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-text">Scroll</span>
+    </div>
+  </section>
 
-<!-- Snake Game JavaScript -->
-<script>
-(function() {
-  'use strict';
+  <!-- Stats -->
+  <section>
+    <div class="container">
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat-number" data-count="12" data-suffix="+">0</div>
+          <div class="stat-label">Years in Tech</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="6">0</div>
+          <div class="stat-label">Career Roles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="10" data-suffix="+">0</div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="3">0</div>
+          <div class="stat-label">Awards Won</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Error handling - check if elements exist
-  var canvas = document.getElementById('game');
-  if (!canvas) {
-    console.error('Snake Game: Canvas element not found');
-    return;
-  }
+  <!-- What I Do -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">What I Do</p>
+        <h2 class="section-title">Three worlds, one perspective</h2>
+        <p class="section-subtitle">The rare overlap of hands-on engineering, product strategy, and ecosystem thinking.</p>
+      </div>
 
-  var context = canvas.getContext('2d');
-  if (!context) {
-    console.error('Snake Game: Could not get 2D context');
-    return;
-  }
+      <div class="focus-grid stagger-children">
+        <div class="focus-card">
+          <div class="focus-icon focus-icon--blue">&#9881;</div>
+          <h3 class="focus-title">Product Strategy</h3>
+          <p class="focus-text">End-to-end product lifecycle from ideation to GTM. Multi-year roadmaps, competitive analysis, and data-driven prioritization that's driven $2.5M+ in attributed revenue.</p>
+        </div>
+        <div class="focus-card">
+          <div class="focus-icon focus-icon--warm">&#9879;</div>
+          <h3 class="focus-title">Hardware Ecosystems</h3>
+          <p class="focus-text">Building partnerships with ARM, STMicroelectronics, Arduino, and Raspberry Pi. Bridging the gap between $5 maker boards and enterprise engineering tools.</p>
+        </div>
+        <div class="focus-card">
+          <div class="focus-icon focus-icon--sage">&#9889;</div>
+          <h3 class="focus-title">AI Innovation</h3>
+          <p class="focus-text">Prototyping GenAI coding agents that reduce hardware development from months to days. Piloting tools to accelerate developer content creation by 50%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  var scoreDisplay = document.getElementById('score');
-  if (!scoreDisplay) {
-    console.error('Snake Game: Score element not found');
-    return;
-  }
+  <!-- Featured Work -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Featured Work</p>
+        <h2 class="section-title">Things I've built</h2>
+        <p class="section-subtitle">A decade of hardware projects, from competition robots to assistive tech.</p>
+      </div>
 
-  var grid = 16;
-  var count = 0;
-  var score = 0;
+      <div class="featured-grid stagger-children">
+        <a href="/projects.html" class="featured-card">
+          <img src="/assets/images/Snapbot/1.jpg" alt="SnapBot — Modular Robotics Platform" loading="lazy">
+          <div class="featured-overlay">
+            <div class="featured-year">2016</div>
+            <div class="featured-title">SnapBot — Modular Robotics</div>
+            <div class="featured-desc">Top 20 at IndiaHacks. Snap-fit magnetic assembly for education.</div>
+          </div>
+        </a>
+        <a href="/projects.html" class="featured-card">
+          <img src="/assets/images/Shaastra/1.jpg" alt="Shaastra Robotics Competition" loading="lazy">
+          <div class="featured-overlay">
+            <div class="featured-year">2011</div>
+            <div class="featured-title">Shaastra — IIT Madras</div>
+            <div class="featured-desc">3rd place. Autonomous &amp; manual robots from scratch.</div>
+          </div>
+        </a>
+        <a href="/projects.html" class="featured-card">
+          <img src="/assets/images/Chiposcope/9.jpg" alt="Chiposcope DIY Oscilloscope" loading="lazy">
+          <div class="featured-overlay">
+            <div class="featured-year">2013</div>
+            <div class="featured-title">Chiposcope — DIY Oscilloscope</div>
+            <div class="featured-desc">Oscilloscope on a Chipkit Uno32. Featured on Digilent Blog.</div>
+          </div>
+        </a>
+        <a href="/projects.html" class="featured-card">
+          <img src="/assets/images/Electronics/1.jpg" alt="Electronics Ventures" loading="lazy">
+          <div class="featured-overlay">
+            <div class="featured-year">2011</div>
+            <div class="featured-title">Electronics Ventures</div>
+            <div class="featured-desc">Wheeled robots, maglev, solar, wind — the college years.</div>
+          </div>
+        </a>
+      </div>
 
-  var snake = {
-    x: 160,
-    y: 160,
-    dx: grid,
-    dy: 0,
-    cells: [],
-    maxCells: 4
-  };
+      <div class="reveal" style="text-align:center; margin-top: var(--space-xl);">
+        <a href="/projects.html" class="btn-ghost">View all projects <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
 
-  var apple = {
-    x: 320,
-    y: 320
-  };
+  <!-- CTA -->
+  <section>
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width: 500px; margin: 0 auto;">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title" style="margin-bottom: var(--space-md);">Let's build something</h2>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Open to product leadership roles, consulting, and collaborations in embedded systems and AI.</p>
+        <a href="/connect.html" class="btn btn-primary">Connect with me</a>
+      </div>
+    </div>
+  </section>
 
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-text">&copy; 2026 Saipraveen Durairaman</p>
+        <div class="footer-links">
+          <a href="https://linkedin.com/in/saipraveend" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/saipraveend" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:saipraveen.durairaman@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  function loop() {
-    requestAnimationFrame(loop);
-
-    if (++count < 4) {
-      return;
-    }
-
-    count = 0;
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    snake.x += snake.dx;
-    snake.y += snake.dy;
-
-    if (snake.x < 0) {
-      snake.x = canvas.width - grid;
-    } else if (snake.x >= canvas.width) {
-      snake.x = 0;
-    }
-
-    if (snake.y < 0) {
-      snake.y = canvas.height - grid;
-    } else if (snake.y >= canvas.height) {
-      snake.y = 0;
-    }
-
-    snake.cells.unshift({x: snake.x, y: snake.y});
-
-    if (snake.cells.length > snake.maxCells) {
-      snake.cells.pop();
-    }
-
-    context.fillStyle = '#EA4335';
-    context.fillRect(apple.x, apple.y, grid-1, grid-1);
-
-    context.fillStyle = '#0076A8';
-    snake.cells.forEach(function(cell, index) {
-      context.fillRect(cell.x, cell.y, grid-1, grid-1);
-
-      if (cell.x === apple.x && cell.y === apple.y) {
-        snake.maxCells++;
-        score++;
-        scoreDisplay.textContent = 'Score: ' + score;
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-      }
-
-      for (var i = index + 1; i < snake.cells.length; i++) {
-        if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-          snake.x = 160;
-          snake.y = 160;
-          snake.cells = [];
-          snake.maxCells = 4;
-          snake.dx = grid;
-          snake.dy = 0;
-          apple.x = getRandomInt(0, 25) * grid;
-          apple.y = getRandomInt(0, 25) * grid;
-          score = 0;
-          scoreDisplay.textContent = 'Score: ' + score;
-        }
-      }
-    });
-  }
-
-  // Modern keyboard handling with e.key (not deprecated e.which)
-  document.addEventListener('keydown', function(e) {
-    var key = e.key || e.keyCode;
-
-    // Handle arrow keys with modern API
-    if (key === 'ArrowLeft' || key === 37) {
-      if (snake.dx === 0) {
-        e.preventDefault();
-        snake.dx = -grid;
-        snake.dy = 0;
-      }
-    } else if (key === 'ArrowUp' || key === 38) {
-      if (snake.dy === 0) {
-        e.preventDefault();
-        snake.dy = -grid;
-        snake.dx = 0;
-      }
-    } else if (key === 'ArrowRight' || key === 39) {
-      if (snake.dx === 0) {
-        e.preventDefault();
-        snake.dx = grid;
-        snake.dy = 0;
-      }
-    } else if (key === 'ArrowDown' || key === 40) {
-      if (snake.dy === 0) {
-        e.preventDefault();
-        snake.dy = grid;
-        snake.dx = 0;
-      }
-    }
-  });
-
-  // Mobile touch support - swipe gestures
-  var touchStartX = 0;
-  var touchStartY = 0;
-
-  canvas.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: false });
-
-  canvas.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    var touchEndX = e.changedTouches[0].clientX;
-    var touchEndY = e.changedTouches[0].clientY;
-
-    var deltaX = touchEndX - touchStartX;
-    var deltaY = touchEndY - touchStartY;
-
-    // Determine swipe direction (minimum 30px swipe)
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      // Horizontal swipe
-      if (deltaX > 30 && snake.dx === 0) {
-        snake.dx = grid;
-        snake.dy = 0;
-      } else if (deltaX < -30 && snake.dx === 0) {
-        snake.dx = -grid;
-        snake.dy = 0;
-      }
-    } else {
-      // Vertical swipe
-      if (deltaY > 30 && snake.dy === 0) {
-        snake.dy = grid;
-        snake.dx = 0;
-      } else if (deltaY < -30 && snake.dy === 0) {
-        snake.dy = -grid;
-        snake.dx = 0;
-      }
-    }
-  }, { passive: false });
-
-  requestAnimationFrame(loop);
-})();
-</script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
