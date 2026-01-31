@@ -4,44 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Saipraveen Durairaman</title>
-  <meta name="description" content="Hardware projects, robots, and embedded systems experiments by Saipraveen Durairaman — 2010 to present.">
+  <meta name="description" content="10+ hardware projects — from competition robots to assistive devices to modular robotics platforms.">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Saipraveen</a>
+      <a href="/" class="nav-logo">SD</a>
       <div class="nav-links" id="nav-links">
         <a href="/journey.html" class="nav-link">Journey</a>
         <a href="/projects.html" class="nav-link">Projects</a>
         <a href="/lab.html" class="nav-link">Lab</a>
         <a href="/connect.html" class="nav-link">Connect</a>
       </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </nav>
 
   <main>
-    <!-- Page Hero -->
     <div class="page-hero container">
-      <p class="section-label">Portfolio</p>
-      <h1>Things I've Built</h1>
-      <p class="section-subtitle">From obstacle-avoiding cockroach bots to modular robotics platforms — a decade of making things.</p>
+      <p class="section-label">Projects</p>
+      <h1>Things I've built</h1>
+      <p class="page-sub">Robots, oscilloscopes, EVs, assistive devices, LED lights from recycled materials. If it has circuits, I've probably tried building it.</p>
     </div>
 
-    <!-- Filters + Grid -->
-    <section style="padding-top: 0;">
+    <section style="padding-top:0">
       <div class="container">
         <div class="filter-bar reveal">
           <button class="filter-btn active" data-filter="all">All</button>
@@ -51,176 +42,115 @@
           <button class="filter-btn" data-filter="research">Research</button>
         </div>
 
-        <div class="projects-grid stagger-children">
+        <div class="projects-grid stagger">
 
           <!-- SnapBot -->
-          <div class="project-card" data-category="robotics,embedded" data-project="snapbot">
-            <img class="project-card-image" src="/assets/images/Snapbot/1.jpg" alt="SnapBot" loading="lazy">
+          <div class="project-card" data-category="robotics" data-project="snapbot">
+            <img class="project-card-img" src="/assets/images/Snapbot/1.jpg" alt="SnapBot" loading="lazy">
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2016</span>
-                <span class="project-card-badge">Top 20 IndiaHacks</span>
-              </div>
-              <h3 class="project-card-title">SnapBot — Modular Robotics Platform</h3>
-              <p class="project-card-desc">Open-source modular robot for educators &amp; students. Snap-fit magnetic assembly, IoT enabled, 3D-printed chassis.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">IoT</span>
-                <span class="tag tag--blue">Robotics</span>
-                <span class="tag tag--lavender">3D Print</span>
-              </div>
+              <div class="project-card-year">2016</div>
+              <div class="project-card-title">SnapBot &mdash; Modular Robotics</div>
+              <div class="project-card-desc">Snap-fit magnetic assembly robotics platform for education. Top 20 at IndiaHacks 2016.</div>
+              <div class="project-card-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--sage">IoT</span></div>
             </div>
           </div>
 
           <!-- CardBot -->
           <div class="project-card" data-category="robotics" data-project="cardbot">
-            <div class="project-card-placeholder gradient-1">&#129302;</div>
+            <div class="project-card-ph project-card-ph--teal">&#9881;</div>
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2015</span>
-                <span class="project-card-badge">Hack India Runner-up</span>
-              </div>
-              <h3 class="project-card-title">CardBot — VR-Controlled Robot</h3>
-              <p class="project-card-desc">4-wheeled robot controlled via Google Cardboard VR headset. Camera-mounted for remote exploration of inaccessible areas.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--blue">VR</span>
-                <span class="tag tag--sage">Intel Galileo</span>
-                <span class="tag tag--lavender">Android</span>
-              </div>
+              <div class="project-card-year">2015</div>
+              <div class="project-card-title">CardBot &mdash; VR Robot</div>
+              <div class="project-card-desc">4-wheeled robot controlled via Google Cardboard VR headset. Runner-up at Hack India 2015.</div>
+              <div class="project-card-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--stone">VR</span></div>
             </div>
           </div>
 
-          <!-- Automated Speed Management -->
+          <!-- Auto Speed -->
           <div class="project-card" data-category="embedded" data-project="autospeed">
-            <img class="project-card-image" src="/assets/images/Autospeed/block.png" alt="Automated Speed Management" loading="lazy">
+            <img class="project-card-img" src="/assets/images/Autospeed/block.png" alt="Auto Speed Management" loading="lazy">
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2015</span>
-              </div>
-              <h3 class="project-card-title">GPS Vehicle Speed Management</h3>
-              <p class="project-card-desc">System that overrides driver control in speed-restricted zones. GPS coordinates via Bluetooth, servo-controlled carburetor on a Honda Activa.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">Arduino</span>
-                <span class="tag tag--lavender">Android</span>
-                <span class="tag tag--blue">GPS</span>
-              </div>
+              <div class="project-card-year">2015</div>
+              <div class="project-card-title">Automated Speed Management</div>
+              <div class="project-card-desc">GPS-assisted vehicle speed control. Arduino overrides throttle in speed-restricted zones. Tested on Honda Activa.</div>
+              <div class="project-card-tags"><span class="tag tag--stone">Embedded</span><span class="tag tag--sage">IoT</span></div>
             </div>
           </div>
 
           <!-- Ultravision -->
           <div class="project-card" data-category="embedded" data-project="ultravision">
-            <div class="project-card-placeholder gradient-2">&#128065;</div>
+            <div class="project-card-ph project-card-ph--sage">&#9829;</div>
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2014</span>
-              </div>
-              <h3 class="project-card-title">Ultravision for the Blind</h3>
-              <p class="project-card-desc">Wearable assistive device helping visually impaired children navigate indoor/outdoor spaces. Glove with magnetic snap-on sensors.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">Arduino</span>
-                <span class="tag tag--rose">Assistive Tech</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Chiposcope -->
-          <div class="project-card" data-category="embedded,electronics" data-project="chiposcope">
-            <img class="project-card-image" src="/assets/images/Chiposcope/9.jpg" alt="Chiposcope" loading="lazy">
-            <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2013</span>
-                <span class="project-card-badge">Featured on Digilent</span>
-              </div>
-              <h3 class="project-card-title">Chiposcope — DIY Oscilloscope</h3>
-              <p class="project-card-desc">Oscilloscope on a Chipkit Uno32 with OLED display. Poor man's option for visualizing waveforms without a real DSO.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">Chipkit</span>
-                <span class="tag tag--blue">OLED</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- DSTATCOM -->
-          <div class="project-card" data-category="research" data-project="dstatcom">
-            <img class="project-card-image" src="/assets/images/Journal/1.jpg" alt="DSTATCOM" loading="lazy">
-            <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2013</span>
-                <span class="project-card-badge">Published</span>
-              </div>
-              <h3 class="project-card-title">DSTATCOM — Power Factor Correction</h3>
-              <p class="project-card-desc">Journal publication on Distribution Static Synchronous Compensator. MATLAB/Simulink simulations and 4kVA FPGA-based lab prototype.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--warm">MATLAB</span>
-                <span class="tag tag--lavender">FPGA</span>
-                <span class="tag tag--blue">Research</span>
-              </div>
+              <div class="project-card-year">2014</div>
+              <div class="project-card-title">Ultravision for the Blind</div>
+              <div class="project-card-desc">Wearable assistive device helping visually impaired children navigate indoor and outdoor environments.</div>
+              <div class="project-card-tags"><span class="tag tag--stone">Embedded</span><span class="tag tag--accent">Assistive</span></div>
             </div>
           </div>
 
           <!-- PringLed -->
           <div class="project-card" data-category="electronics" data-project="pringled">
-            <img class="project-card-image" src="/assets/images/pringled/50.jpg" alt="PringLed" loading="lazy">
+            <img class="project-card-img" src="/assets/images/pringled/50.jpg" alt="PringLed" loading="lazy">
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2013</span>
-                <span class="project-card-badge">Hackster.io Featured</span>
-              </div>
-              <h3 class="project-card-title">PringLed — Recycled LED Light</h3>
-              <p class="project-card-desc">DIY LED light made from Pringles cans and recycled materials. White LED strips, still running 10+ years later.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">DIY</span>
-                <span class="tag tag--warm">Upcycling</span>
-              </div>
+              <div class="project-card-year">2013</div>
+              <div class="project-card-title">PringLed &mdash; Recycled LED Light</div>
+              <div class="project-card-desc">DIY LED lighting from recycled materials. Working for 5+ years. Featured on Hackster.io.</div>
+              <div class="project-card-tags"><span class="tag tag--sage">Electronics</span><span class="tag tag--default">DIY</span></div>
+            </div>
+          </div>
+
+          <!-- Chiposcope -->
+          <div class="project-card" data-category="embedded,electronics" data-project="chiposcope">
+            <img class="project-card-img" src="/assets/images/Chiposcope/9.jpg" alt="Chiposcope" loading="lazy">
+            <div class="project-card-body">
+              <div class="project-card-year">2013</div>
+              <div class="project-card-title">Chiposcope &mdash; DIY Oscilloscope</div>
+              <div class="project-card-desc">Oscilloscope on Chipkit Uno32 with OLED display. Featured on Digilent Blog, Instructables, Hackster.io.</div>
+              <div class="project-card-tags"><span class="tag tag--stone">Embedded</span><span class="tag tag--sage">Electronics</span></div>
+            </div>
+          </div>
+
+          <!-- DSTATCOM -->
+          <div class="project-card" data-category="research" data-project="dstatcom">
+            <img class="project-card-img" src="/assets/images/Journal/1.jpg" alt="DSTATCOM" loading="lazy">
+            <div class="project-card-body">
+              <div class="project-card-year">2013</div>
+              <div class="project-card-title">DSTATCOM &mdash; Journal Publication</div>
+              <div class="project-card-desc">Power factor correction using Distribution Static Synchronous Compensator. Published in ARPN Journal. FPGA implementation.</div>
+              <div class="project-card-tags"><span class="tag tag--accent">Research</span><span class="tag tag--stone">FPGA</span></div>
             </div>
           </div>
 
           <!-- Shaastra -->
           <div class="project-card" data-category="robotics" data-project="shaastra">
-            <img class="project-card-image" src="/assets/images/Shaastra/1.jpg" alt="Shaastra Competition" loading="lazy">
+            <img class="project-card-img" src="/assets/images/Shaastra/1.jpg" alt="Shaastra" loading="lazy">
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2011</span>
-                <span class="project-card-badge">3rd Place</span>
-              </div>
-              <h3 class="project-card-title">Shaastra — IIT Madras Robotics</h3>
-              <p class="project-card-desc">National-level tech fest competition. Built two robots (manual + autonomous) that traced hexagonal paths powered from overhead wire frame.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--blue">PIC</span>
-                <span class="tag tag--sage">Autonomous</span>
-                <span class="tag tag--lavender">Competition</span>
-              </div>
+              <div class="project-card-year">2011</div>
+              <div class="project-card-title">Shaastra &mdash; IIT Madras</div>
+              <div class="project-card-desc">3rd place at national robotics competition. Built autonomous and manual robots from scratch. 40+ competing teams.</div>
+              <div class="project-card-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--default">Competition</span></div>
             </div>
           </div>
 
-          <!-- Electronics Venture -->
+          <!-- Electronics Ventures -->
           <div class="project-card" data-category="electronics" data-project="electronics">
-            <img class="project-card-image" src="/assets/images/Electronics/1.jpg" alt="Electronics Ventures" loading="lazy">
+            <img class="project-card-img" src="/assets/images/Electronics/1.jpg" alt="Electronics Ventures" loading="lazy">
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2011</span>
-              </div>
-              <h3 class="project-card-title">The Electronics Venture</h3>
-              <p class="project-card-desc">College-era deep dive into embedded systems — wheeled robots, wall-climbing robots, magnetic levitation, solar, wind energy, wireless charging, and more.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">Microcontrollers</span>
-                <span class="tag tag--blue">Hardware</span>
-              </div>
+              <div class="project-card-year">2011</div>
+              <div class="project-card-title">Electronics Ventures</div>
+              <div class="project-card-desc">Wheeled robots, wall-climbing robots, magnetic levitation, solar power, wind energy, wireless charging, and more.</div>
+              <div class="project-card-tags"><span class="tag tag--sage">Electronics</span><span class="tag tag--default">DIY</span></div>
             </div>
           </div>
 
           <!-- Cockroach Robot -->
-          <div class="project-card" data-category="robotics,electronics" data-project="cockroach">
-            <img class="project-card-image" src="/assets/images/Cockroach/1.jpg" alt="Cockroach Robot" loading="lazy">
+          <div class="project-card" data-category="robotics" data-project="cockroach">
+            <img class="project-card-img" src="/assets/images/Cockroach/1.jpg" alt="Cockroach Robot" loading="lazy">
             <div class="project-card-body">
-              <div class="project-card-meta">
-                <span class="project-card-year">2010</span>
-              </div>
-              <h3 class="project-card-title">Cockroach Robot — Where It Began</h3>
-              <p class="project-card-desc">My very first robot. Simple obstacle avoidance with the most basic control system possible. The project that started it all.</p>
-              <div class="project-card-tags">
-                <span class="tag tag--sage">Robot</span>
-                <span class="tag tag--blue">DIY</span>
-              </div>
+              <div class="project-card-year">2010</div>
+              <div class="project-card-title">Cockroach Robot</div>
+              <div class="project-card-desc">My first robot. Simple obstacle avoidance with the most basic control system. Where it all started.</div>
+              <div class="project-card-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--default">First project</span></div>
             </div>
           </div>
 
@@ -229,238 +159,157 @@
     </section>
   </main>
 
-  <!-- Project Detail Modal -->
+  <!-- Project Modal -->
   <div class="modal-overlay" id="project-modal">
-    <div class="modal-content" id="modal-content"></div>
+    <div class="modal-sheet" id="modal-content"></div>
   </div>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Full size image">
-  </div>
-
-  <!-- Hidden Project Detail Templates -->
-
+  <!-- Hidden templates -->
   <template id="detail-snapbot">
-    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
     <img class="modal-hero-img" src="/assets/images/Snapbot/1.jpg" alt="SnapBot">
     <div class="modal-body">
-      <div class="modal-meta">2016 · Top 20 at IndiaHacks</div>
-      <h2>SnapBot — Modular Robotics Platform</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">IoT</span>
-        <span class="tag tag--blue">Robotics</span>
-        <span class="tag tag--lavender">3D Printed</span>
-        <span class="tag tag--warm">Intel Galileo</span>
-      </div>
-      <p>SnapBot is an open-source modular robotic platform designed for educators and students to learn about IoT and VR. Easy to operate, simple to assemble with powerful processing and IoT capabilities.</p>
-      <p>The key innovation was snap-fit magnetic assembly — modules click together using magnets, making it incredibly easy for anyone to build and reconfigure the robot without tools.</p>
-      <p>Listed amongst top 20 ideas from India at IndiaHacks 2016.</p>
-      <div class="modal-links">
-        <a href="https://hackaday.io/project/9603-snapbot" target="_blank" rel="noopener">Hackaday.io &nearr;</a>
-        <a href="https://github.com/saipraveend/SnapBot-V1" target="_blank" rel="noopener">GitHub V1 &nearr;</a>
-        <a href="https://github.com/saipraveend/SnapBot-V2" target="_blank" rel="noopener">GitHub V2 &nearr;</a>
+      <h2>SnapBot &mdash; Modular Robotics Platform</h2>
+      <div class="modal-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--sage">IoT</span><span class="tag tag--stone">Education</span></div>
+      <p>Modular robotic platform for educators and students to learn about IoT and VR. Open-source, easy to operate, simple to assemble with powerful processing and IoT capabilities. Uses snap-fit assembly with magnets for tool-free construction.</p>
+      <p>Listed among Top 20 ideas from India at IndiaHacks 2016.</p>
+      <div class="modal-gallery">
+        <img src="/assets/images/Snapbot/1.jpg" alt="SnapBot 3D printed base" loading="lazy">
       </div>
     </div>
   </template>
 
   <template id="detail-cardbot">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <div class="project-card-placeholder gradient-1" style="aspect-ratio:16/9; font-size:4rem;">&#129302;</div>
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
     <div class="modal-body">
-      <div class="modal-meta">2015 · Runner-up at Hack India</div>
-      <h2>CardBot — VR-Controlled Robot</h2>
-      <div class="modal-tags">
-        <span class="tag tag--blue">VR</span>
-        <span class="tag tag--sage">Intel Galileo</span>
-        <span class="tag tag--lavender">Android</span>
-      </div>
-      <p>A 4-wheeled robot mounted with a camera that moves according to a VR headset's movement. Using Google Cardboard, you can virtually explore inaccessible areas from anywhere.</p>
-      <p>Built as a team project for the Hack India hackathon and placed as runner-up.</p>
+      <h2>CardBot &mdash; VR Robot</h2>
+      <div class="modal-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--stone">VR</span><span class="tag tag--default">Hackathon</span></div>
+      <p>4-wheeled robot mounted with a camera that moves according to VR headset (Google Cardboard) movement. Allows virtual visualization of inaccessible areas remotely. Built during Hack India 2015 hackathon.</p>
+      <p>Placed runner-up in the competition.</p>
     </div>
   </template>
 
   <template id="detail-autospeed">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img class="modal-hero-img" src="/assets/images/Autospeed/block.png" alt="Automated Speed Management">
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
+    <img class="modal-hero-img" src="/assets/images/Autospeed/block.png" alt="Auto Speed block diagram">
     <div class="modal-body">
-      <div class="modal-meta">2015 · Collaborative Project</div>
-      <h2>GPS Vehicle Speed Management</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">Arduino</span>
-        <span class="tag tag--lavender">Android</span>
-        <span class="tag tag--blue">GPS</span>
-      </div>
-      <p>A system that overrides driver control to maintain safe speed in speed-restricted zones. GPS coordinates received via Bluetooth from a custom Android app.</p>
-      <p>The mechanical accelerator was retrofitted with an electric bike throttle. An Arduino controls a metal-geared servo motor that pulls the carburetor cable, and a hall sensor on the front wheel measures speed. Tested on a Honda Activa.</p>
-      <p>Built in collaboration with Satish Kumar from SRM College of Engineering, Chennai.</p>
-      <div class="modal-links">
-        <a href="https://github.com/saipraveend/AutoSpeed" target="_blank" rel="noopener">GitHub &nearr;</a>
-      </div>
+      <h2>Automated Vehicle Speed Management</h2>
+      <div class="modal-tags"><span class="tag tag--stone">Embedded</span><span class="tag tag--sage">IoT</span><span class="tag tag--default">Arduino</span></div>
+      <p>System that overrides driver control to maintain speed in speed-restricted zones. Receives GPS coordinates via Bluetooth from a custom Android app. Tested on a Honda Activa.</p>
+      <p>Arduino controls a metal-geared servo motor that pulls the carburetor cable. Hall sensor on front wheel measures speed. The system gradually reduces acceleration when entering speed-restricted zones.</p>
     </div>
   </template>
 
   <template id="detail-ultravision">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <div class="project-card-placeholder gradient-2" style="aspect-ratio:16/9; font-size:4rem;">&#128065;</div>
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
     <div class="modal-body">
-      <div class="modal-meta">2014 · Personal Project</div>
       <h2>Ultravision for the Blind</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">Arduino</span>
-        <span class="tag tag--rose">Assistive Tech</span>
-      </div>
-      <p>A wearable device to help visually impaired children cope with their physical environment and traverse easily indoors and outdoors.</p>
-      <p>Two prototypes were built — the second prototype featured magnets on the glove and stick for easier assembly. Built as a project for my little sister.</p>
-      <div class="modal-links">
-        <a href="https://github.com/saipraveend/Ultravision" target="_blank" rel="noopener">GitHub &nearr;</a>
+      <div class="modal-tags"><span class="tag tag--stone">Embedded</span><span class="tag tag--accent">Assistive tech</span></div>
+      <p>Wearable device to help visually impaired children cope with their physical environment and traverse easily indoors and outdoors. Two prototypes built &mdash; the second used magnets on glove and stick for easier assembly.</p>
+      <p>Built as a personal project inspired by my sister. Uses ultrasonic sensors for distance detection with haptic feedback.</p>
+    </div>
+  </template>
+
+  <template id="detail-pringled">
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
+    <img class="modal-hero-img" src="/assets/images/pringled/50.jpg" alt="PringLed">
+    <div class="modal-body">
+      <h2>PringLed &mdash; DIY LED Light</h2>
+      <div class="modal-tags"><span class="tag tag--sage">Electronics</span><span class="tag tag--default">DIY</span><span class="tag tag--default">Upcycling</span></div>
+      <p>LED light built entirely from recycled materials. All illumination uses white LED strips. Has been working for 5+ years. Featured on Hackster.io Upcycling projects.</p>
+      <div class="modal-gallery">
+        <img src="/assets/images/pringled/1.jpg" alt="Build step 1" loading="lazy">
+        <img src="/assets/images/pringled/10.jpg" alt="Build step 2" loading="lazy">
+        <img src="/assets/images/pringled/20.jpg" alt="Build step 3" loading="lazy">
+        <img src="/assets/images/pringled/30.jpg" alt="Build step 4" loading="lazy">
+        <img src="/assets/images/pringled/40.jpg" alt="Build step 5" loading="lazy">
+        <img src="/assets/images/pringled/50.jpg" alt="Final result" loading="lazy">
       </div>
     </div>
   </template>
 
   <template id="detail-chiposcope">
-    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
     <img class="modal-hero-img" src="/assets/images/Chiposcope/9.jpg" alt="Chiposcope">
     <div class="modal-body">
-      <div class="modal-meta">2013 · Featured on Digilent Blog</div>
-      <h2>Chiposcope — DIY Oscilloscope</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">Chipkit</span>
-        <span class="tag tag--blue">OLED</span>
-        <span class="tag tag--lavender">Embedded</span>
-      </div>
-      <p>An oscilloscope implemented on a Chipkit Uno 32 with an OLED display. The poor man's option for visualizing waveforms without needing a DSO.</p>
-      <p>Featured in a Digilent Blog Post and documented on both Instructables and Hackster.io.</p>
+      <h2>Chiposcope &mdash; DIY Oscilloscope</h2>
+      <div class="modal-tags"><span class="tag tag--stone">Embedded</span><span class="tag tag--sage">Electronics</span><span class="tag tag--default">Chipkit</span></div>
+      <p>An oscilloscope implemented on Chipkit Uno 32 with OLED display. A poor man's option for visualizing waveforms without needing a DSO. Featured on the Digilent Blog.</p>
       <div class="modal-gallery">
-        <img src="/assets/images/Chiposcope/1.jpg" alt="Chiposcope starting" loading="lazy">
-        <img src="/assets/images/Chiposcope/3.jpg" alt="Chiposcope initialized" loading="lazy">
-        <img src="/assets/images/Chiposcope/5.jpg" alt="Chiposcope sine wave" loading="lazy">
-        <img src="/assets/images/Chiposcope/7.jpg" alt="Chiposcope loaded" loading="lazy">
-        <img src="/assets/images/Chiposcope/8.jpg" alt="Chiposcope repair" loading="lazy">
-        <img src="/assets/images/Chiposcope/9.jpg" alt="Chiposcope final" loading="lazy">
-      </div>
-      <div class="modal-links">
-        <a href="https://www.instructables.com" target="_blank" rel="noopener">Instructables &nearr;</a>
-        <a href="https://www.hackster.io" target="_blank" rel="noopener">Hackster.io &nearr;</a>
+        <img src="/assets/images/Chiposcope/1.jpg" alt="Starting up" loading="lazy">
+        <img src="/assets/images/Chiposcope/2.jpg" alt="Initialized" loading="lazy">
+        <img src="/assets/images/Chiposcope/3.jpg" alt="Analog input" loading="lazy">
+        <img src="/assets/images/Chiposcope/4.jpg" alt="Sine wave" loading="lazy">
+        <img src="/assets/images/Chiposcope/5.jpg" alt="Loaded" loading="lazy">
+        <img src="/assets/images/Chiposcope/9.jpg" alt="Final build" loading="lazy">
       </div>
     </div>
   </template>
 
   <template id="detail-dstatcom">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img class="modal-hero-img" src="/assets/images/Journal/1.jpg" alt="DSTATCOM Block Diagram">
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
+    <img class="modal-hero-img" src="/assets/images/Journal/1.jpg" alt="DSTATCOM block diagram">
     <div class="modal-body">
-      <div class="modal-meta">2013 · ARPN Journal Publication</div>
-      <h2>DSTATCOM for Power Factor Correction</h2>
-      <div class="modal-tags">
-        <span class="tag tag--warm">MATLAB</span>
-        <span class="tag tag--lavender">FPGA</span>
-        <span class="tag tag--blue">Power Electronics</span>
-      </div>
-      <p>Analysis, control, design and implementation of a Distribution Static Synchronous Compensator (DSTATCOM) for reactive power compensation.</p>
-      <p>Developed state-space models and control algorithms based on instantaneous reactive power theory. Validated through MATLAB/Simulink simulations and a 4kVA laboratory prototype with Xilinx FPGA implementation.</p>
-    </div>
-  </template>
-
-  <template id="detail-pringled">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img class="modal-hero-img" src="/assets/images/pringled/50.jpg" alt="PringLed">
-    <div class="modal-body">
-      <div class="modal-meta">2013 · Featured on Hackster.io Upcycling</div>
-      <h2>PringLed — Recycled LED Light</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">DIY</span>
-        <span class="tag tag--warm">Upcycling</span>
-        <span class="tag tag--blue">LED</span>
-      </div>
-      <p>A weekend experiment to make an LED light for home using recycled Pringles cans and other materials. All illumination uses white LED strips. Has been working for 10+ years.</p>
-      <div class="modal-gallery">
-        <img src="/assets/images/pringled/1.jpg" alt="PringLed build 1" loading="lazy">
-        <img src="/assets/images/pringled/5.jpg" alt="PringLed build 2" loading="lazy">
-        <img src="/assets/images/pringled/10.jpg" alt="PringLed build 3" loading="lazy">
-        <img src="/assets/images/pringled/20.jpg" alt="PringLed build 4" loading="lazy">
-        <img src="/assets/images/pringled/30.jpg" alt="PringLed build 5" loading="lazy">
-        <img src="/assets/images/pringled/40.jpg" alt="PringLed build 6" loading="lazy">
-        <img src="/assets/images/pringled/48.jpg" alt="PringLed build 7" loading="lazy">
-        <img src="/assets/images/pringled/50.jpg" alt="PringLed final" loading="lazy">
-      </div>
-      <div class="modal-links">
-        <a href="https://www.hackster.io" target="_blank" rel="noopener">Hackster.io &nearr;</a>
-      </div>
+      <h2>DSTATCOM &mdash; Power Factor Correction</h2>
+      <div class="modal-tags"><span class="tag tag--accent">Research</span><span class="tag tag--stone">FPGA</span><span class="tag tag--default">MATLAB</span></div>
+      <p>Analysis, control, design and implementation of Distribution Static Synchronous Compensator (DSTATCOM) for reactive power compensation. Published in ARPN Journal.</p>
+      <p>Developed state space models and control algorithms based on instantaneous reactive power theory. Validated with MATLAB/Simulink simulations. Built 4kVA laboratory prototype with Xilinx FPGA implementation.</p>
     </div>
   </template>
 
   <template id="detail-shaastra">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img class="modal-hero-img" src="/assets/images/Shaastra/1.jpg" alt="Shaastra Robotics">
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
+    <img class="modal-hero-img" src="/assets/images/Shaastra/1.jpg" alt="Shaastra robots">
     <div class="modal-body">
-      <div class="modal-meta">2011 · 3rd Place at IIT Madras</div>
-      <h2>Shaastra — National Robotics Competition</h2>
-      <div class="modal-tags">
-        <span class="tag tag--blue">PIC Microcontroller</span>
-        <span class="tag tag--sage">Autonomous</span>
-        <span class="tag tag--lavender">Competition</span>
-      </div>
-      <p>Shaastra is the annual national-level tech fest of IIT Madras. Built two robots from scratch — one manual and one autonomous — that had to trace hexagonal paths while drawing power from an overhead wire frame.</p>
-      <p>Achieved 3rd place against 40+ competing teams from across India.</p>
+      <h2>Shaastra &mdash; IIT Madras Robotics</h2>
+      <div class="modal-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--default">Competition</span><span class="tag tag--stone">PIC</span></div>
+      <p>Shaastra is the annual national-level tech fest of IIT Madras. Built two robots from scratch &mdash; one manual and one autonomous. Power was tapped from a wire frame above hexagonal tracing lines. Achieved 3rd prize with 40+ competing teams.</p>
       <div class="modal-gallery">
-        <img src="/assets/images/Shaastra/1.jpg" alt="Shaastra robot 1" loading="lazy">
-        <img src="/assets/images/Shaastra/5.jpg" alt="Shaastra robot 2" loading="lazy">
-        <img src="/assets/images/Shaastra/10.jpg" alt="Shaastra competition" loading="lazy">
-        <img src="/assets/images/Shaastra/15.jpg" alt="Shaastra setup" loading="lazy">
-        <img src="/assets/images/Shaastra/20.jpg" alt="Shaastra build" loading="lazy">
-        <img src="/assets/images/Shaastra/25.jpg" alt="Shaastra detail" loading="lazy">
+        <img src="/assets/images/Shaastra/1.jpg" alt="Competition setup" loading="lazy">
+        <img src="/assets/images/Shaastra/2.jpg" alt="Robot detail" loading="lazy">
+        <img src="/assets/images/Shaastra/5.jpg" alt="Team working" loading="lazy">
+        <img src="/assets/images/Shaastra/10.jpg" alt="Testing" loading="lazy">
+        <img src="/assets/images/Shaastra/15.jpg" alt="Competition day" loading="lazy">
+        <img src="/assets/images/Shaastra/20.jpg" alt="Final run" loading="lazy">
       </div>
     </div>
   </template>
 
   <template id="detail-electronics">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img class="modal-hero-img" src="/assets/images/Electronics/1.jpg" alt="Electronics Ventures">
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
+    <img class="modal-hero-img" src="/assets/images/Electronics/1.jpg" alt="Electronics ventures">
     <div class="modal-body">
-      <div class="modal-meta">2011 · College Projects</div>
-      <h2>The Electronics Venture</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">Microcontrollers</span>
-        <span class="tag tag--blue">Hardware</span>
-        <span class="tag tag--warm">DIY</span>
-      </div>
-      <p>An extensive collection of side projects during college exploring the world of embedded systems — wheeled robots, wall-climbing robots, magnetic levitation, solar power, wind energy, piezo electricity, wireless charging, and more.</p>
-      <p>Started by breaking down household gadgets to understand how things work, then began building from scratch.</p>
+      <h2>Electronics Ventures</h2>
+      <div class="modal-tags"><span class="tag tag--sage">Electronics</span><span class="tag tag--default">DIY</span><span class="tag tag--default">College</span></div>
+      <p>Extensive side projects during college: wheeled robots, wall-climbing robots, magnetic levitation, solar power, wind energy, novel wind energy generation, piezo electricity, and wireless charging. Driven by a passion for understanding how things work.</p>
       <div class="modal-gallery">
-        <img src="/assets/images/Electronics/1.jpg" alt="Electronics 1" loading="lazy">
-        <img src="/assets/images/Electronics/5.jpg" alt="Electronics 2" loading="lazy">
-        <img src="/assets/images/Electronics/10.jpg" alt="Electronics 3" loading="lazy">
-        <img src="/assets/images/Electronics/15.jpg" alt="Electronics 4" loading="lazy">
-        <img src="/assets/images/Electronics/20.jpg" alt="Electronics 5" loading="lazy">
-        <img src="/assets/images/Electronics/25.jpg" alt="Electronics 6" loading="lazy">
-        <img src="/assets/images/Electronics/30.jpg" alt="Electronics 7" loading="lazy">
-        <img src="/assets/images/Electronics/33.jpg" alt="Electronics 8" loading="lazy">
+        <img src="/assets/images/Electronics/1.jpg" alt="Project 1" loading="lazy">
+        <img src="/assets/images/Electronics/5.jpg" alt="Project 2" loading="lazy">
+        <img src="/assets/images/Electronics/10.jpg" alt="Project 3" loading="lazy">
+        <img src="/assets/images/Electronics/15.jpg" alt="Project 4" loading="lazy">
+        <img src="/assets/images/Electronics/20.jpg" alt="Project 5" loading="lazy">
+        <img src="/assets/images/Electronics/25.jpg" alt="Project 6" loading="lazy">
       </div>
     </div>
   </template>
 
   <template id="detail-cockroach">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img class="modal-hero-img" src="/assets/images/Cockroach/1.jpg" alt="Cockroach Robot">
+    <div class="modal-close"><button aria-label="Close">&times;</button></div>
+    <img class="modal-hero-img" src="/assets/images/Cockroach/1.jpg" alt="Cockroach robot">
     <div class="modal-body">
-      <div class="modal-meta">2010 · My First Robot</div>
-      <h2>Cockroach Robot — Where It All Began</h2>
-      <div class="modal-tags">
-        <span class="tag tag--sage">Robot</span>
-        <span class="tag tag--blue">DIY</span>
-        <span class="tag tag--warm">Obstacle Avoidance</span>
-      </div>
-      <p>A very simple obstacle avoidance robot — my first venture into electronics and robotics. The simplest possible control system, built with college friends.</p>
-      <p>This is the project that sparked everything. From here came a decade of building increasingly complex systems.</p>
+      <h2>Cockroach Robot</h2>
+      <div class="modal-tags"><span class="tag tag--accent">Robotics</span><span class="tag tag--default">First project</span></div>
+      <p>My very first robot. A simple obstacle avoidance bot with the most basic control system &mdash; no microcontroller, just discrete components. This is where my journey into electronics and robotics started.</p>
       <div class="modal-gallery">
-        <img src="/assets/images/Cockroach/1.jpg" alt="Cockroach setup" loading="lazy">
-        <img src="/assets/images/Cockroach/2.jpg" alt="Cockroach comparison" loading="lazy">
+        <img src="/assets/images/Cockroach/1.jpg" alt="Robot setup" loading="lazy">
+        <img src="/assets/images/Cockroach/2.jpg" alt="Robot detail" loading="lazy">
       </div>
     </div>
   </template>
 
-  <!-- Footer -->
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"><img src="" alt="Full size"></div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
@@ -468,12 +317,10 @@
         <div class="footer-links">
           <a href="https://linkedin.com/in/saipraveend" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/saipraveend" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:saipraveen.durairaman@gmail.com">Email</a>
         </div>
       </div>
     </div>
   </footer>
-
   <script src="/js/main.js"></script>
 </body>
 </html>

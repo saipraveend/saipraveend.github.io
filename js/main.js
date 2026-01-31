@@ -1,204 +1,155 @@
 /* =========================================================
-   SAIPRAVEEN DURAIRAMAN — Portfolio Interactions
+   SAIPRAVEEN DURAIRAMAN — Portfolio v2 Interactions
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ===== NAV SCROLL STATE =====
+  /* ---- Nav scroll state ---- */
   const nav = document.querySelector('.nav');
   if (nav) {
-    const update = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    update();
+    const up = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', up, { passive: true });
+    up();
   }
 
-  // ===== MOBILE MENU =====
+  /* ---- Mobile menu ---- */
   const toggle = document.getElementById('nav-toggle');
-  const links = document.getElementById('nav-links');
-
+  const links  = document.getElementById('nav-links');
   if (toggle && links) {
     toggle.addEventListener('click', () => {
       toggle.classList.toggle('active');
       links.classList.toggle('open');
       document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
     });
-
-    links.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
+    links.querySelectorAll('.nav-link').forEach(l =>
+      l.addEventListener('click', () => {
         toggle.classList.remove('active');
         links.classList.remove('open');
         document.body.style.overflow = '';
-      });
-    });
+      })
+    );
   }
 
-  // ===== ACTIVE NAV LINK =====
-  const path = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const href = link.getAttribute('href').replace(/\/$/, '') || '/';
-    if (href === path || (path === '/index.html' && href === '/')) {
-      link.classList.add('active');
-    }
+  /* ---- Active nav link ---- */
+  const path = (window.location.pathname.replace(/\/$/, '') || '/');
+  document.querySelectorAll('.nav-link').forEach(l => {
+    const h = l.getAttribute('href').replace(/\/$/, '') || '/';
+    if (h === path || (path === '/index.html' && h === '/')) l.classList.add('active');
   });
 
-  // ===== SCROLL REVEAL =====
+  /* ---- Scroll reveal ---- */
   const reveals = document.querySelectorAll('.reveal');
   if (reveals.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    reveals.forEach(el => observer.observe(el));
+    reveals.forEach(el => obs.observe(el));
   }
 
-  // ===== NUMBER COUNT-UP =====
-  const counters = document.querySelectorAll('[data-count]');
-  if (counters.length) {
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || '';
-        const prefix = el.dataset.prefix || '';
-        const duration = 1800;
-        const startTime = performance.now();
-
-        const step = (now) => {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = prefix + Math.round(target * eased) + suffix;
-          if (progress < 1) requestAnimationFrame(step);
+  /* ---- Count-up numbers ---- */
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const cObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const t = parseInt(el.dataset.count, 10), suf = el.dataset.suffix || '', pre = el.dataset.prefix || '';
+        const start = performance.now();
+        const step = now => {
+          const p = Math.min((now - start) / 1600, 1);
+          el.textContent = pre + Math.round(t * (1 - Math.pow(1 - p, 3))) + suf;
+          if (p < 1) requestAnimationFrame(step);
         };
-
         requestAnimationFrame(step);
-        countObserver.unobserve(el);
+        cObs.unobserve(el);
       });
     }, { threshold: 0.5 });
+    cObs.observe(el);
+  });
 
-    counters.forEach(el => countObserver.observe(el));
-  }
-
-  // ===== PROJECT FILTERS =====
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card[data-category]');
-
-  filterBtns.forEach(btn => {
+  /* ---- Project filters ---- */
+  const fBtns = document.querySelectorAll('.filter-btn');
+  const pCards = document.querySelectorAll('.project-card[data-category]');
+  fBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-
-      filterBtns.forEach(b => b.classList.remove('active'));
+      const f = btn.dataset.filter;
+      fBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      projectCards.forEach((card, i) => {
-        const cats = card.dataset.category.split(',');
-        const show = filter === 'all' || cats.includes(filter);
+      let idx = 0;
+      pCards.forEach(card => {
+        const show = f === 'all' || card.dataset.category.split(',').includes(f);
         card.style.display = show ? '' : 'none';
         if (show) {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.transition = 'opacity 0.4s, transform 0.4s';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, i * 60);
+          card.style.opacity = '0'; card.style.transform = 'translateY(16px)';
+          const d = idx++ * 50;
+          setTimeout(() => { card.style.transition = 'opacity .4s,transform .4s'; card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, d);
         }
       });
     });
   });
 
-  // ===== PROJECT DETAIL MODAL =====
-  const modalOverlay = document.getElementById('project-modal');
-  const modalContent = document.getElementById('modal-content');
+  /* ---- Project modal ---- */
+  const overlay = document.getElementById('project-modal');
+  const mContent = document.getElementById('modal-content');
 
   document.querySelectorAll('.project-card[data-project]').forEach(card => {
     card.addEventListener('click', () => {
-      const id = card.dataset.project;
-      const tmpl = document.getElementById('detail-' + id);
-      if (tmpl && modalOverlay && modalContent) {
-        modalContent.innerHTML = tmpl.innerHTML;
-        modalOverlay.classList.add('active');
+      const tmpl = document.getElementById('detail-' + card.dataset.project);
+      if (tmpl && overlay && mContent) {
+        mContent.innerHTML = tmpl.innerHTML;
+        overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-
-        // Wire up gallery lightbox inside modal
-        modalContent.querySelectorAll('.modal-gallery img').forEach(img => {
-          img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openLightbox(img.src);
-          });
+        mContent.querySelectorAll('.modal-gallery img').forEach(img => {
+          img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.src); });
         });
       }
     });
   });
 
   function closeModal() {
-    if (modalOverlay) {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  if (overlay) {
+    overlay.addEventListener('click', e => { if (e.target === overlay || e.target.closest('.modal-close')) closeModal(); });
   }
 
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay || e.target.closest('.modal-close')) {
-        closeModal();
-      }
-    });
-  }
+  /* ---- Lightbox ---- */
+  const lb = document.getElementById('lightbox');
+  function openLightbox(src) { if (!lb) return; lb.querySelector('img').src = src; lb.classList.add('active'); }
+  function closeLightbox() { if (lb) lb.classList.remove('active'); }
+  if (lb) lb.addEventListener('click', closeLightbox);
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
-      closeLightbox();
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeLightbox(); }
+  });
+
+  /* ---- Page transitions ---- */
+  document.querySelectorAll('a[href]').forEach(a => {
+    if (a.hostname === window.location.hostname && !a.hash && a.target !== '_blank' && !a.closest('.modal-overlay') && !a.closest('.lightbox')) {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const href = a.href;
+        document.body.style.transition = 'opacity .2s ease';
+        document.body.style.opacity = '0';
+        setTimeout(() => { window.location.href = href; }, 200);
+      });
     }
   });
 
-  // ===== LIGHTBOX =====
-  const lightbox = document.getElementById('lightbox');
-
-  function openLightbox(src) {
-    if (!lightbox) return;
-    lightbox.querySelector('img').src = src;
-    lightbox.classList.add('active');
-  }
-
-  function closeLightbox() {
-    if (lightbox) lightbox.classList.remove('active');
-  }
-
-  if (lightbox) {
-    lightbox.addEventListener('click', closeLightbox);
-  }
-
-  // ===== STAGGERED CARD ENTRANCE =====
-  const staggerCards = document.querySelectorAll('.stagger-children');
-  if (staggerCards.length) {
-    const staggerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const children = entry.target.children;
-          Array.from(children).forEach((child, i) => {
-            child.style.opacity = '0';
-            child.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-              child.style.transition = 'opacity 0.5s cubic-bezier(0,0,0.2,1), transform 0.5s cubic-bezier(0,0,0.2,1)';
-              child.style.opacity = '1';
-              child.style.transform = 'translateY(0)';
-            }, 100 + i * 80);
+  /* ---- Stagger children ---- */
+  document.querySelectorAll('.stagger').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          Array.from(e.target.children).forEach((c, i) => {
+            c.style.opacity = '0'; c.style.transform = 'translateY(16px)';
+            setTimeout(() => { c.style.transition = 'opacity .5s cubic-bezier(0,0,.2,1),transform .5s cubic-bezier(0,0,.2,1)'; c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, 80 + i * 60);
           });
-          staggerObserver.unobserve(entry.target);
+          obs.unobserve(e.target);
         }
       });
     }, { threshold: 0.1 });
-
-    staggerCards.forEach(el => staggerObserver.observe(el));
-  }
+    obs.observe(el);
+  });
 
 });

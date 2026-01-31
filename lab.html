@@ -4,129 +4,108 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab | Saipraveen Durairaman</title>
-  <meta name="description" content="Thoughts, explorations, and ideas at the intersection of hardware, AI, and product — by Saipraveen Durairaman.">
+  <meta name="description" content="Ideas, explorations, and things I'm thinking about in embedded AI and hardware.">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Saipraveen</a>
+      <a href="/" class="nav-logo">SD</a>
       <div class="nav-links" id="nav-links">
         <a href="/journey.html" class="nav-link">Journey</a>
         <a href="/projects.html" class="nav-link">Projects</a>
         <a href="/lab.html" class="nav-link">Lab</a>
         <a href="/connect.html" class="nav-link">Connect</a>
       </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </nav>
 
   <main>
-    <!-- Page Hero -->
     <div class="page-hero container">
-      <p class="section-label">The Lab</p>
-      <h1>Thoughts &amp; Signals</h1>
-      <p class="section-subtitle">Short takes on hardware, AI, products, and things I'm figuring out. No long articles — just honest observations.</p>
+      <p class="section-label">Lab</p>
+      <h1>Ideas &amp; explorations</h1>
+      <p class="page-sub">Short-form thinking. Not polished articles &mdash; raw ideas, things I'm testing, and beliefs I hold.</p>
     </div>
 
-    <!-- Lab Board -->
-    <section style="padding-top: 0;">
+    <section style="padding-top:0">
       <div class="container">
-        <div class="lab-board stagger-children">
+        <div class="lab-grid stagger">
 
-          <div class="lab-card lab-card--idea">
+          <!-- Quote card: wide -->
+          <div class="lab-card lab-card--quote">
+            <div class="lab-card-type lab-card-type--thought">Belief</div>
+            <div class="lab-card-title">The best products bridge worlds. The gap between a $5 Arduino and a $50,000 MATLAB license is where the most interesting work happens.</div>
+          </div>
+
+          <div class="lab-card">
+            <div class="lab-card-type lab-card-type--explore">Exploring</div>
+            <div class="lab-card-title">TinyML on ESP32-CAM</div>
+            <div class="lab-card-text">Getting TensorFlow Lite models to run on 2MB flash. The constraints are the interesting part.</div>
+          </div>
+
+          <div class="lab-card">
             <div class="lab-card-type lab-card-type--idea">Idea</div>
-            <h3 class="lab-card-title">What if hardware development took days, not months?</h3>
-            <p class="lab-card-text">Working on AI coding agents that auto-generate MATLAB/Simulink targets. The gap between "idea" and "running on hardware" could shrink dramatically. We're prototyping this now.</p>
-            <div class="lab-card-meta">2025 · Active experiment</div>
+            <div class="lab-card-title">What if hardware development took days, not months?</div>
+            <div class="lab-card-text">GenAI coding agents that understand hardware constraints. We're prototyping this at MathWorks and the early results are compelling.</div>
           </div>
 
-          <div class="lab-card lab-card--thought">
+          <div class="lab-card">
             <div class="lab-card-type lab-card-type--thought">Thought</div>
-            <h3 class="lab-card-title">The best products bridge worlds</h3>
-            <p class="lab-card-text">Most of my career has been about connecting things that don't naturally talk to each other — $5 Arduino boards and $50K enterprise tools, hardware engineers and marketing teams, makers and professionals.</p>
-            <div class="lab-card-meta">On product thinking</div>
+            <div class="lab-card-title">Community over solo</div>
+            <div class="lab-card-text">Running Chennai Makerspace taught me more about product thinking than any course. When you watch people struggle with your tools, you learn fast.</div>
           </div>
 
-          <div class="lab-card lab-card--exploring">
-            <div class="lab-card-type lab-card-type--exploring">Exploring</div>
-            <h3 class="lab-card-title">TinyML on ESP32-CAM</h3>
-            <p class="lab-card-text">Getting TensorFlow Lite models running on ESP32 with 2MB flash. The constraints make it interesting — every byte matters. Currently testing image classification at the edge.</p>
-            <div class="lab-card-meta">2025 · In progress</div>
+          <div class="lab-card">
+            <div class="lab-card-type lab-card-type--explore">Exploring</div>
+            <div class="lab-card-title">Audio keyword spotting</div>
+            <div class="lab-card-text">Arduino Nano 33 BLE + edge inference. Small model, real-time audio classification without the cloud.</div>
           </div>
 
-          <div class="lab-card lab-card--belief">
-            <div class="lab-card-type lab-card-type--belief">Belief</div>
-            <h3 class="lab-card-title">Failed experiments count</h3>
-            <p class="lab-card-text">Some of my best learning came from the things that didn't work. The maglev that flew off, the line-follower that ignored lines, the VBA macro that deleted the wrong files. Failure is data.</p>
-            <div class="lab-card-meta">Core principle</div>
+          <!-- Quote card: wide -->
+          <div class="lab-card lab-card--quote">
+            <div class="lab-card-type lab-card-type--thought">Belief</div>
+            <div class="lab-card-title">Failed experiments count. Half my best product instincts came from side projects that went nowhere.</div>
           </div>
 
-          <div class="lab-card lab-card--idea">
+          <div class="lab-card">
+            <div class="lab-card-type lab-card-type--explore">Exploring</div>
+            <div class="lab-card-title">Sensor fusion for small robots</div>
+            <div class="lab-card-text">Combining IMU + ultrasonic + camera data on a microcontroller. The math is simple, the real-time constraints are not.</div>
+          </div>
+
+          <div class="lab-card">
             <div class="lab-card-type lab-card-type--idea">Idea</div>
-            <h3 class="lab-card-title">GenAI changes how we build for hardware</h3>
-            <p class="lab-card-text">Developer content that used to take weeks now takes days. Onboarding new users to hardware tools can happen inside the tool itself. The authoring workflow is fundamentally shifting.</p>
-            <div class="lab-card-meta">2025 · Piloting at work</div>
+            <div class="lab-card-title">Developer content at 2x speed</div>
+            <div class="lab-card-text">Using GenAI to draft hardware tutorials and getting-started guides. We piloted this and cut production time by ~50%.</div>
           </div>
 
-          <div class="lab-card lab-card--exploring">
-            <div class="lab-card-type lab-card-type--exploring">Exploring</div>
-            <h3 class="lab-card-title">Audio keyword spotting</h3>
-            <p class="lab-card-text">Testing wake-word detection on Arduino Nano 33 BLE. Trying to get reliable recognition with minimal power draw for always-on IoT devices.</p>
-            <div class="lab-card-meta">2025 · Early stage</div>
+          <div class="lab-card">
+            <div class="lab-card-type lab-card-type--signal">Signal</div>
+            <div class="lab-card-title">Power optimization for always-on devices</div>
+            <div class="lab-card-text">The next generation of IoT needs devices that run for years on a coin cell. Sleep modes, duty cycling, and wake-on-event architectures.</div>
           </div>
 
-          <div class="lab-card lab-card--thought">
+          <div class="lab-card">
             <div class="lab-card-type lab-card-type--thought">Thought</div>
-            <h3 class="lab-card-title">The $5 to $5000 gap</h3>
-            <p class="lab-card-text">There's a massive gap between hobby hardware and professional tools. Spent years making MATLAB/Simulink work with Arduino and Raspberry Pi. The people who bridge this gap create enormous value.</p>
-            <div class="lab-card-meta">On ecosystems</div>
+            <div class="lab-card-title">Embedded is eating software</div>
+            <div class="lab-card-text">Every device is getting a brain. The engineers who understand both the hardware constraints and the AI possibilities will define the next decade.</div>
           </div>
 
-          <div class="lab-card lab-card--highlight">
-            <div class="lab-card-type lab-card-type--highlight">Signal</div>
-            <h3 class="lab-card-title">Community over solo</h3>
-            <p class="lab-card-text">Founded a makerspace. Ran 20+ workshops. The best part was never the tech — it was watching someone's face when their first LED blinks. That's why I got into this.</p>
-            <div class="lab-card-meta">On making</div>
+          <div class="lab-card">
+            <div class="lab-card-type lab-card-type--signal">Signal</div>
+            <div class="lab-card-title">Hardware partnerships are product strategy</div>
+            <div class="lab-card-text">STM, ARM, Arduino, Raspberry Pi &mdash; the ecosystem play matters more than any individual feature. I've seen this firsthand managing these partnerships.</div>
           </div>
 
-          <div class="lab-card lab-card--exploring">
-            <div class="lab-card-type lab-card-type--exploring">Exploring</div>
-            <h3 class="lab-card-title">Sensor fusion for small robots</h3>
-            <p class="lab-card-text">Combining IMU, ultrasonic, and IR data on constrained MCUs. The challenge: meaningful decision-making with noisy data and limited compute.</p>
-            <div class="lab-card-meta">2025 · Prototype phase</div>
-          </div>
-
-          <div class="lab-card lab-card--belief">
-            <div class="lab-card-type lab-card-type--belief">Belief</div>
-            <h3 class="lab-card-title">Ship rough, update later</h3>
-            <p class="lab-card-text">Perfectionism killed more of my projects than incompetence ever did. The lab is messy. The experiments are rough. That's the point.</p>
-            <div class="lab-card-meta">Core principle</div>
-          </div>
-
-          <div class="lab-card lab-card--idea">
-            <div class="lab-card-type lab-card-type--idea">Idea</div>
-            <h3 class="lab-card-title">Power optimization is an art</h3>
-            <p class="lab-card-text">Always-on devices need to last years on batteries. Sleep modes, wake-on-interrupt, dynamic voltage scaling — there's elegance in making things sip power instead of gulp it.</p>
-            <div class="lab-card-meta">2025 · Researching</div>
-          </div>
-
-          <div class="lab-card lab-card--thought">
-            <div class="lab-card-type lab-card-type--thought">Thought</div>
-            <h3 class="lab-card-title">Product sense comes from building</h3>
-            <p class="lab-card-text">Every PM should build something with their own hands. Not manage the building of something — actually build it. Wire a sensor. Debug a firmware crash at 2 AM. It changes how you think about users.</p>
-            <div class="lab-card-meta">On product management</div>
+          <div class="lab-card">
+            <div class="lab-card-type lab-card-type--explore">Exploring</div>
+            <div class="lab-card-title">Computer vision on cheap hardware</div>
+            <div class="lab-card-text">Cameras + microcontrollers + object detection. The ESP32-CAM costs $6. What can we do with that?</div>
           </div>
 
         </div>
@@ -134,7 +113,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
@@ -142,12 +120,10 @@
         <div class="footer-links">
           <a href="https://linkedin.com/in/saipraveend" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/saipraveend" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:saipraveen.durairaman@gmail.com">Email</a>
         </div>
       </div>
     </div>
   </footer>
-
   <script src="/js/main.js"></script>
 </body>
 </html>
