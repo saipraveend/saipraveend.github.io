@@ -1,5 +1,5 @@
 /* =========================================================
-   SAIPRAVEEN DURAIRAMAN — Portfolio v2 Interactions
+   SAIPRAVEEN DURAIRAMAN — Portfolio v3 Interactions
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,6 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const h = l.getAttribute('href').replace(/\/$/, '') || '/';
     if (h === path || (path === '/index.html' && h === '/')) l.classList.add('active');
   });
+
+  /* ---- LED Matrix ---- */
+  const ledToggle = document.getElementById('led-toggle');
+  const ledStrip = document.getElementById('led-strip');
+  const ledInner = document.getElementById('led-strip-inner');
+
+  if (ledToggle && ledStrip && ledInner) {
+    const dotCount = 90;
+    for (let i = 0; i < dotCount; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'led-dot';
+      dot.addEventListener('click', () => dot.classList.toggle('lit'));
+      ledInner.appendChild(dot);
+    }
+
+    ledToggle.addEventListener('click', () => {
+      const active = ledToggle.classList.toggle('active');
+      ledStrip.classList.toggle('visible', active);
+      document.body.classList.toggle('led-active', active);
+    });
+  }
 
   /* ---- Scroll reveal ---- */
   const reveals = document.querySelectorAll('.reveal');
