@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (h === path || (path === '/index.html' && h === '/')) l.classList.add('active');
   });
 
-  /* ---- LED Matrix — Full Page ---- */
+  /* ---- LED Matrix — Dark mode + Background grid ---- */
   const ledToggle = document.getElementById('led-toggle');
   const ledOverlay = document.getElementById('led-overlay');
   const ledGrid = document.getElementById('led-grid');
@@ -45,13 +45,32 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ledToggle && ledOverlay && ledGrid) {
     let dotsCreated = false;
     let isPainting = false;
-    let paintMode = true; // true = light up, false = erase
+    let paintMode = true;
+    let lastX = null, lastY = null;
+
+    function paintAt(x, y) {
+      const el = document.elementFromPoint(x, y);
+      if (el && el.classList.contains('led-dot')) {
+        el.classList.toggle('lit', paintMode);
+      }
+    }
+
+    function paintLine(x1, y1, x2, y2) {
+      const dx = x2 - x1, dy = y2 - y1;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const steps = Math.max(Math.ceil(dist / 3), 1);
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        paintAt(x1 + dx * t, y1 + dy * t);
+      }
+    }
 
     function createDots() {
       if (dotsCreated) return;
       const cellSize = window.innerWidth <= 480 ? 12 : 16;
       const cols = Math.floor((window.innerWidth - 32) / cellSize);
-      const rows = Math.floor((window.innerHeight - 72) / cellSize);
+      const pageH = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+      const rows = Math.floor((pageH - 72) / cellSize);
       const total = cols * rows;
 
       const fragment = document.createDocumentFragment();
@@ -63,50 +82,55 @@ document.addEventListener('DOMContentLoaded', () => {
       ledGrid.appendChild(fragment);
       dotsCreated = true;
 
-      // Paint on click
+      // Mouse: smooth painting with line interpolation
       ledGrid.addEventListener('mousedown', e => {
         if (e.target.classList.contains('led-dot')) {
           isPainting = true;
           paintMode = !e.target.classList.contains('lit');
           e.target.classList.toggle('lit', paintMode);
+          lastX = e.clientX; lastY = e.clientY;
+          e.preventDefault();
         }
       });
-      ledGrid.addEventListener('mouseover', e => {
-        if (isPainting && e.target.classList.contains('led-dot')) {
-          e.target.classList.toggle('lit', paintMode);
+      document.addEventListener('mousemove', e => {
+        if (!isPainting) return;
+        if (lastX !== null) {
+          paintLine(lastX, lastY, e.clientX, e.clientY);
         }
+        lastX = e.clientX; lastY = e.clientY;
       });
-      window.addEventListener('mouseup', () => { isPainting = false; });
+      document.addEventListener('mouseup', () => { isPainting = false; lastX = null; lastY = null; });
 
-      // Touch support
+      // Touch: smooth painting with line interpolation
       ledGrid.addEventListener('touchstart', e => {
         const dot = e.target;
         if (dot.classList.contains('led-dot')) {
           isPainting = true;
           paintMode = !dot.classList.contains('lit');
           dot.classList.toggle('lit', paintMode);
+          const t = e.touches[0];
+          lastX = t.clientX; lastY = t.clientY;
         }
       }, { passive: true });
-      ledGrid.addEventListener('touchmove', e => {
+      document.addEventListener('touchmove', e => {
         if (!isPainting) return;
-        const touch = e.touches[0];
-        const el = document.elementFromPoint(touch.clientX, touch.clientY);
-        if (el && el.classList.contains('led-dot')) {
-          el.classList.toggle('lit', paintMode);
+        const t = e.touches[0];
+        if (lastX !== null) {
+          paintLine(lastX, lastY, t.clientX, t.clientY);
         }
+        lastX = t.clientX; lastY = t.clientY;
       }, { passive: true });
-      ledGrid.addEventListener('touchend', () => { isPainting = false; });
+      document.addEventListener('touchend', () => { isPainting = false; lastX = null; lastY = null; });
     }
 
     ledToggle.addEventListener('click', () => {
       const active = ledToggle.classList.toggle('active');
+      document.body.classList.toggle('led-mode', active);
       if (active) {
         createDots();
         ledOverlay.classList.add('visible');
-        document.body.style.overflow = 'hidden';
       } else {
         ledOverlay.classList.remove('visible');
-        document.body.style.overflow = '';
       }
     });
   }
@@ -197,11 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       closeModal();
       closeLightbox();
-      // Also close LED overlay
+      // Also close LED mode
       if (ledToggle && ledOverlay && ledOverlay.classList.contains('visible')) {
         ledToggle.classList.remove('active');
         ledOverlay.classList.remove('visible');
-        document.body.style.overflow = '';
+        document.body.classList.remove('led-mode');
       }
     }
   });
