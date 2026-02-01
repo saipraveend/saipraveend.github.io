@@ -69,8 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dotsCreated) return;
       const cellSize = window.innerWidth <= 480 ? 12 : 16;
       const cols = Math.floor((window.innerWidth - 32) / cellSize);
-      const pageH = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-      const rows = Math.floor((pageH - 72) / cellSize);
+      const rows = Math.floor((window.innerHeight - 72) / cellSize);
       const total = cols * rows;
 
       const fragment = document.createDocumentFragment();
