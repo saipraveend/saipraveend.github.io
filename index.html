@@ -22,56 +22,76 @@
         <a href="/lab.html" class="nav-link">Lab</a>
         <a href="/connect.html" class="nav-link">Connect</a>
       </div>
+      <div class="led-toggle" id="led-toggle" title="Toggle LED matrix">
+        <span class="led-toggle-label">LED</span>
+        <div class="led-toggle-switch"><div class="led-toggle-knob"></div></div>
+      </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
     </div>
   </nav>
 
+  <div class="led-strip" id="led-strip">
+    <div class="led-strip-inner" id="led-strip-inner"></div>
+  </div>
+
   <main class="home">
     <div class="home-inner">
+      <div class="bento">
 
-      <div class="home-header">
-        <img class="home-avatar" src="/assets/images/profile.jpg" alt="Saipraveen Durairaman">
-        <div>
-          <h1 class="home-name">Saipraveen Durairaman</h1>
-          <p class="home-role">Senior Technical PM at MathWorks</p>
+        <div class="bento-card bento-intro">
+          <div class="bento-label">Hello, I'm</div>
+          <h1>Saipraveen Durairaman</h1>
+          <div class="bento-role">Senior Technical PM at MathWorks</div>
+          <p class="bento-bio">12 years building at the intersection of hardware, software, and AI. From making robots and competing nationally, to directing embedded AI strategy and ecosystem partnerships.</p>
         </div>
+
+        <div class="bento-card bento-photo">
+          <img src="/assets/images/profile.jpg" alt="Saipraveen Durairaman">
+        </div>
+
+        <div class="bento-card bento-stat bento-stat-1">
+          <div class="bento-stat-val" data-count="12" data-suffix="+">0</div>
+          <div class="bento-stat-label">Years building things</div>
+        </div>
+
+        <div class="bento-card bento-stat bento-stat-2">
+          <div class="bento-stat-val" data-count="6">0</div>
+          <div class="bento-stat-label">Roles across the stack</div>
+        </div>
+
+        <a href="/journey.html" class="bento-card bento-link bento-link--wide bento-journey">
+          <div>
+            <div class="bento-link-title">Journey</div>
+            <div class="bento-link-desc">From circuits to product strategy — the full path</div>
+          </div>
+          <span class="bento-link-arrow">&rarr;</span>
+        </a>
+
+        <a href="/lab.html" class="bento-card bento-link bento-lab">
+          <div>
+            <div class="bento-link-title">Lab</div>
+            <div class="bento-link-desc">Ideas I'm exploring</div>
+          </div>
+          <span class="bento-link-arrow">&rarr;</span>
+        </a>
+
+        <a href="/projects.html" class="bento-card bento-link bento-link--wide bento-projects">
+          <div>
+            <div class="bento-link-title">Projects</div>
+            <div class="bento-link-desc">Robots, oscilloscopes, EVs — things built with my hands</div>
+          </div>
+          <span class="bento-link-arrow">&rarr;</span>
+        </a>
+
+        <a href="/connect.html" class="bento-card bento-link bento-connect">
+          <div>
+            <div class="bento-link-title">Connect</div>
+            <div class="bento-link-desc">Let's talk</div>
+          </div>
+          <span class="bento-link-arrow">&rarr;</span>
+        </a>
+
       </div>
-
-      <p class="home-intro">Product leader who's spent 12 years building at the intersection of hardware, software, and AI. From making robots and competing nationally, to directing embedded AI strategy and ecosystem partnerships.</p>
-
-      <div class="home-grid">
-        <a href="/journey.html" class="home-card">
-          <span class="home-card-num">01</span>
-          <span class="home-card-title">Journey</span>
-          <span class="home-card-desc">The path from circuits to strategy</span>
-          <span class="home-card-arrow">&rarr;</span>
-        </a>
-        <a href="/projects.html" class="home-card">
-          <span class="home-card-num">02</span>
-          <span class="home-card-title">Projects</span>
-          <span class="home-card-desc">Things I've built with my hands</span>
-          <span class="home-card-arrow">&rarr;</span>
-        </a>
-        <a href="/lab.html" class="home-card">
-          <span class="home-card-num">03</span>
-          <span class="home-card-title">Lab</span>
-          <span class="home-card-desc">Ideas I'm exploring right now</span>
-          <span class="home-card-arrow">&rarr;</span>
-        </a>
-        <a href="/connect.html" class="home-card">
-          <span class="home-card-num">04</span>
-          <span class="home-card-title">Connect</span>
-          <span class="home-card-desc">Let's talk</span>
-          <span class="home-card-arrow">&rarr;</span>
-        </a>
-      </div>
-
-      <div class="home-foot">
-        <a href="https://linkedin.com/in/saipraveend" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/saipraveend" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:saipraveen.durairaman@gmail.com">Email</a>
-      </div>
-
     </div>
   </main>
 
