@@ -1,6 +1,6 @@
 /* =========================================================
-   SAIPRAVEEN DURAIRAMAN — Portfolio v3
-   Bento · Shadow Depth · Deep Teal + Amber
+   SAIPRAVEEN DURAIRAMAN — Portfolio v3.1
+   Hero + Equal Nav Cards · Shadow Depth · Navy + Amber
    ========================================================= */
 
 /* 1. CUSTOM PROPERTIES
@@ -12,11 +12,11 @@
   --text: #1A1A1A;
   --text-secondary: #555;
   --text-muted: #999;
-  --accent: #2D5F5D;
-  --accent-light: rgba(45,95,93,.07);
+  --accent: #3D5A80;
+  --accent-light: rgba(61,90,128,.07);
   --accent-warm: #D4943A;
   --accent-warm-light: rgba(212,148,58,.08);
-  --accent-warm-glow: rgba(212,148,58,.5);
+  --accent-warm-glow: rgba(212,148,58,.55);
   --accent-sage: #5A7A6A;
   --accent-sage-light: rgba(90,122,106,.08);
   --accent-stone: #8A7A5E;
@@ -109,20 +109,13 @@ section{padding:var(--space-3xl) 0}
 .led-toggle-knob{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:white;box-shadow:var(--shadow-xs);transition:transform .3s var(--ease-spring)}
 .led-toggle.active .led-toggle-knob{transform:translateX(16px)}
 
-/* LED Matrix Strip */
-.led-strip{position:fixed;top:var(--nav-h);left:0;right:0;z-index:999;background:#1A1A1A;padding:10px 0;display:none;overflow:hidden}
-.led-strip.visible{display:block;animation:ledSlideDown .3s var(--ease-out)}
-@keyframes ledSlideDown{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:translateY(0)}}
-.led-strip-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-lg);display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.led-dot{width:8px;height:8px;border-radius:50%;background:#333;cursor:pointer;transition:all .15s var(--ease)}
-.led-dot:hover{background:#555}
-.led-dot.lit{background:var(--accent-warm);box-shadow:0 0 6px var(--accent-warm-glow),0 0 14px rgba(212,148,58,.2)}
-
-/* Adjust content when LED strip is open */
-body.led-active .page-hero{padding-top:calc(var(--nav-h) + 44px + var(--space-3xl))}
-body.led-active .home{padding-top:calc(var(--nav-h) + 44px + var(--space-xl))}
-body.led-active .connect{padding-top:calc(var(--nav-h) + 44px + var(--space-2xl))}
-body.led-active .page-404{padding-top:calc(44px)}
+/* LED Matrix — Full page overlay */
+.led-overlay{position:fixed;inset:0;z-index:998;background:#0D0D0D;display:none;overflow:hidden}
+.led-overlay.visible{display:block;animation:fadeIn .3s var(--ease-out)}
+.led-grid{display:grid;grid-template-columns:repeat(auto-fill,10px);gap:6px;justify-content:center;padding:calc(var(--nav-h) + 16px) 16px 16px;width:100%;height:100%;align-content:start}
+.led-dot{width:10px;height:10px;border-radius:50%;background:#222;cursor:pointer;transition:background .1s,box-shadow .1s}
+.led-dot:hover{background:#383838}
+.led-dot.lit{background:var(--accent-warm);box-shadow:0 0 6px var(--accent-warm-glow),0 0 16px rgba(212,148,58,.25)}
 
 /* Mobile menu toggle */
 .nav-toggle{display:none;flex-direction:column;gap:5px;padding:4px;width:28px;z-index:1001}
@@ -162,80 +155,63 @@ body.led-active .page-404{padding-top:calc(44px)}
 .reveal-d3{transition-delay:.24s}
 .reveal-d4{transition-delay:.32s}
 
-/* 8. HOME PAGE — BENTO GRID
+/* 8. HOME PAGE — HERO + NAV GRID
    ========================================================= */
 .home{min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding:calc(var(--nav-h) + var(--space-xl)) var(--space-lg) var(--space-xl)}
 .home-inner{max-width:var(--max-w);margin:0 auto;width:100%}
 
-.bento{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-areas:
-    "intro    intro    photo"
-    "stat1    stat2    photo"
-    "journey  journey  lab"
-    "projects projects connect";
-  gap:var(--space-md);
+/* Hero card */
+.hero-card{
+  background:var(--surface);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);
+  display:flex;
+  overflow:hidden;
+  opacity:0;
+  animation:fadeUp .6s var(--ease-out) .1s both;
 }
+.hero-card:hover{box-shadow:var(--shadow-card-hover)}
+.hero-photo{width:280px;flex-shrink:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-content{padding:var(--space-xl);display:flex;flex-direction:column;justify-content:center}
+.hero-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-sm)}
+.hero-content h1{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:var(--space-xs);line-height:1.1}
+.hero-role{font-size:.9rem;color:var(--accent);font-weight:500;margin-bottom:var(--space-md)}
+.hero-bio{font-size:.9rem;color:var(--text-secondary);line-height:1.7;max-width:440px}
+.hero-stats{display:flex;gap:var(--space-xl);margin-top:var(--space-lg)}
+.hero-stat{display:flex;align-items:baseline;gap:4px}
+.hero-stat-val{font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--accent);letter-spacing:-.02em}
+.hero-stat-label{font-size:.75rem;color:var(--text-muted)}
 
-.bento-card{
+/* Navigation grid — 4 equal cards */
+.nav-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--space-md);
+  margin-top:var(--space-md);
+}
+.nav-card{
   background:var(--surface);
   border-radius:var(--radius-lg);
   padding:var(--space-xl);
   box-shadow:var(--shadow-card);
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
   transition:all .35s var(--ease);
-  position:relative;
-  overflow:hidden;
   opacity:0;
   animation:fadeUp .6s var(--ease-out) both;
 }
-.bento-card:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-3px)}
-
-/* Stagger each card */
-.bento-card:nth-child(1){animation-delay:.1s}
-.bento-card:nth-child(2){animation-delay:.18s}
-.bento-card:nth-child(3){animation-delay:.26s}
-.bento-card:nth-child(4){animation-delay:.34s}
-.bento-card:nth-child(5){animation-delay:.42s}
-.bento-card:nth-child(6){animation-delay:.5s}
-.bento-card:nth-child(7){animation-delay:.56s}
-.bento-card:nth-child(8){animation-delay:.62s}
-
-/* Intro card */
-.bento-intro{grid-area:intro;display:flex;flex-direction:column;justify-content:center}
-.bento-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-md)}
-.bento-intro h1{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:var(--space-sm);line-height:1.1}
-.bento-role{font-size:.95rem;color:var(--accent);font-weight:500;margin-bottom:var(--space-md)}
-.bento-bio{font-size:.95rem;color:var(--text-secondary);line-height:1.7;max-width:460px}
-
-/* Photo card — spans 2 rows */
-.bento-photo{grid-area:photo;padding:0;overflow:hidden}
-.bento-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.bento-photo:hover img{transform:scale(1.04)}
-.bento-photo:hover{transform:none}
-
-/* Stat cards */
-.bento-stat-1{grid-area:stat1}
-.bento-stat-2{grid-area:stat2}
-.bento-stat{display:flex;flex-direction:column;justify-content:flex-end}
-.bento-stat-val{font-family:var(--font-heading);font-size:2.4rem;font-weight:700;letter-spacing:-.03em;color:var(--accent);line-height:1}
-.bento-stat-label{font-size:.8rem;color:var(--text-secondary);margin-top:var(--space-xs)}
-
-/* Link cards */
-.bento-link{display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:inherit;cursor:pointer}
-.bento-link-title{font-family:var(--font-heading);font-size:1.15rem;font-weight:600;letter-spacing:-.01em}
-.bento-link-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.5;margin-top:var(--space-xs)}
-.bento-link-arrow{font-size:1.2rem;color:var(--text-muted);transition:all .25s var(--ease);align-self:flex-end;margin-top:var(--space-md)}
-.bento-link:hover .bento-link-arrow{transform:translateX(5px);color:var(--accent)}
-
-/* Wide link cards (journey, projects) */
-.bento-journey{grid-area:journey}
-.bento-lab{grid-area:lab}
-.bento-projects{grid-area:projects}
-.bento-connect{grid-area:connect}
-
-.bento-link--wide{flex-direction:row;align-items:center;gap:var(--space-lg)}
-.bento-link--wide .bento-link-arrow{margin-top:0;margin-left:auto;flex-shrink:0}
+.nav-card:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-3px)}
+.nav-card:nth-child(1){animation-delay:.3s}
+.nav-card:nth-child(2){animation-delay:.38s}
+.nav-card:nth-child(3){animation-delay:.46s}
+.nav-card:nth-child(4){animation-delay:.54s}
+.nav-card-title{font-family:var(--font-heading);font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.nav-card-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.5;margin-top:var(--space-xs);flex:1}
+.nav-card-arrow{font-size:1.2rem;color:var(--text-muted);align-self:flex-end;margin-top:var(--space-lg);transition:all .25s var(--ease)}
+.nav-card:hover .nav-card-arrow{transform:translateX(5px);color:var(--accent)}
 
 /* 9. JOURNEY PAGE
    ========================================================= */
@@ -296,7 +272,7 @@ body.led-active .page-404{padding-top:calc(44px)}
 
 /* Gradient placeholder for cards without images */
 .project-card-ph{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text-muted)}
-.project-card-ph--teal{background:linear-gradient(135deg,#dce8eb,#c8dade)}
+.project-card-ph--teal{background:linear-gradient(135deg,#d8e2ef,#c2cedf)}
 .project-card-ph--sage{background:linear-gradient(135deg,#dee8d6,#c8d6be)}
 .project-card-ph--stone{background:linear-gradient(135deg,#e6e0d4,#d4ccbe)}
 .project-card-ph--warm{background:linear-gradient(135deg,#e8e2da,#dbd3c8)}
@@ -385,19 +361,9 @@ body.led-active .page-404{padding-top:calc(44px)}
   .nav-links .nav-link{font-size:1.25rem}
   .nav-toggle{display:flex}
   .led-toggle{margin-left:auto;margin-right:var(--space-md)}
-  .bento{
-    grid-template-columns:1fr 1fr;
-    grid-template-areas:
-      "intro intro"
-      "photo photo"
-      "stat1 stat2"
-      "journey journey"
-      "lab connect"
-      "projects projects";
-  }
-  .bento-photo{min-height:260px}
-  .bento-link--wide{flex-direction:column;align-items:flex-start}
-  .bento-link--wide .bento-link-arrow{margin-left:0;margin-top:var(--space-md);align-self:flex-end}
+  .hero-card{flex-direction:column}
+  .hero-photo{width:100%;height:220px}
+  .nav-grid{grid-template-columns:1fr 1fr}
   .stats-strip{gap:var(--space-lg);flex-wrap:wrap}
   .projects-grid{grid-template-columns:1fr}
   .lab-grid{grid-template-columns:1fr}
@@ -407,21 +373,12 @@ body.led-active .page-404{padding-top:calc(44px)}
   .modal-overlay.active .modal-sheet{transform:translateY(0)}
 }
 @media(max-width:480px){
-  .bento{
-    grid-template-columns:1fr;
-    grid-template-areas:
-      "intro"
-      "photo"
-      "stat1"
-      "stat2"
-      "journey"
-      "projects"
-      "lab"
-      "connect";
-  }
   .home{padding:calc(var(--nav-h) + var(--space-lg)) var(--space-md) var(--space-lg)}
+  .nav-grid{grid-template-columns:1fr}
+  .hero-photo{height:180px}
+  .hero-stats{gap:var(--space-lg)}
   .stats-strip{gap:var(--space-md)}
   .modal-gallery{grid-template-columns:repeat(2,1fr)}
-  .led-strip-inner{gap:4px}
-  .led-dot{width:6px;height:6px}
+  .led-grid{grid-template-columns:repeat(auto-fill,8px);gap:4px;padding:calc(var(--nav-h) + 12px) 12px 12px}
+  .led-dot{width:8px;height:8px}
 }

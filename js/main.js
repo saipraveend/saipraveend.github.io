@@ -1,5 +1,5 @@
 /* =========================================================
-   SAIPRAVEEN DURAIRAMAN — Portfolio v3 Interactions
+   SAIPRAVEEN DURAIRAMAN — Portfolio v3.1 Interactions
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,24 +37,77 @@ document.addEventListener('DOMContentLoaded', () => {
     if (h === path || (path === '/index.html' && h === '/')) l.classList.add('active');
   });
 
-  /* ---- LED Matrix ---- */
+  /* ---- LED Matrix — Full Page ---- */
   const ledToggle = document.getElementById('led-toggle');
-  const ledStrip = document.getElementById('led-strip');
-  const ledInner = document.getElementById('led-strip-inner');
+  const ledOverlay = document.getElementById('led-overlay');
+  const ledGrid = document.getElementById('led-grid');
 
-  if (ledToggle && ledStrip && ledInner) {
-    const dotCount = 90;
-    for (let i = 0; i < dotCount; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'led-dot';
-      dot.addEventListener('click', () => dot.classList.toggle('lit'));
-      ledInner.appendChild(dot);
+  if (ledToggle && ledOverlay && ledGrid) {
+    let dotsCreated = false;
+    let isPainting = false;
+    let paintMode = true; // true = light up, false = erase
+
+    function createDots() {
+      if (dotsCreated) return;
+      const cellSize = window.innerWidth <= 480 ? 12 : 16;
+      const cols = Math.floor((window.innerWidth - 32) / cellSize);
+      const rows = Math.floor((window.innerHeight - 72) / cellSize);
+      const total = cols * rows;
+
+      const fragment = document.createDocumentFragment();
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'led-dot';
+        fragment.appendChild(dot);
+      }
+      ledGrid.appendChild(fragment);
+      dotsCreated = true;
+
+      // Paint on click
+      ledGrid.addEventListener('mousedown', e => {
+        if (e.target.classList.contains('led-dot')) {
+          isPainting = true;
+          paintMode = !e.target.classList.contains('lit');
+          e.target.classList.toggle('lit', paintMode);
+        }
+      });
+      ledGrid.addEventListener('mouseover', e => {
+        if (isPainting && e.target.classList.contains('led-dot')) {
+          e.target.classList.toggle('lit', paintMode);
+        }
+      });
+      window.addEventListener('mouseup', () => { isPainting = false; });
+
+      // Touch support
+      ledGrid.addEventListener('touchstart', e => {
+        const dot = e.target;
+        if (dot.classList.contains('led-dot')) {
+          isPainting = true;
+          paintMode = !dot.classList.contains('lit');
+          dot.classList.toggle('lit', paintMode);
+        }
+      }, { passive: true });
+      ledGrid.addEventListener('touchmove', e => {
+        if (!isPainting) return;
+        const touch = e.touches[0];
+        const el = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (el && el.classList.contains('led-dot')) {
+          el.classList.toggle('lit', paintMode);
+        }
+      }, { passive: true });
+      ledGrid.addEventListener('touchend', () => { isPainting = false; });
     }
 
     ledToggle.addEventListener('click', () => {
       const active = ledToggle.classList.toggle('active');
-      ledStrip.classList.toggle('visible', active);
-      document.body.classList.toggle('led-active', active);
+      if (active) {
+        createDots();
+        ledOverlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      } else {
+        ledOverlay.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
     });
   }
 
@@ -141,7 +194,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lb) lb.addEventListener('click', closeLightbox);
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeModal(); closeLightbox(); }
+    if (e.key === 'Escape') {
+      closeModal();
+      closeLightbox();
+      // Also close LED overlay
+      if (ledToggle && ledOverlay && ledOverlay.classList.contains('visible')) {
+        ledToggle.classList.remove('active');
+        ledOverlay.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+    }
   });
 
   /* ---- Page transitions ---- */
