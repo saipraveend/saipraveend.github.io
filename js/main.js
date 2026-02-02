@@ -48,11 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let paintMode = true;
     let lastX = null, lastY = null;
 
-    function paintAt(x, y) {
-      const el = document.elementFromPoint(x, y);
-      if (el && el.classList.contains('led-dot')) {
-        el.classList.toggle('lit', paintMode);
-      }
+    /* Grid geometry for coordinate-based dot lookup (no elementFromPoint) */
+    const PAD = 8;
+    let gCols = 0, gDot = 10, gGap = 6, gCell = 16, gX0 = 0, gY0 = PAD;
+
+    function calibrate() {
+      gDot = window.innerWidth <= 480 ? 8 : 10;
+      gGap = window.innerWidth <= 480 ? 4 : 6;
+      gCell = gDot + gGap;
+      const availW = window.innerWidth - PAD * 2;
+      gCols = Math.floor((availW + gGap) / gCell);
+      const totalW = gCols * gDot + Math.max(0, gCols - 1) * gGap;
+      gX0 = PAD + (availW - totalW) / 2;
+      gY0 = PAD;
+    }
+
+    function dotAt(cx, cy) {
+      const x = cx - gX0, y = cy - gY0;
+      if (x < 0 || y < 0) return -1;
+      const col = Math.floor(x / gCell), row = Math.floor(y / gCell);
+      if (col >= gCols || col < 0 || row < 0) return -1;
+      if ((x - col * gCell) > gDot || (y - row * gCell) > gDot) return -1;
+      const idx = row * gCols + col;
+      return idx < ledGrid.children.length ? idx : -1;
+    }
+
+    function paintDot(cx, cy) {
+      const i = dotAt(cx, cy);
+      if (i >= 0) ledGrid.children[i].classList.toggle('lit', paintMode);
     }
 
     function paintLine(x1, y1, x2, y2) {
@@ -61,66 +84,71 @@ document.addEventListener('DOMContentLoaded', () => {
       const steps = Math.max(Math.ceil(dist / 3), 1);
       for (let i = 0; i <= steps; i++) {
         const t = i / steps;
-        paintAt(x1 + dx * t, y1 + dy * t);
+        paintDot(x1 + dx * t, y1 + dy * t);
       }
+    }
+
+    function isUI(el) {
+      return el && el.closest('a, button, .btn, .hero-card, .nav-card, .project-card, .lab-card, .connect-link, .filter-btn, .edu-card, .led-toggle, .nav-toggle, .modal-overlay, input, select, textarea');
     }
 
     function createDots() {
       if (dotsCreated) return;
-      const cellSize = window.innerWidth <= 480 ? 12 : 16;
-      const cols = Math.floor((window.innerWidth - 32) / cellSize);
-      const rows = Math.floor((window.innerHeight - 72) / cellSize);
-      const total = cols * rows;
-
-      const fragment = document.createDocumentFragment();
+      calibrate();
+      const rows = Math.floor((window.innerHeight - PAD * 2 + gGap) / gCell);
+      const total = gCols * rows;
+      const frag = document.createDocumentFragment();
       for (let i = 0; i < total; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'led-dot';
-        fragment.appendChild(dot);
+        const d = document.createElement('div');
+        d.className = 'led-dot';
+        frag.appendChild(d);
       }
-      ledGrid.appendChild(fragment);
+      ledGrid.appendChild(frag);
       dotsCreated = true;
-
-      // Mouse: smooth painting with line interpolation
-      ledGrid.addEventListener('mousedown', e => {
-        if (e.target.classList.contains('led-dot')) {
-          isPainting = true;
-          paintMode = !e.target.classList.contains('lit');
-          e.target.classList.toggle('lit', paintMode);
-          lastX = e.clientX; lastY = e.clientY;
-          e.preventDefault();
-        }
-      });
-      document.addEventListener('mousemove', e => {
-        if (!isPainting) return;
-        if (lastX !== null) {
-          paintLine(lastX, lastY, e.clientX, e.clientY);
-        }
-        lastX = e.clientX; lastY = e.clientY;
-      });
-      document.addEventListener('mouseup', () => { isPainting = false; lastX = null; lastY = null; });
-
-      // Touch: smooth painting with line interpolation
-      ledGrid.addEventListener('touchstart', e => {
-        const dot = e.target;
-        if (dot.classList.contains('led-dot')) {
-          isPainting = true;
-          paintMode = !dot.classList.contains('lit');
-          dot.classList.toggle('lit', paintMode);
-          const t = e.touches[0];
-          lastX = t.clientX; lastY = t.clientY;
-        }
-      }, { passive: true });
-      document.addEventListener('touchmove', e => {
-        if (!isPainting) return;
-        const t = e.touches[0];
-        if (lastX !== null) {
-          paintLine(lastX, lastY, t.clientX, t.clientY);
-        }
-        lastX = t.clientX; lastY = t.clientY;
-      }, { passive: true });
-      document.addEventListener('touchend', () => { isPainting = false; lastX = null; lastY = null; });
     }
+
+    /* Mouse painting — document-level so it bypasses z-index stacking */
+    document.addEventListener('mousedown', e => {
+      if (!document.body.classList.contains('led-mode')) return;
+      if (isUI(e.target)) return;
+      const i = dotAt(e.clientX, e.clientY);
+      if (i >= 0) {
+        isPainting = true;
+        const dot = ledGrid.children[i];
+        paintMode = !dot.classList.contains('lit');
+        dot.classList.toggle('lit', paintMode);
+        lastX = e.clientX; lastY = e.clientY;
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isPainting) return;
+      if (lastX !== null) paintLine(lastX, lastY, e.clientX, e.clientY);
+      lastX = e.clientX; lastY = e.clientY;
+    });
+    document.addEventListener('mouseup', () => { isPainting = false; lastX = null; lastY = null; });
+
+    /* Touch painting */
+    document.addEventListener('touchstart', e => {
+      if (!document.body.classList.contains('led-mode')) return;
+      if (isUI(e.target)) return;
+      const touch = e.touches[0];
+      const i = dotAt(touch.clientX, touch.clientY);
+      if (i >= 0) {
+        isPainting = true;
+        const dot = ledGrid.children[i];
+        paintMode = !dot.classList.contains('lit');
+        dot.classList.toggle('lit', paintMode);
+        lastX = touch.clientX; lastY = touch.clientY;
+      }
+    }, { passive: true });
+    document.addEventListener('touchmove', e => {
+      if (!isPainting) return;
+      const touch = e.touches[0];
+      if (lastX !== null) paintLine(lastX, lastY, touch.clientX, touch.clientY);
+      lastX = touch.clientX; lastY = touch.clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', () => { isPainting = false; lastX = null; lastY = null; });
 
     ledToggle.addEventListener('click', () => {
       const active = ledToggle.classList.toggle('active');

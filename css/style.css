@@ -149,7 +149,7 @@ body.led-mode .stats-strip{border-bottom-color:#333}
 /* LED overlay — z-index 998 so dots show through transparent gaps */
 .led-overlay{position:fixed;inset:0;z-index:998;background:#0D0D0D;display:none;overflow:hidden;pointer-events:none}
 .led-overlay.visible{display:block}
-.led-grid{display:grid;grid-template-columns:repeat(auto-fill,10px);gap:6px;justify-content:center;padding:calc(var(--nav-h) + 16px) 16px 16px;width:100%;height:100%;align-content:start;pointer-events:auto}
+.led-grid{display:grid;grid-template-columns:repeat(auto-fill,10px);gap:6px;justify-content:center;padding:8px;width:100%;height:100%;align-content:start;pointer-events:auto}
 .led-dot{width:10px;height:10px;border-radius:50%;background:#1A1A1A;cursor:crosshair}
 .led-dot:hover{background:#282828}
 .led-dot.lit{background:var(--accent-warm);box-shadow:0 0 6px var(--accent-warm-glow),0 0 16px rgba(212,148,58,.25)}
