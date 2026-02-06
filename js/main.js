@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
-     1. PARTICLE SYSTEM — Ambient Electrons
+     1. PARTICLE SYSTEM — Profile Image Silhouette
      ========================================================= */
   const canvas = document.getElementById('particle-canvas');
   const heroAvatar = document.getElementById('hero-avatar');
@@ -14,39 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let particles = [];
+    let avatarPoints = [];
     let mouse = { x: null, y: null };
     let animationId;
     let reduceMotion = localStorage.getItem('reduceMotion') === 'true';
+    let imageLoaded = false;
 
-    // Humanoid silhouette points (normalized 0-1, will scale to avatar area)
-    const silhouettePoints = [
-      // Head (circle approximation)
-      { x: 0.5, y: 0.08 }, { x: 0.58, y: 0.1 }, { x: 0.62, y: 0.15 },
-      { x: 0.62, y: 0.22 }, { x: 0.58, y: 0.27 }, { x: 0.5, y: 0.29 },
-      { x: 0.42, y: 0.27 }, { x: 0.38, y: 0.22 }, { x: 0.38, y: 0.15 },
-      { x: 0.42, y: 0.1 },
-      // Neck
-      { x: 0.47, y: 0.32 }, { x: 0.53, y: 0.32 },
-      // Shoulders
-      { x: 0.25, y: 0.38 }, { x: 0.35, y: 0.36 }, { x: 0.65, y: 0.36 }, { x: 0.75, y: 0.38 },
-      // Arms left
-      { x: 0.18, y: 0.45 }, { x: 0.15, y: 0.55 }, { x: 0.18, y: 0.65 },
-      // Arms right
-      { x: 0.82, y: 0.45 }, { x: 0.85, y: 0.55 }, { x: 0.82, y: 0.65 },
-      // Torso
-      { x: 0.35, y: 0.45 }, { x: 0.5, y: 0.42 }, { x: 0.65, y: 0.45 },
-      { x: 0.35, y: 0.58 }, { x: 0.5, y: 0.55 }, { x: 0.65, y: 0.58 },
-      { x: 0.38, y: 0.7 }, { x: 0.5, y: 0.68 }, { x: 0.62, y: 0.7 },
-      // Legs
-      { x: 0.38, y: 0.78 }, { x: 0.35, y: 0.88 }, { x: 0.38, y: 0.98 },
-      { x: 0.62, y: 0.78 }, { x: 0.65, y: 0.88 }, { x: 0.62, y: 0.98 },
-      // Extra body fill
-      { x: 0.45, y: 0.48 }, { x: 0.55, y: 0.48 },
-      { x: 0.45, y: 0.62 }, { x: 0.55, y: 0.62 },
-    ];
-
-    const PARTICLE_COUNT = 50;
-    const AVATAR_PARTICLE_COUNT = silhouettePoints.length;
+    const PARTICLE_COUNT = 40;
+    const AVATAR_PARTICLE_COUNT = 120; // More particles for detailed portrait
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -66,14 +41,104 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     }
 
+    // Extract points from profile image
+    function extractImagePoints(img, targetCount) {
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+
+      // Sample at reasonable resolution
+      const sampleSize = 100;
+      tempCanvas.width = sampleSize;
+      tempCanvas.height = sampleSize;
+
+      tempCtx.drawImage(img, 0, 0, sampleSize, sampleSize);
+      const imageData = tempCtx.getImageData(0, 0, sampleSize, sampleSize);
+      const data = imageData.data;
+
+      const points = [];
+      const step = 2; // Sample every 2 pixels
+
+      for (let y = 0; y < sampleSize; y += step) {
+        for (let x = 0; x < sampleSize; x += step) {
+          const i = (y * sampleSize + x) * 4;
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          const a = data[i + 3];
+
+          // Calculate brightness
+          const brightness = (r + g + b) / 3;
+
+          // Only include darker pixels (the subject, not background)
+          // and pixels that aren't fully transparent
+          if (a > 128 && brightness < 200) {
+            points.push({
+              x: x / sampleSize,
+              y: y / sampleSize,
+              brightness: brightness / 255
+            });
+          }
+        }
+      }
+
+      // Randomly sample to get target count
+      const sampled = [];
+      const shuffled = points.sort(() => Math.random() - 0.5);
+      for (let i = 0; i < Math.min(targetCount, shuffled.length); i++) {
+        sampled.push(shuffled[i]);
+      }
+
+      return sampled;
+    }
+
+    // Load profile image and extract points
+    function loadProfileImage() {
+      if (!heroAvatar) {
+        initParticles();
+        return;
+      }
+
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        avatarPoints = extractImagePoints(img, AVATAR_PARTICLE_COUNT);
+        imageLoaded = true;
+        initParticles();
+      };
+      img.onerror = () => {
+        // Fallback to simple circle if image fails
+        avatarPoints = generateCirclePoints(AVATAR_PARTICLE_COUNT);
+        imageLoaded = true;
+        initParticles();
+      };
+      img.src = '/assets/images/profile.jpg';
+    }
+
+    // Fallback: generate circular points
+    function generateCirclePoints(count) {
+      const points = [];
+      for (let i = 0; i < count; i++) {
+        const angle = (i / count) * Math.PI * 2;
+        const radius = 0.3 + Math.random() * 0.15;
+        points.push({
+          x: 0.5 + Math.cos(angle) * radius,
+          y: 0.5 + Math.sin(angle) * radius,
+          brightness: 0.5
+        });
+      }
+      return points;
+    }
+
     function createParticle(index, isAvatarParticle = false) {
       const avatarBounds = getAvatarBounds();
       let targetX = null, targetY = null;
+      let brightness = 0.5;
 
-      if (isAvatarParticle && avatarBounds && index < silhouettePoints.length) {
-        const point = silhouettePoints[index];
+      if (isAvatarParticle && avatarBounds && index < avatarPoints.length) {
+        const point = avatarPoints[index];
         targetX = avatarBounds.x + point.x * avatarBounds.width;
         targetY = avatarBounds.y + point.y * avatarBounds.height;
+        brightness = point.brightness;
       }
 
       return {
@@ -81,30 +146,28 @@ document.addEventListener('DOMContentLoaded', () => {
         y: targetY || Math.random() * canvas.height,
         targetX,
         targetY,
-        baseX: targetX || Math.random() * canvas.width,
-        baseY: targetY || Math.random() * canvas.height,
-        size: isAvatarParticle ? 3 + Math.random() * 2 : 2 + Math.random() * 2,
+        size: isAvatarParticle ? 2 + (1 - brightness) * 2 : 2 + Math.random() * 1.5,
         speedX: (Math.random() - 0.5) * 0.3,
         speedY: (Math.random() - 0.5) * 0.3,
         isAvatar: isAvatarParticle,
-        opacity: isAvatarParticle ? 0.7 + Math.random() * 0.3 : 0.3 + Math.random() * 0.3,
+        opacity: isAvatarParticle ? 0.5 + (1 - brightness) * 0.4 : 0.2 + Math.random() * 0.2,
         pulseOffset: Math.random() * Math.PI * 2
       };
     }
 
     function initParticles() {
       particles = [];
-      const hasAvatar = !!heroAvatar;
+      const hasAvatar = !!heroAvatar && avatarPoints.length > 0;
 
-      // Avatar particles (cluster into silhouette)
+      // Avatar particles (form profile silhouette)
       if (hasAvatar) {
-        for (let i = 0; i < AVATAR_PARTICLE_COUNT; i++) {
+        for (let i = 0; i < avatarPoints.length; i++) {
           particles.push(createParticle(i, true));
         }
       }
 
       // Ambient particles
-      const ambientCount = hasAvatar ? PARTICLE_COUNT - 10 : PARTICLE_COUNT;
+      const ambientCount = hasAvatar ? PARTICLE_COUNT - 15 : PARTICLE_COUNT;
       for (let i = 0; i < ambientCount; i++) {
         particles.push(createParticle(i, false));
       }
@@ -120,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawParticle(p, time) {
       const color = getParticleColor(p);
-      const pulse = p.isAvatar ? 0.15 * Math.sin(time * 0.002 + p.pulseOffset) : 0;
+      const pulse = p.isAvatar ? 0.1 * Math.sin(time * 0.002 + p.pulseOffset) : 0;
       const opacity = Math.max(0.1, Math.min(1, p.opacity + pulse));
 
       ctx.beginPath();
@@ -128,18 +191,17 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillStyle = color + opacity + ')';
       ctx.fill();
 
-      // Glow effect for avatar particles
-      if (p.isAvatar) {
+      // Subtle glow for avatar particles
+      if (p.isAvatar && p.opacity > 0.6) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-        ctx.fillStyle = color + (opacity * 0.2) + ')';
+        ctx.arc(p.x, p.y, p.size * 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = color + (opacity * 0.15) + ')';
         ctx.fill();
       }
     }
 
     function updateParticle(p) {
       if (reduceMotion) {
-        // In reduce motion mode, particles stay at their target/base position
         if (p.targetX !== null) {
           p.x = p.targetX;
           p.y = p.targetY;
@@ -152,25 +214,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 150;
+        const maxDist = 100;
 
         if (dist < maxDist) {
           const force = (maxDist - dist) / maxDist;
           const angle = Math.atan2(dy, dx);
-          // Avatar particles are attracted, ambient particles are repelled
-          const direction = p.isAvatar ? 0.3 : -0.8;
+          const direction = p.isAvatar ? 0.2 : -0.6;
           p.x += Math.cos(angle) * force * direction;
           p.y += Math.sin(angle) * force * direction;
         }
       }
 
-      // Avatar particles return to silhouette position
+      // Avatar particles return to their position
       if (p.isAvatar && p.targetX !== null) {
         const avatarBounds = getAvatarBounds();
-        if (avatarBounds) {
+        if (avatarBounds && particles.indexOf(p) < avatarPoints.length) {
           const index = particles.indexOf(p);
-          if (index < silhouettePoints.length) {
-            const point = silhouettePoints[index];
+          const point = avatarPoints[index];
+          if (point) {
             p.targetX = avatarBounds.x + point.x * avatarBounds.width;
             p.targetY = avatarBounds.y + point.y * avatarBounds.height;
           }
@@ -178,18 +239,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const dx = p.targetX - p.x;
         const dy = p.targetY - p.y;
-        p.x += dx * 0.03;
-        p.y += dy * 0.03;
+        p.x += dx * 0.05;
+        p.y += dy * 0.05;
 
-        // Small organic movement
-        p.x += Math.sin(Date.now() * 0.001 + p.pulseOffset) * 0.3;
-        p.y += Math.cos(Date.now() * 0.001 + p.pulseOffset) * 0.3;
+        // Tiny organic movement
+        p.x += Math.sin(Date.now() * 0.001 + p.pulseOffset) * 0.2;
+        p.y += Math.cos(Date.now() * 0.0012 + p.pulseOffset) * 0.2;
       } else {
         // Ambient particles drift
         p.x += p.speedX;
         p.y += p.speedY;
 
-        // Wrap around screen
         if (p.x < -20) p.x = canvas.width + 20;
         if (p.x > canvas.width + 20) p.x = -20;
         if (p.y < -20) p.y = canvas.height + 20;
@@ -197,38 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function drawConnections() {
-      if (reduceMotion) return;
-
-      const avatarParticles = particles.filter(p => p.isAvatar);
-      const isDark = document.body.classList.contains('dark-mode');
-      const lineColor = isDark ? 'rgba(212,148,58,' : 'rgba(61,90,128,';
-
-      for (let i = 0; i < avatarParticles.length; i++) {
-        for (let j = i + 1; j < avatarParticles.length; j++) {
-          const p1 = avatarParticles[i];
-          const p2 = avatarParticles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 60) {
-            const opacity = (1 - dist / 60) * 0.15;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = lineColor + opacity + ')';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
     function animate(time) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      drawConnections();
 
       particles.forEach(p => {
         updateParticle(p);
@@ -251,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize
     resize();
-    initParticles();
+    loadProfileImage();
     animate(0);
 
     // Handle resize
@@ -260,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         resize();
-        initParticles();
+        if (imageLoaded) initParticles();
       }, 200);
     });
 
@@ -277,7 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Apply reduce motion on load
     if (reduceMotion) {
       document.body.classList.add('reduce-motion');
     }
@@ -289,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-  // Check saved preference or system preference
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark' || (!savedTheme && prefersDark.matches)) {
     document.body.classList.add('dark-mode');
