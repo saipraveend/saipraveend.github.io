@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
-     1. PARTICLE SYSTEM — Profile Image Portrait
+     1. PARTICLE SYSTEM — Robot Favicon Avatar
      ========================================================= */
   const canvas = document.getElementById('particle-canvas');
   const heroAvatar = document.getElementById('hero-avatar');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let imageLoaded = false;
 
     const PARTICLE_COUNT = 35;
-    const AVATAR_PARTICLE_COUNT = 150;
+    const AVATAR_PARTICLE_COUNT = 180;
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -39,78 +39,109 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     }
 
-    // Generate portrait silhouette points (head and shoulders)
-    function generatePortraitPoints(count) {
+    // Generate robot silhouette points (matches the favicon robot)
+    function generateRobotPoints(count) {
       const points = [];
 
-      // Head - oval shape (top portion)
-      const headPoints = Math.floor(count * 0.45);
+      // Robot head (rounded rectangle at top)
+      const headPoints = Math.floor(count * 0.35);
       for (let i = 0; i < headPoints; i++) {
-        const angle = (i / headPoints) * Math.PI * 2;
-        const radiusX = 0.18 + Math.random() * 0.04;
-        const radiusY = 0.22 + Math.random() * 0.04;
-        const x = 0.5 + Math.cos(angle) * radiusX;
-        const y = 0.28 + Math.sin(angle) * radiusY * 0.9;
-        points.push({ x, y, brightness: 0.3 + Math.random() * 0.3 });
-      }
-
-      // Face details - inner points
-      const facePoints = Math.floor(count * 0.15);
-      for (let i = 0; i < facePoints; i++) {
-        const x = 0.35 + Math.random() * 0.3;
-        const y = 0.15 + Math.random() * 0.3;
-        // Check if inside head oval
-        const dx = (x - 0.5) / 0.18;
-        const dy = (y - 0.28) / 0.22;
-        if (dx * dx + dy * dy < 1) {
-          points.push({ x, y, brightness: 0.4 + Math.random() * 0.4 });
+        // Head outline
+        const t = i / headPoints;
+        let x, y;
+        if (t < 0.25) { // Top edge
+          x = 0.25 + (t / 0.25) * 0.5;
+          y = 0.08 + Math.random() * 0.02;
+        } else if (t < 0.5) { // Right edge
+          x = 0.75 + Math.random() * 0.02;
+          y = 0.08 + ((t - 0.25) / 0.25) * 0.28;
+        } else if (t < 0.75) { // Bottom edge
+          x = 0.75 - ((t - 0.5) / 0.25) * 0.5;
+          y = 0.36 + Math.random() * 0.02;
+        } else { // Left edge
+          x = 0.25 + Math.random() * 0.02;
+          y = 0.36 - ((t - 0.75) / 0.25) * 0.28;
         }
+        points.push({ x, y, brightness: 0.2 });
       }
 
-      // Neck
-      const neckPoints = Math.floor(count * 0.05);
-      for (let i = 0; i < neckPoints; i++) {
-        const x = 0.45 + Math.random() * 0.1;
-        const y = 0.48 + Math.random() * 0.08;
-        points.push({ x, y, brightness: 0.3 + Math.random() * 0.2 });
+      // Eyes (two rectangles)
+      const eyePoints = Math.floor(count * 0.12);
+      for (let i = 0; i < eyePoints; i++) {
+        const isLeftEye = i < eyePoints / 2;
+        const x = isLeftEye ? 0.32 + Math.random() * 0.08 : 0.60 + Math.random() * 0.08;
+        const y = 0.18 + Math.random() * 0.06;
+        points.push({ x, y, brightness: 0.5 });
       }
 
-      // Shoulders - curved line
-      const shoulderPoints = Math.floor(count * 0.35);
-      for (let i = 0; i < shoulderPoints; i++) {
-        const t = i / shoulderPoints;
-        const x = 0.15 + t * 0.7;
-        // Parabolic curve for shoulders
-        const shoulderCurve = -0.3 * Math.pow((t - 0.5) * 2, 2) + 0.08;
-        const y = 0.58 + shoulderCurve + Math.random() * 0.12;
-        points.push({ x, y, brightness: 0.25 + Math.random() * 0.25 });
+      // Mouth (rectangle)
+      const mouthPoints = Math.floor(count * 0.06);
+      for (let i = 0; i < mouthPoints; i++) {
+        const x = 0.38 + Math.random() * 0.24;
+        const y = 0.28 + Math.random() * 0.04;
+        points.push({ x, y, brightness: 0.5 });
       }
 
-      // Body fill
-      const bodyPoints = count - points.length;
+      // Antenna
+      const antennaPoints = Math.floor(count * 0.04);
+      for (let i = 0; i < antennaPoints; i++) {
+        const x = 0.48 + Math.random() * 0.04;
+        const y = 0.02 + Math.random() * 0.06;
+        points.push({ x, y, brightness: 0.3 });
+      }
+
+      // Body (rectangle below head)
+      const bodyPoints = Math.floor(count * 0.2);
       for (let i = 0; i < bodyPoints; i++) {
-        const x = 0.25 + Math.random() * 0.5;
-        const y = 0.65 + Math.random() * 0.3;
-        // Taper towards bottom
-        const width = 0.5 - (y - 0.65) * 0.3;
-        if (Math.abs(x - 0.5) < width / 2) {
-          points.push({ x, y, brightness: 0.2 + Math.random() * 0.2 });
+        const t = i / bodyPoints;
+        let x, y;
+        if (t < 0.3) { // Top and sides
+          x = 0.3 + (t / 0.3) * 0.4;
+          y = 0.42 + Math.random() * 0.02;
+        } else if (t < 0.6) {
+          x = 0.3 + Math.random() * 0.02;
+          y = 0.42 + ((t - 0.3) / 0.3) * 0.2;
+        } else {
+          x = 0.7 + Math.random() * 0.02;
+          y = 0.42 + ((t - 0.6) / 0.4) * 0.2;
         }
+        points.push({ x, y, brightness: 0.25 });
+      }
+
+      // Arms (extending from body sides)
+      const armPoints = Math.floor(count * 0.1);
+      for (let i = 0; i < armPoints; i++) {
+        const isLeftArm = i < armPoints / 2;
+        const x = isLeftArm ? 0.15 + Math.random() * 0.12 : 0.73 + Math.random() * 0.12;
+        const y = 0.46 + Math.random() * 0.12;
+        points.push({ x, y, brightness: 0.3 });
+      }
+
+      // Legs (two rectangles at bottom)
+      const legPoints = Math.floor(count * 0.13);
+      for (let i = 0; i < legPoints; i++) {
+        const isLeftLeg = i < legPoints / 2;
+        const x = isLeftLeg ? 0.35 + Math.random() * 0.08 : 0.57 + Math.random() * 0.08;
+        const y = 0.68 + Math.random() * 0.22;
+        points.push({ x, y, brightness: 0.25 });
       }
 
       return points;
     }
 
-    // Extract points from profile image using edge detection
+    // Extract points from favicon (black and white image)
     function extractImagePoints(img, targetCount) {
       try {
         const tempCanvas = document.createElement('canvas');
         const tempCtx = tempCanvas.getContext('2d');
 
-        const sampleSize = 100;
+        const sampleSize = 64; // Favicon is small, no need for large canvas
         tempCanvas.width = sampleSize;
         tempCanvas.height = sampleSize;
 
+        // White background to handle transparency
+        tempCtx.fillStyle = '#FFFFFF';
+        tempCtx.fillRect(0, 0, sampleSize, sampleSize);
         tempCtx.drawImage(img, 0, 0, sampleSize, sampleSize);
 
         let imageData;
@@ -122,74 +153,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const data = imageData.data;
-        const points = [];
+        const darkPixels = [];
 
-        // Edge detection: find pixels with high contrast to neighbors
-        function getPixelBrightness(x, y) {
-          if (x < 0 || x >= sampleSize || y < 0 || y >= sampleSize) return 0;
-          const i = (y * sampleSize + x) * 4;
-          const a = data[i + 3];
-          if (a < 50) return -1; // Transparent
-          return (data[i] + data[i + 1] + data[i + 2]) / 3;
-        }
+        // Collect all dark pixels (the robot is black on white background)
+        for (let y = 0; y < sampleSize; y++) {
+          for (let x = 0; x < sampleSize; x++) {
+            const i = (y * sampleSize + x) * 4;
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const brightness = (r + g + b) / 3;
 
-        // First pass: collect all visible pixels with edge strength
-        const candidates = [];
-        for (let y = 1; y < sampleSize - 1; y++) {
-          for (let x = 1; x < sampleSize - 1; x++) {
-            const center = getPixelBrightness(x, y);
-            if (center < 0) continue; // Skip transparent
-
-            // Calculate edge strength using Sobel-like operator
-            const left = getPixelBrightness(x - 1, y);
-            const right = getPixelBrightness(x + 1, y);
-            const top = getPixelBrightness(x, y - 1);
-            const bottom = getPixelBrightness(x, y + 1);
-
-            // Check for edges (transitions from content to transparent or high contrast)
-            let edgeStrength = 0;
-            if (left < 0 || right < 0 || top < 0 || bottom < 0) {
-              edgeStrength = 1.0; // Edge of visible content
-            } else {
-              const gx = Math.abs(right - left);
-              const gy = Math.abs(bottom - top);
-              edgeStrength = Math.sqrt(gx * gx + gy * gy) / 255;
+            // Dark pixels are part of the robot (threshold for black pixels)
+            if (brightness < 180) {
+              darkPixels.push({
+                x: x / sampleSize,
+                y: y / sampleSize,
+                brightness: brightness / 255
+              });
             }
-
-            candidates.push({
-              x: x / sampleSize,
-              y: y / sampleSize,
-              brightness: center / 255,
-              edgeStrength: edgeStrength,
-              isEdge: edgeStrength > 0.15
-            });
           }
         }
 
-        if (candidates.length < 30) {
-          console.log('Not enough visible pixels, using fallback');
+        if (darkPixels.length < 20) {
+          console.log('Not enough dark pixels found, using fallback');
           return null;
         }
 
-        // Separate edge and interior points
-        const edgePoints = candidates.filter(p => p.isEdge);
-        const interiorPoints = candidates.filter(p => !p.isEdge);
+        // Shuffle and sample to get target count
+        const shuffled = darkPixels.sort(() => Math.random() - 0.5);
+        const result = shuffled.slice(0, Math.min(targetCount, shuffled.length));
 
-        // Prioritize edges for the outline, fill with interior points
-        const edgeCount = Math.min(Math.floor(targetCount * 0.6), edgePoints.length);
-        const interiorCount = targetCount - edgeCount;
-
-        // Shuffle and sample
-        const shuffledEdges = edgePoints.sort(() => Math.random() - 0.5).slice(0, edgeCount);
-        const shuffledInterior = interiorPoints.sort(() => Math.random() - 0.5).slice(0, interiorCount);
-
-        const result = [...shuffledEdges, ...shuffledInterior].map(p => ({
-          x: p.x,
-          y: p.y,
-          brightness: p.isEdge ? 0.2 : p.brightness
-        }));
-
-        console.log('Extracted', result.length, 'points (', edgeCount, 'edges,', result.length - edgeCount, 'interior)');
+        console.log('Extracted', result.length, 'points from favicon');
         return result;
 
       } catch (e) {
@@ -198,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Load profile image and extract points
-    function loadProfileImage() {
+    // Load favicon and extract points for robot avatar
+    function loadFaviconImage() {
       if (!heroAvatar) {
         avatarPoints = [];
         initParticles();
@@ -212,47 +207,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const extracted = extractImagePoints(img, AVATAR_PARTICLE_COUNT);
         if (extracted && extracted.length > 50) {
           avatarPoints = extracted;
-          console.log('Loaded', avatarPoints.length, 'points from profile image');
+          console.log('Loaded', avatarPoints.length, 'points from favicon');
         } else {
-          avatarPoints = generatePortraitPoints(AVATAR_PARTICLE_COUNT);
-          console.log('Using generated portrait with', avatarPoints.length, 'points');
+          avatarPoints = generateRobotPoints(AVATAR_PARTICLE_COUNT);
+          console.log('Using generated robot with', avatarPoints.length, 'points');
         }
         imageLoaded = true;
         initParticles();
       };
 
       img.onerror = () => {
-        console.log('Image failed to load, using generated portrait');
-        avatarPoints = generatePortraitPoints(AVATAR_PARTICLE_COUNT);
+        console.log('Favicon failed to load, using generated robot');
+        avatarPoints = generateRobotPoints(AVATAR_PARTICLE_COUNT);
         imageLoaded = true;
         initParticles();
       };
 
-      // Use the correct PNG extension
-      img.src = '/assets/images/profile.png';
+      // Load the favicon
+      img.src = '/assets/images/favicon/favicon-96x96.png';
     }
 
     function createParticle(index, isAvatarParticle = false) {
       const avatarBounds = getAvatarBounds();
       let targetX = null, targetY = null;
       let brightness = 0.5;
-      let isEdge = false;
 
       if (isAvatarParticle && avatarBounds && index < avatarPoints.length) {
         const point = avatarPoints[index];
         targetX = avatarBounds.x + point.x * avatarBounds.width;
         targetY = avatarBounds.y + point.y * avatarBounds.height;
         brightness = point.brightness;
-        isEdge = brightness < 0.3; // Edge points have low brightness value
       }
 
-      // Edge particles are smaller and brighter, interior particles are larger and dimmer
+      // Consistent sizing for robot particles
       const size = isAvatarParticle
-        ? (isEdge ? 1.2 + Math.random() * 0.8 : 1.8 + Math.random() * 1.5)
+        ? 1.5 + Math.random() * 1.0
         : 1.5 + Math.random() * 1.5;
 
       const opacity = isAvatarParticle
-        ? (isEdge ? 0.6 + Math.random() * 0.3 : 0.25 + Math.random() * 0.25)
+        ? 0.5 + Math.random() * 0.35
         : 0.15 + Math.random() * 0.2;
 
       return {
@@ -264,7 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
         speedX: (Math.random() - 0.5) * 0.4,
         speedY: (Math.random() - 0.5) * 0.4,
         isAvatar: isAvatarParticle,
-        isEdge,
         opacity,
         pulseOffset: Math.random() * Math.PI * 2
       };
@@ -293,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawParticle(p, time) {
       const color = getParticleColor(p);
-      const pulse = p.isAvatar ? 0.08 * Math.sin(time * 0.002 + p.pulseOffset) : 0;
+      const pulse = p.isAvatar ? 0.06 * Math.sin(time * 0.002 + p.pulseOffset) : 0;
       const opacity = Math.max(0.05, Math.min(1, p.opacity + pulse));
 
       ctx.beginPath();
@@ -301,11 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillStyle = color + opacity + ')';
       ctx.fill();
 
-      // Glow for edge particles (they define the outline)
-      if (p.isAvatar && p.isEdge) {
+      // Subtle glow for avatar particles
+      if (p.isAvatar) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-        ctx.fillStyle = color + (opacity * 0.15) + ')';
+        ctx.arc(p.x, p.y, p.size * 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = color + (opacity * 0.1) + ')';
         ctx.fill();
       }
     }
@@ -388,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize
     resize();
-    loadProfileImage();
+    loadFaviconImage();
     animate(0);
 
     // Handle resize
