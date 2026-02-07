@@ -194,27 +194,26 @@ body.reduce-motion *::after{
 
 /* 9. HOME PAGE — NEW HERO
    ========================================================= */
-.home{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+.home{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center}
 
 .hero{
-  flex:1;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:calc(var(--nav-h) + var(--space-md)) var(--space-lg) var(--space-md);
+  padding:calc(var(--nav-h) + var(--space-lg)) var(--space-lg) var(--space-md);
 }
 .hero-inner{
   display:flex;
   align-items:center;
-  gap:var(--space-2xl);
+  gap:var(--space-xl);
   max-width:var(--max-w);
   width:100%;
 }
 
-/* Avatar area — particles cluster here */
+/* Avatar area — The Spark installation lives here */
 .hero-avatar{
-  width:200px;
-  height:240px;
+  width:160px;
+  height:160px;
   flex-shrink:0;
   position:relative;
   display:flex;
@@ -302,11 +301,25 @@ body.reduce-motion *::after{
   bottom:0;
   left:0;
   right:0;
-  padding:var(--space-md) var(--space-lg);
+  padding:var(--space-sm) var(--space-lg) var(--space-md);
   display:flex;
-  justify-content:center;
+  flex-direction:column;
+  align-items:center;
+  gap:var(--space-xs);
   z-index:100;
   pointer-events:none;
+}
+.home-footer-philosophy{
+  pointer-events:auto;
+  opacity:0;
+  animation:fadeIn 1s var(--ease-out) 1.5s forwards;
+}
+.philosophy-text{
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  letter-spacing:.03em;
+  color:var(--text-muted);
+  font-style:italic;
 }
 .home-footer-inner{
   pointer-events:auto;
@@ -486,11 +499,12 @@ body.dark-mode .project-card-ph--warm{background:linear-gradient(135deg,#2a2218,
 /* 18. RESPONSIVE
    ========================================================= */
 @media(max-width:900px){
-  .hero-inner{flex-direction:column;text-align:center;gap:var(--space-lg)}
-  .hero-avatar{width:140px;height:180px}
+  .hero-inner{flex-direction:column;text-align:center;gap:var(--space-md)}
+  .hero-avatar{width:140px;height:140px}
   .hero-bio{margin-left:auto;margin-right:auto}
   .hero-cta{justify-content:center}
   .nav-grid{grid-template-columns:repeat(2,1fr)}
+  .home-footer-philosophy{display:none}
 }
 @media(max-width:768px){
   :root{--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem}
@@ -516,8 +530,8 @@ body.dark-mode .project-card-ph--warm{background:linear-gradient(135deg,#2a2218,
   .modal-overlay.active .modal-sheet{transform:translateY(0)}
 }
 @media(max-width:480px){
-  .hero-inner{gap:var(--space-md)}
-  .hero-avatar{width:120px;height:150px}
+  .hero-inner{gap:var(--space-sm)}
+  .hero-avatar{width:100px;height:100px}
   .hero-greeting{font-size:.9rem}
   .hero-tagline{font-size:1.4rem}
   .hero-bio{font-size:.85rem;margin-top:var(--space-sm)}
@@ -529,7 +543,7 @@ body.dark-mode .project-card-ph--warm{background:linear-gradient(135deg,#2a2218,
 }
 @media(max-height:700px){
   .hero{padding-top:var(--nav-h);padding-bottom:var(--space-xs)}
-  .hero-avatar{width:100px;height:130px}
+  .hero-avatar{width:100px;height:100px}
   .hero-bio{display:none}
   .home-nav{margin-bottom:45px}
   .nav-card{padding:var(--space-xs)}
