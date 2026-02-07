@@ -267,6 +267,7 @@ body.reduce-motion *::after{
 /* Home nav section */
 .home-nav{
   padding:0 var(--space-lg) var(--space-lg);
+  margin-top:var(--space-2xl);
   margin-bottom:60px; /* space for fixed footer */
 }
 .nav-grid{

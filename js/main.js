@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
      1. THE SPARK — Particle Installation
 
      Philosophy: Everything is atoms. When we organize electrons,
-     magic happens. This installation visualizes that journey:
+     magic happens. Click to trigger the organization.
 
-     SCATTERED → PULL → SPARK → ALIVE → BREATHE → repeat
+     Default: SCATTERED (particles drifting freely)
+     On click: PULL → SPARK → ALIVE → BREATHE → back to SCATTERED
      ========================================================= */
   const canvas = document.getElementById('particle-canvas');
   const heroAvatar = document.getElementById('hero-avatar');
@@ -27,21 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Installation settings
     const PARTICLE_COUNT = 80;
     const AMBIENT_COUNT = 25;
-    const CYCLE_DURATION = 12000; // 12 seconds per cycle
 
-    // Phase timings (in ms)
-    const PHASES = {
-      SCATTERED: { start: 0, duration: 2000 },
-      PULL: { start: 2000, duration: 2500 },
-      SPARK: { start: 4500, duration: 500 },
-      ALIVE: { start: 5000, duration: 5000 },
-      BREATHE: { start: 10000, duration: 2000 }
-    };
-
-    let cycleStartTime = 0;
+    // Animation state - default is just scattered
+    let isAnimating = false;
+    let animationStartTime = 0;
     let currentPhase = 'SCATTERED';
-    let sparkIntensity = 0;
     let pulseRings = [];
+
+    // Phase durations for the click-triggered animation
+    const ANIMATION_PHASES = [
+      { name: 'PULL', duration: 1500 },
+      { name: 'SPARK', duration: 400 },
+      { name: 'ALIVE', duration: 3000 },
+      { name: 'BREATHE', duration: 1500 }
+    ];
+    const TOTAL_ANIMATION_DURATION = ANIMATION_PHASES.reduce((sum, p) => sum + p.duration, 0);
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getAvatarCenter() {
-      if (!heroAvatar) return { x: canvas.width / 2, y: canvas.height / 2 };
+      if (!heroAvatar) return { x: canvas.width / 2, y: canvas.height / 2, radius: 80 };
       const rect = heroAvatar.getBoundingClientRect();
       return {
         x: rect.left + rect.width / 2,
@@ -61,38 +62,32 @@ document.addEventListener('DOMContentLoaded', () => {
     function createParticle(index) {
       const center = getAvatarCenter();
       const angle = (index / PARTICLE_COUNT) * Math.PI * 2;
-      const spreadRadius = center.radius * 3;
 
-      // Start scattered around the center area
+      // Spread particles across a wider area
       const startAngle = Math.random() * Math.PI * 2;
-      const startDist = center.radius * 1.5 + Math.random() * spreadRadius;
+      const startDist = center.radius * 0.5 + Math.random() * center.radius * 4;
 
       return {
-        // Current position
         x: center.x + Math.cos(startAngle) * startDist,
         y: center.y + Math.sin(startAngle) * startDist,
 
-        // Scattered position (random)
-        scatteredX: center.x + Math.cos(startAngle) * startDist,
-        scatteredY: center.y + Math.sin(startAngle) * startDist,
-
-        // Orbital position (for ALIVE phase)
+        // Orbital position (for organized phases)
         orbitAngle: angle,
-        orbitRadius: center.radius * (0.4 + Math.random() * 0.5),
-        orbitSpeed: 0.0003 + Math.random() * 0.0004,
-        orbitLayer: Math.floor(Math.random() * 3), // 0, 1, or 2 - different orbit layers
+        orbitRadius: center.radius * (0.5 + Math.random() * 0.6),
+        orbitSpeed: 0.0004 + Math.random() * 0.0003,
+        orbitLayer: Math.floor(Math.random() * 3),
 
-        // Visual properties
-        baseSize: 1.5 + Math.random() * 1.5,
-        size: 1.5 + Math.random() * 1.5,
-        opacity: 0.3 + Math.random() * 0.4,
+        // Visual - keep consistent size
+        baseSize: 2 + Math.random() * 2,
+        size: 2 + Math.random() * 2,
+        baseOpacity: 0.35 + Math.random() * 0.3,
+        opacity: 0.35 + Math.random() * 0.3,
         pulseOffset: Math.random() * Math.PI * 2,
 
-        // Movement
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        // Movement for scattered state
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
 
-        // State
         index: index
       };
     }
@@ -101,10 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: 1 + Math.random() * 2,
-        opacity: 0.08 + Math.random() * 0.12,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3
+        size: 1.5 + Math.random() * 2,
+        opacity: 0.1 + Math.random() * 0.15,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4
       };
     }
 
@@ -119,23 +114,51 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < AMBIENT_COUNT; i++) {
         ambientParticles.push(createAmbientParticle());
       }
-
-      cycleStartTime = performance.now();
     }
 
     function getCurrentPhase(time) {
-      const cycleTime = (time - cycleStartTime) % CYCLE_DURATION;
+      if (!isAnimating) {
+        return { name: 'SCATTERED', progress: 0 };
+      }
 
-      for (const [phase, timing] of Object.entries(PHASES)) {
-        if (cycleTime >= timing.start && cycleTime < timing.start + timing.duration) {
+      const elapsed = time - animationStartTime;
+
+      // Animation finished - return to scattered
+      if (elapsed >= TOTAL_ANIMATION_DURATION) {
+        isAnimating = false;
+        return { name: 'SCATTERED', progress: 0 };
+      }
+
+      // Find current phase
+      let timeInPhase = elapsed;
+      for (const phase of ANIMATION_PHASES) {
+        if (timeInPhase < phase.duration) {
           return {
-            name: phase,
-            progress: (cycleTime - timing.start) / timing.duration,
-            cycleTime
+            name: phase.name,
+            progress: timeInPhase / phase.duration
           };
         }
+        timeInPhase -= phase.duration;
       }
-      return { name: 'SCATTERED', progress: 0, cycleTime };
+
+      return { name: 'SCATTERED', progress: 0 };
+    }
+
+    function triggerAnimation() {
+      if (reduceMotion) return;
+      isAnimating = true;
+      animationStartTime = performance.now();
+
+      // Add pulse ring
+      const center = getAvatarCenter();
+      pulseRings.push({
+        x: center.x,
+        y: center.y,
+        radius: center.radius * 0.2,
+        maxRadius: center.radius * 3.5,
+        opacity: 0.7,
+        birth: performance.now()
+      });
     }
 
     function easeInOutCubic(t) {
@@ -147,6 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return t === 0 ? 0 : t === 1 ? 1 : Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
     }
 
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
     function updateParticle(p, time, phase) {
       const center = getAvatarCenter();
 
@@ -155,136 +182,133 @@ document.addEventListener('DOMContentLoaded', () => {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 100;
+        const maxDist = 120;
 
         if (dist < maxDist && dist > 0) {
-          const force = (maxDist - dist) / maxDist * 0.5;
-          p.x += (dx / dist) * force * 2;
-          p.y += (dy / dist) * force * 2;
+          const force = (maxDist - dist) / maxDist * 0.8;
+          p.x += (dx / dist) * force * 2.5;
+          p.y += (dy / dist) * force * 2.5;
         }
       }
 
       if (reduceMotion) {
-        // In reduce motion, just show particles in orbital positions
-        const orbitX = center.x + Math.cos(p.orbitAngle) * p.orbitRadius;
-        const orbitY = center.y + Math.sin(p.orbitAngle) * p.orbitRadius;
-        p.x = orbitX;
-        p.y = orbitY;
         p.size = p.baseSize;
-        p.opacity = 0.6;
+        p.opacity = p.baseOpacity;
         return;
       }
 
       switch (phase.name) {
         case 'SCATTERED':
-          // Drift randomly, slight movement toward scattered position
+          // Free floating particles - the default beautiful state
           p.x += p.vx;
           p.y += p.vy;
 
-          // Gentle boundary bounce
-          if (p.x < 0 || p.x > canvas.width) p.vx *= -0.8;
-          if (p.y < 0 || p.y > canvas.height) p.vy *= -0.8;
+          // Soft boundary - keep particles in view
+          const margin = 50;
+          if (p.x < margin) p.vx += 0.02;
+          if (p.x > canvas.width - margin) p.vx -= 0.02;
+          if (p.y < margin) p.vy += 0.02;
+          if (p.y > canvas.height - margin) p.vy -= 0.02;
 
-          // Keep near avatar area
+          // Gentle pull toward avatar area (loose)
           const distFromCenter = Math.sqrt(Math.pow(p.x - center.x, 2) + Math.pow(p.y - center.y, 2));
-          if (distFromCenter > center.radius * 4) {
-            p.vx += (center.x - p.x) * 0.001;
-            p.vy += (center.y - p.y) * 0.001;
+          if (distFromCenter > center.radius * 5) {
+            p.vx += (center.x - p.x) * 0.0003;
+            p.vy += (center.y - p.y) * 0.0003;
           }
 
+          // Speed limit
+          const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          if (speed > 1.2) {
+            p.vx *= 0.98;
+            p.vy *= 0.98;
+          }
+
+          // Consistent size with subtle pulse
           p.size = p.baseSize;
-          p.opacity = 0.25 + Math.sin(time * 0.002 + p.pulseOffset) * 0.1;
+          p.opacity = p.baseOpacity + Math.sin(time * 0.001 + p.pulseOffset) * 0.08;
           break;
 
         case 'PULL':
-          // Particles are attracted toward center
+          // Particles attracted toward orbital positions
           const pullProgress = easeInOutCubic(phase.progress);
-          const targetRadius = p.orbitRadius * (1 - pullProgress * 0.3);
+          const pullRadius = p.orbitRadius * (2 - pullProgress);
 
-          // Calculate target position on orbit path
-          const pullTargetX = center.x + Math.cos(p.orbitAngle) * targetRadius * 2;
-          const pullTargetY = center.y + Math.sin(p.orbitAngle) * targetRadius * 2;
+          const pullTargetX = center.x + Math.cos(p.orbitAngle) * pullRadius;
+          const pullTargetY = center.y + Math.sin(p.orbitAngle) * pullRadius;
 
-          // Lerp toward target
-          p.x += (pullTargetX - p.x) * 0.03 * (1 + pullProgress);
-          p.y += (pullTargetY - p.y) * 0.03 * (1 + pullProgress);
+          p.x += (pullTargetX - p.x) * 0.04 * (1 + pullProgress);
+          p.y += (pullTargetY - p.y) * 0.04 * (1 + pullProgress);
 
-          // Increase brightness as they converge
-          p.opacity = 0.3 + pullProgress * 0.4;
-          p.size = p.baseSize * (1 + pullProgress * 0.5);
+          p.opacity = p.baseOpacity + pullProgress * 0.3;
+          p.size = p.baseSize * (1 + pullProgress * 0.3);
           break;
 
         case 'SPARK':
-          // Quick snap to tight formation + flash
-          const sparkProgress = easeOutElastic(Math.min(phase.progress * 2, 1));
-          const tightRadius = p.orbitRadius * 0.6;
+          // Snap to tight formation + flash
+          const sparkProgress = easeOutElastic(Math.min(phase.progress * 1.5, 1));
+          const tightRadius = p.orbitRadius * 0.7;
 
           const sparkTargetX = center.x + Math.cos(p.orbitAngle) * tightRadius;
           const sparkTargetY = center.y + Math.sin(p.orbitAngle) * tightRadius;
 
-          p.x += (sparkTargetX - p.x) * 0.15;
-          p.y += (sparkTargetY - p.y) * 0.15;
+          p.x += (sparkTargetX - p.x) * 0.2;
+          p.y += (sparkTargetY - p.y) * 0.2;
 
-          // Flash effect
-          const flashIntensity = phase.progress < 0.3 ? phase.progress / 0.3 : 1 - (phase.progress - 0.3) / 0.7;
-          p.opacity = 0.7 + flashIntensity * 0.3;
-          p.size = p.baseSize * (1.5 + flashIntensity);
+          // Flash
+          const flash = phase.progress < 0.4 ? phase.progress / 0.4 : 1 - (phase.progress - 0.4) / 0.6;
+          p.opacity = 0.7 + flash * 0.3;
+          p.size = p.baseSize * (1.3 + flash * 0.5);
 
-          // Trigger pulse ring at spark moment
-          if (phase.progress > 0.1 && phase.progress < 0.2 && pulseRings.length < 3) {
+          // Trigger pulse ring
+          if (phase.progress > 0.1 && phase.progress < 0.15 && pulseRings.length < 2) {
             pulseRings.push({
               x: center.x,
               y: center.y,
-              radius: center.radius * 0.5,
+              radius: center.radius * 0.4,
               maxRadius: center.radius * 2.5,
-              opacity: 0.6,
+              opacity: 0.5,
               birth: time
             });
           }
           break;
 
         case 'ALIVE':
-          // Stable orbital motion - the system is alive
-          p.orbitAngle += p.orbitSpeed * (1 + p.orbitLayer * 0.3);
+          // Organized orbital motion
+          p.orbitAngle += p.orbitSpeed * (1 + p.orbitLayer * 0.4);
 
-          // Multi-layer orbits
-          const layerMultiplier = 0.7 + p.orbitLayer * 0.25;
-          const aliveRadius = p.orbitRadius * layerMultiplier;
+          const layerMult = 0.75 + p.orbitLayer * 0.2;
+          const aliveRadius = p.orbitRadius * layerMult;
 
           const orbitX = center.x + Math.cos(p.orbitAngle) * aliveRadius;
           const orbitY = center.y + Math.sin(p.orbitAngle) * aliveRadius;
 
-          // Smooth transition to orbit
-          p.x += (orbitX - p.x) * 0.08;
-          p.y += (orbitY - p.y) * 0.08;
+          p.x += (orbitX - p.x) * 0.1;
+          p.y += (orbitY - p.y) * 0.1;
 
-          // Gentle breathing pulse
-          const breathe = Math.sin(time * 0.001 + p.pulseOffset) * 0.15;
-          p.opacity = 0.5 + breathe + 0.1;
-          p.size = p.baseSize * (1.2 + breathe * 0.3);
+          const pulse = Math.sin(time * 0.002 + p.pulseOffset) * 0.1;
+          p.opacity = 0.6 + pulse;
+          p.size = p.baseSize * (1.2 + pulse * 0.2);
           break;
 
         case 'BREATHE':
-          // Expand outward, preparing to scatter
-          const breatheProgress = easeInOutCubic(phase.progress);
-          const expandRadius = p.orbitRadius * (1 + breatheProgress * 1.5);
+          // Expand back outward
+          const breatheProgress = easeOutCubic(phase.progress);
+          const expandRadius = p.orbitRadius * (1 + breatheProgress * 2.5);
 
           const breatheX = center.x + Math.cos(p.orbitAngle) * expandRadius;
           const breatheY = center.y + Math.sin(p.orbitAngle) * expandRadius;
 
-          p.x += (breatheX - p.x) * 0.05;
-          p.y += (breatheY - p.y) * 0.05;
+          p.x += (breatheX - p.x) * 0.06;
+          p.y += (breatheY - p.y) * 0.06;
 
-          // Fade out slightly
-          p.opacity = 0.6 - breatheProgress * 0.35;
-          p.size = p.baseSize * (1.3 - breatheProgress * 0.3);
+          p.opacity = 0.6 - breatheProgress * 0.25;
+          p.size = p.baseSize * (1.2 - breatheProgress * 0.2);
 
-          // Reset scattered position for next cycle
-          if (phase.progress > 0.8) {
-            p.scatteredX = p.x + (Math.random() - 0.5) * center.radius;
-            p.scatteredY = p.y + (Math.random() - 0.5) * center.radius;
-            p.vx = (Math.random() - 0.5) * 0.8;
-            p.vy = (Math.random() - 0.5) * 0.8;
+          // Restore velocity for scattered state
+          if (phase.progress > 0.7) {
+            p.vx = (Math.random() - 0.5) * 1;
+            p.vy = (Math.random() - 0.5) * 1;
           }
           break;
       }
@@ -296,7 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap around screen
       if (p.x < -20) p.x = canvas.width + 20;
       if (p.x > canvas.width + 20) p.x = -20;
       if (p.y < -20) p.y = canvas.height + 20;
@@ -312,49 +335,49 @@ document.addEventListener('DOMContentLoaded', () => {
       const center = getAvatarCenter();
       const color = getColor();
 
-      // Core intensity based on phase
-      let coreIntensity = 0.1;
-      let coreSize = center.radius * 0.15;
+      let coreIntensity = 0.08;
+      let coreSize = center.radius * 0.08;
 
       switch (phase.name) {
         case 'SCATTERED':
-          coreIntensity = 0.1 + Math.sin(time * 0.002) * 0.05;
-          coreSize = center.radius * 0.1;
+          coreIntensity = 0.05 + Math.sin(time * 0.001) * 0.03;
+          coreSize = center.radius * 0.06;
           break;
         case 'PULL':
-          coreIntensity = 0.1 + phase.progress * 0.4;
-          coreSize = center.radius * (0.1 + phase.progress * 0.1);
+          coreIntensity = 0.05 + phase.progress * 0.35;
+          coreSize = center.radius * (0.06 + phase.progress * 0.12);
           break;
         case 'SPARK':
-          coreIntensity = 0.5 + (phase.progress < 0.3 ? phase.progress * 2 : 0.6);
-          coreSize = center.radius * (0.2 + (phase.progress < 0.3 ? phase.progress : 0.3) * 0.3);
+          const sparkFlash = phase.progress < 0.3 ? phase.progress / 0.3 : 0.8;
+          coreIntensity = 0.4 + sparkFlash * 0.5;
+          coreSize = center.radius * (0.18 + sparkFlash * 0.15);
           break;
         case 'ALIVE':
-          const alivePulse = Math.sin(time * 0.003) * 0.1;
-          coreIntensity = 0.4 + alivePulse;
-          coreSize = center.radius * (0.18 + alivePulse * 0.05);
+          const alivePulse = Math.sin(time * 0.003) * 0.08;
+          coreIntensity = 0.35 + alivePulse;
+          coreSize = center.radius * (0.15 + alivePulse * 0.03);
           break;
         case 'BREATHE':
-          coreIntensity = 0.4 - phase.progress * 0.3;
-          coreSize = center.radius * (0.18 - phase.progress * 0.08);
+          coreIntensity = 0.35 - phase.progress * 0.3;
+          coreSize = center.radius * (0.15 - phase.progress * 0.09);
           break;
       }
 
-      // Draw core glow (multiple layers)
+      // Draw glow layers
       for (let i = 3; i >= 0; i--) {
-        const glowRadius = coreSize * (1 + i * 0.8);
-        const glowOpacity = coreIntensity * (0.3 - i * 0.07);
+        const glowRadius = coreSize * (1 + i * 1.2);
+        const glowOpacity = coreIntensity * (0.25 - i * 0.05);
 
         ctx.beginPath();
         ctx.arc(center.x, center.y, glowRadius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${glowOpacity})`;
+        ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${Math.max(0, glowOpacity)})`;
         ctx.fill();
       }
 
-      // Draw core center
+      // Core center
       ctx.beginPath();
-      ctx.arc(center.x, center.y, coreSize * 0.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${coreIntensity + 0.2})`;
+      ctx.arc(center.x, center.y, coreSize * 0.4, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${coreIntensity + 0.1})`;
       ctx.fill();
     }
 
@@ -363,79 +386,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pulseRings = pulseRings.filter(ring => {
         const age = time - ring.birth;
-        const progress = age / 800; // 800ms duration
+        const progress = age / 700;
 
         if (progress >= 1) return false;
 
-        const currentRadius = ring.radius + (ring.maxRadius - ring.radius) * easeInOutCubic(progress);
+        const currentRadius = ring.radius + (ring.maxRadius - ring.radius) * easeOutCubic(progress);
         const opacity = ring.opacity * (1 - progress);
 
         ctx.beginPath();
         ctx.arc(ring.x, ring.y, currentRadius, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(${color.r},${color.g},${color.b},${opacity})`;
-        ctx.lineWidth = 2 * (1 - progress);
+        ctx.lineWidth = 2.5 * (1 - progress);
         ctx.stroke();
 
         return true;
       });
     }
 
-    function drawParticle(p) {
-      const color = getColor();
-
-      // Main particle
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${p.opacity})`;
-      ctx.fill();
-
-      // Subtle glow
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${p.opacity * 0.15})`;
-      ctx.fill();
-    }
-
-    // Draw connections between particles - shows organization
     function drawConnections(phase) {
+      if (phase.name === 'SCATTERED') return;
+
       const color = getColor();
       const center = getAvatarCenter();
 
-      // Connection intensity based on phase
       let connectionOpacity = 0;
-      let maxDistance = center.radius * 0.8;
+      let maxDistance = center.radius * 0.9;
 
       switch (phase.name) {
         case 'PULL':
-          connectionOpacity = phase.progress * 0.15;
-          maxDistance = center.radius * (1.5 - phase.progress * 0.7);
+          connectionOpacity = phase.progress * 0.12;
+          maxDistance = center.radius * (1.8 - phase.progress * 0.9);
           break;
         case 'SPARK':
-          connectionOpacity = 0.25 + phase.progress * 0.15;
-          maxDistance = center.radius * 0.7;
-          break;
-        case 'ALIVE':
-          connectionOpacity = 0.2 + Math.sin(phase.progress * Math.PI) * 0.1;
+          connectionOpacity = 0.2 + phase.progress * 0.1;
           maxDistance = center.radius * 0.8;
           break;
-        case 'BREATHE':
-          connectionOpacity = 0.2 * (1 - phase.progress);
-          maxDistance = center.radius * (0.8 + phase.progress * 0.5);
+        case 'ALIVE':
+          connectionOpacity = 0.18;
+          maxDistance = center.radius * 0.9;
           break;
-        default:
-          return; // No connections during SCATTERED
+        case 'BREATHE':
+          connectionOpacity = 0.18 * (1 - phase.progress);
+          maxDistance = center.radius * (0.9 + phase.progress * 0.6);
+          break;
       }
 
       if (connectionOpacity < 0.02) return;
 
-      // Draw connections between nearby particles
-      ctx.strokeStyle = `rgba(${color.r},${color.g},${color.b},${connectionOpacity})`;
-      ctx.lineWidth = 0.5;
+      ctx.lineWidth = 0.6;
 
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
-        // Connect to a few neighbors (not all, for performance)
-        for (let j = i + 1; j < Math.min(i + 8, particles.length); j++) {
+        for (let j = i + 1; j < Math.min(i + 6, particles.length); j++) {
           const p2 = particles[j];
           const dx = p2.x - p1.x;
           const dy = p2.y - p1.y;
@@ -452,17 +454,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Draw radial connections from center during ALIVE (like circuit traces)
+      // Radial connections to core during organized phases
       if (phase.name === 'ALIVE' || phase.name === 'SPARK') {
-        const traceOpacity = phase.name === 'SPARK' ? 0.15 + phase.progress * 0.2 : 0.1;
+        const traceOpacity = phase.name === 'SPARK' ? 0.12 + phase.progress * 0.15 : 0.08;
         ctx.strokeStyle = `rgba(${color.r},${color.g},${color.b},${traceOpacity})`;
         ctx.lineWidth = 0.8;
 
-        // Connect some particles to the core
         particles.forEach((p, i) => {
-          if (i % 5 === 0) { // Every 5th particle
+          if (i % 4 === 0) {
             const dist = Math.sqrt(Math.pow(p.x - center.x, 2) + Math.pow(p.y - center.y, 2));
-            if (dist < center.radius * 1.2) {
+            if (dist < center.radius * 1.3) {
               ctx.beginPath();
               ctx.moveTo(center.x, center.y);
               ctx.lineTo(p.x, p.y);
@@ -471,6 +472,21 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
+    }
+
+    function drawParticle(p) {
+      const color = getColor();
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${p.opacity})`;
+      ctx.fill();
+
+      // Glow
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${p.opacity * 0.12})`;
+      ctx.fill();
     }
 
     function drawAmbientParticle(p) {
@@ -488,31 +504,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const phase = getCurrentPhase(time);
       currentPhase = phase.name;
 
-      // Draw ambient particles (background)
+      // Ambient particles
       ambientParticles.forEach(p => {
         updateAmbientParticle(p);
         drawAmbientParticle(p);
       });
 
-      // Draw core
+      // Core
       if (heroAvatar) {
         drawCore(time, phase);
       }
 
-      // Draw pulse rings
+      // Pulse rings
       drawPulseRings(time);
 
-      // Update particles first
+      // Update all particles
       particles.forEach(p => {
         updateParticle(p, time, phase);
       });
 
-      // Draw connections between particles (shows organization)
-      if (!reduceMotion) {
+      // Connections (only during animation)
+      if (!reduceMotion && isAnimating) {
         drawConnections(phase);
       }
 
-      // Draw particles on top
+      // Draw particles
       particles.forEach(p => {
         drawParticle(p);
       });
@@ -531,24 +547,24 @@ document.addEventListener('DOMContentLoaded', () => {
       mouse.y = null;
     });
 
-    // Click to trigger spark
+    // Click to trigger the spark animation
     if (heroAvatar) {
-      heroAvatar.addEventListener('click', () => {
-        if (!reduceMotion) {
-          // Reset cycle to spark phase
-          cycleStartTime = performance.now() - PHASES.SPARK.start;
-          const center = getAvatarCenter();
-          pulseRings.push({
-            x: center.x,
-            y: center.y,
-            radius: center.radius * 0.3,
-            maxRadius: center.radius * 3,
-            opacity: 0.8,
-            birth: performance.now()
-          });
-        }
-      });
+      heroAvatar.style.cursor = 'pointer';
+      heroAvatar.addEventListener('click', triggerAnimation);
     }
+
+    // Also allow clicking anywhere in the hero area
+    canvas.addEventListener('click', (e) => {
+      const center = getAvatarCenter();
+      const dx = e.clientX - center.x;
+      const dy = e.clientY - center.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // If click is near the avatar area
+      if (dist < center.radius * 3) {
+        triggerAnimation();
+      }
+    });
 
     // Initialize
     resize();
@@ -561,13 +577,16 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         resize();
-        // Reinitialize particles with new positions
-        particles.forEach((p, i) => {
-          const newP = createParticle(i);
-          p.scatteredX = newP.scatteredX;
-          p.scatteredY = newP.scatteredY;
-          p.orbitRadius = newP.orbitRadius;
-        });
+        if (!isAnimating) {
+          // Redistribute particles on resize
+          const center = getAvatarCenter();
+          particles.forEach(p => {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = center.radius * 0.5 + Math.random() * center.radius * 4;
+            p.x = center.x + Math.cos(angle) * dist;
+            p.y = center.y + Math.sin(angle) * dist;
+          });
+        }
       }, 200);
     });
 
