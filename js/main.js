@@ -396,6 +396,83 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fill();
     }
 
+    // Draw connections between particles - shows organization
+    function drawConnections(phase) {
+      const color = getColor();
+      const center = getAvatarCenter();
+
+      // Connection intensity based on phase
+      let connectionOpacity = 0;
+      let maxDistance = center.radius * 0.8;
+
+      switch (phase.name) {
+        case 'PULL':
+          connectionOpacity = phase.progress * 0.15;
+          maxDistance = center.radius * (1.5 - phase.progress * 0.7);
+          break;
+        case 'SPARK':
+          connectionOpacity = 0.25 + phase.progress * 0.15;
+          maxDistance = center.radius * 0.7;
+          break;
+        case 'ALIVE':
+          connectionOpacity = 0.2 + Math.sin(phase.progress * Math.PI) * 0.1;
+          maxDistance = center.radius * 0.8;
+          break;
+        case 'BREATHE':
+          connectionOpacity = 0.2 * (1 - phase.progress);
+          maxDistance = center.radius * (0.8 + phase.progress * 0.5);
+          break;
+        default:
+          return; // No connections during SCATTERED
+      }
+
+      if (connectionOpacity < 0.02) return;
+
+      // Draw connections between nearby particles
+      ctx.strokeStyle = `rgba(${color.r},${color.g},${color.b},${connectionOpacity})`;
+      ctx.lineWidth = 0.5;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        // Connect to a few neighbors (not all, for performance)
+        for (let j = i + 1; j < Math.min(i + 8, particles.length); j++) {
+          const p2 = particles[j];
+          const dx = p2.x - p1.x;
+          const dy = p2.y - p1.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDistance) {
+            const lineOpacity = connectionOpacity * (1 - dist / maxDistance);
+            ctx.strokeStyle = `rgba(${color.r},${color.g},${color.b},${lineOpacity})`;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw radial connections from center during ALIVE (like circuit traces)
+      if (phase.name === 'ALIVE' || phase.name === 'SPARK') {
+        const traceOpacity = phase.name === 'SPARK' ? 0.15 + phase.progress * 0.2 : 0.1;
+        ctx.strokeStyle = `rgba(${color.r},${color.g},${color.b},${traceOpacity})`;
+        ctx.lineWidth = 0.8;
+
+        // Connect some particles to the core
+        particles.forEach((p, i) => {
+          if (i % 5 === 0) { // Every 5th particle
+            const dist = Math.sqrt(Math.pow(p.x - center.x, 2) + Math.pow(p.y - center.y, 2));
+            if (dist < center.radius * 1.2) {
+              ctx.beginPath();
+              ctx.moveTo(center.x, center.y);
+              ctx.lineTo(p.x, p.y);
+              ctx.stroke();
+            }
+          }
+        });
+      }
+    }
+
     function drawAmbientParticle(p) {
       const color = getColor();
 
@@ -425,9 +502,18 @@ document.addEventListener('DOMContentLoaded', () => {
       // Draw pulse rings
       drawPulseRings(time);
 
-      // Update and draw main particles
+      // Update particles first
       particles.forEach(p => {
         updateParticle(p, time, phase);
+      });
+
+      // Draw connections between particles (shows organization)
+      if (!reduceMotion) {
+        drawConnections(phase);
+      }
+
+      // Draw particles on top
+      particles.forEach(p => {
         drawParticle(p);
       });
 
