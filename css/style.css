@@ -272,7 +272,7 @@ body.reduce-motion *::after{
 }
 .nav-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr); /* was repeat(4,1fr) — restore when the Lab card returns */
   gap:var(--space-sm);
   max-width:var(--max-w);
   margin:0 auto;
